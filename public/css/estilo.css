@@ -1,11 +1,3 @@
-@font-face {
-  font-family: "Font-Principal";
-  src: url(../fonts/Baron_Neue.otf);
-}
-@font-face {
-  font-family: "Alice-Regular";
-  src: url(../fonts/Alice-Regular.ttf);
-}
 *{
   margin: 0;
   padding: 0;
@@ -38,7 +30,7 @@ header{
   background: url(../img/Fundo_home.jpg) fixed;
   background-repeat: no-repeat;
  background-size:100%;
- font-family: 'Font-Principal';
+ font-family: 'Kanit', sans-serif;
 }
 .title_home{
   height: 50vh;
@@ -132,7 +124,7 @@ header.change{
 }
 /***title-main***/
 .title-main{
-  font-family: 'Font-Principal';
+  font-family: 'Kanit';
   display: flex;
   justify-content: center;
   align-items: center;
@@ -151,7 +143,7 @@ header.change{
 .desc-sobre{
   width: 100%;
   height: 100%;
-  font-family: 'Alice-Regular';
+  font-family: 'Source Sans Pro';
   text-align: justify;
   display: flex;
   flex-direction: column;
@@ -160,7 +152,7 @@ header.change{
 }
 .introducao a{
   flex: 2;
-  font-family:'Font-Principal';
+  font-family:'Kanit';
   text-align: center;
   align-items: center;
   background: #000;
@@ -184,19 +176,18 @@ header.change{
   margin: 5%;
 }
 .resumo h2{
-  font-family: 'Font-Principal';
-  font-size: 1rem;
+  font-family: 'Kanit';
+  font-size: 1.2rem;
   font-weight: bold;
 }
 .resumo p{
-  font-family: 'Alice-Regular';
   text-align: justify;
 }
 /*------------Executar------------*/
-#executar{
+#manual{
   height: 100%;
 }
-#titulo-executar{
+#titulo-manual{
   color: #000;
   height: 40vh;
   display: flex;
@@ -211,7 +202,7 @@ header.change{
 /****EXEMPLO*****/
 .exemplo{
   margin: 5%;
-  font-family: 'Font-Principal';
+  font-family: 'Kanit';
 }
 .exemplo h1{
   font-size: 1.2rem;
@@ -227,39 +218,6 @@ code{
 .title-exemplo h1{
   font-size: 2rem;
   margin-bottom: 1%;
-}
-
-/*****CodeEditor****/
-.Code-editor{
-  margin-left: 5%;
-  margin-bottom: 2%;
-}
-.Code-editor h1{
-  font-family: 'Font-Principal';
-  font-size: 2rem;
-  margin-bottom: 2%;
-}
-#codeeditor{
-  width: 95%;
-}
-.btn-themes{
-  width: 95%;
-  background: #272822;
-}
-.btn-themes button{
-  padding: 1rem;
-  background: #272822;
-  color: #f8f8f2;
-  border-radius: 5px;
-}
-.btn-themes button:hover{
-  cursor: pointer;
-}
-#btn-theme-neat{
-  border: solid  #f8f8f2 2px;
-}
-#btn-theme-monokai{
-  border: solid #636e72 2px;
 }
 /*------------FOOTER------------*/
 footer{
@@ -292,7 +250,7 @@ footer{
 }
 footer{
   background: var(--preto);
-    font-family: 'Font-Principal';
+    font-family: 'Kanit';
 }
 .info-footer{
   color: #fff;

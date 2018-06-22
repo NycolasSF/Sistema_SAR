@@ -1,12 +1,18 @@
 @echo off
 cls
 :menu
+~/.bashrc:
+pushd Sistema_SAR
+title SAR
 cls
+
 color 0
-
 date /t
-
 echo Computador: %computername%        Usuario: %username%
+
+cls
+echo SEU DIRETORIO:
+dir %pushd Sistema_SAR%
 
 echo  ==================================
 echo          BEM-VINDOS AO SAR
@@ -50,8 +56,8 @@ goto menu
 
 :opcao3
 cls
-echo FALTA IMPLEMENTAR
-echo npm install -g node-modules
+npm install -g node-modules
+popd
 echo ==================================
 echo *      NODE MODULOS - Instalado com Sucesso          *
 echo ==================================
@@ -61,8 +67,7 @@ goto menu
 
 :opcao4
 cls
-echo FALTA IMPLEMENTAR
-echo EXEMPLO: xcopy /T /C C:\Users\lucianogusso\Documents\*.* C:\Users\lucianogusso\Desktop
+nodemon app
 pause
 goto menu
 

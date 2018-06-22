@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>SAR - EXECUTAR</title>
+  </head>
+  <body>
+    <!--CODE EDITOR - REFERENCES CODEMIRROR-->
+            <div id="container-code" class="Code-editor">
+              <h1>Execute seus Códigos:</h1>
+              <div id="codeeditor"></div>
+              <button type="button" onclick="verificar()" id="preview">Executar</button>
+              <div class="btn-themes">
+                <button type="button" value = "neat" id="btn-theme-neat">Branco</button>
+                <button type="button" value = "monokai" id="btn-theme-monokai">Preto</button>
+              </div>
+              <div class="alert"></div>
+            </div>
+  </body>
+</html>
+
+/*****CodeEditor****/
+.Code-editor{
+  margin-left: 5%;
+  margin-bottom: 2%;
+}
+.Code-editor h1{
+  font-family: 'Kanit';
+  font-size: 2rem;
+  margin-bottom: 2%;
+}
+#codeeditor{
+  width: 95%;
+}
+.btn-themes{
+  width: 95%;
+  background: #272822;
+}
+.btn-themes button{
+  padding: 1rem;
+  background: #272822;
+  color: #f8f8f2;
+  border-radius: 5px;
+}
+.btn-themes button:hover{
+  cursor: pointer;
+}
+#btn-theme-neat{
+  border: solid  #f8f8f2 2px;
+}
+#btn-theme-monokai{
+  border: solid #636e72 2px;
+}

@@ -4,19 +4,11 @@
     <meta charset="utf-8">
     <title>Seu Amigo Robô</title>
     <link rel="stylesheet" href="css/estilo.css">
+    <link href="https://fonts.googleapis.com/css?family=Kanit|Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" href="packs/Highlight/styles/monokai.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="packs/Highlight/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <link rel="stylesheet" href="packs/CodeEditor/lib/codemirror.css">
-    <link rel="stylesheet" href="packs/CodeEditor/theme/monokai.css">
-    <link rel="stylesheet" href="packs/CodeEditor/theme/neat.css">
-    <script src="packs/CodeEditor/lib/codemirror.js"></script>
-    <script src="packs/CodeEditor/addon/selection/active-line.js"></script>
-    <script src="packs/CodeEditor/addon/edit/matchbrackets.js"></script>
-    <script src="packs/CodeEditor/mode/javascript/javascript.js"></script>
-
-
   </head>
   <body>
     <header id="Home">
@@ -38,13 +30,13 @@
         <ul>
           <li><a href="#Home" id="home">HOME</a></li>
           <li id="primeira"><a href="#sobre">Sobre Projeto</a></li>
-          <li class="segunda"><a href="#executar">Executar</a></li>
-          <li class="terceira"><a href="/login">LOGIN<!--img src="img/icon-login.svg" id="login"--></a></li>
+          <li class="segunda"><a href="#manual">Manual</a></li>
+          <li class="terceira"><a href="/pagina_acesso">LOGIN<!--img src="img/icon-login.svg" id="login"--></a></li>
         </ul>
       </nav>
 <!--TEXTO ENTRADA-->
       <div class="title_home">
-        <h1>Olá, vamos aprender um paradigma? <br>seu amigo Robô </h1>
+        <h1>Olá, vamos aprender um paradigma?</h1>
         <a href="#executar">
           <div id="btn-ligar">
               <div class="title-btn">
@@ -58,12 +50,12 @@
 <!--SOBRE-->
         <section id="sobre">
           <div id="title-sobre" class="title-main">
+            <div class="introducao">
             <div class="forma">
-              <h1>SobRe Projeto</h1>
+              <h1>Sobre o Projeto</h1>
             </div>
           </div>
           <div class="desc-sobre">
-            <div class="introducao">
               <p> Está página se trata de um trabalho de conclusão de curso (TCC), na qual a partir dela você poderá executar códigos para o meu robô,  dando vida a ele.
               <br>Podendo ser executado nessa plataforma códigos em javascript de acordo com o material didático para o professor, para entender melhor o funcionamento e como ensinar seus alunos a partir desse protótipo.</p>
               <a href="mateiral/apostila.pdf" download>
@@ -81,10 +73,10 @@
           </div>
         </section>
 <!--EXECUTAR-->
-        <section id="executar">
-          <div id="titulo-executar" class="title-main">
+        <section id="manual">
+          <div id="titulo-manual" class="title-main">
             <div class="forma">
-              <h1>EXECuTAR</h1>
+              <h1>Manual</h1>
             </div>
           </div>
           <video id="video" src=""  controls poster="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoNSZFjcM2TYllOcGKr6T_ujMorL9q60xM0v5j6bSy87N0AyUT">
@@ -114,18 +106,6 @@
               </code>
             </div>
           </div>
-  <!--CODE EDITOR - REFERENCES CODEMIRROR-->
-          <div id="container-code" class="Code-editor">
-            <h1>Execute seus Códigos:</h1>
-            <div id="codeeditor"></div>
-            <button type="button" onclick="verificar()" id="preview">Executar</button>
-            <div class="btn-themes">
-              <button type="button" value = "neat" id="btn-theme-neat">Branco</button>
-              <button type="button" value = "monokai" id="btn-theme-monokai">Preto</button>
-            </div>
-            <div class="alert"></div>
-          </div>
-          </div>
         </section>
       </main>
 <!--FOOTER-->
@@ -138,17 +118,17 @@
             <h1>ESTUDANTE: Nycolas Silva Fróes</h1>
             <h2>Breve Descrição</h2>
             <p>Estudante do IFMS Campus Dourados.</p>
-            <p>Gosta de Jogar Paladins com seu Professor/Orientador. Estuda Muito</p>
+            <p>Gosta de Jogar Paladins com seu Professor/Orientador. Estuda Muito!</p>
           </div>
         </div>
 <!--PESSOA 2 - JÓNISON-->
         <div class="pessoa DOIS">
           <div id="img_Dois" class="circle"></div>
           <div class="info-footer">
-            <h1>Professor: Jónison Almeida dos Santos</h1>
+            <h1>PROFESSOR: Jónison Almeida dos Santos</h1>
             <h2>Breve Descrição</h2>
             <p>professor do ifms campus dourados.</p>
-            <p>Gosta de Jogar Paladins com seu Aluno/orientando. Joga Muito</p>
+            <p>Gosta de Jogar Paladins com seu Aluno/orientando. Joga Muito!</p>
           </div>
         </div>
       </footer>

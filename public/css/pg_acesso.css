@@ -1,0 +1,81 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+*, *::before, *::after{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  border: 0;
+}
+body{
+  height: 100%;
+  width: 100%;
+}
+:root{
+  --vermelho: #f13838;
+  --preto: #0e0d0d;
+  --meu-cinza: #d3cfcf;
+  --rect-branco: #fff;
+}
+html,
+body{
+  height: 100%;
+}
+a{
+  text-decoration: none;
+}
+ul{
+  list-style: none;
+}
+body{
+  display: flex;
+  background: url(../img/fundo_pagAcesso.jpg) center center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 0% auto;
+}
+form{
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+form legend{
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+form input{
+  width: 80%;
+  padding: .5rem;
+  margin: 1%;
+  background: #fff;
+  outline: none;
+}
+.container{
+  margin: auto;
+  width: 40%;
+  border-radius: 15px;
+  background: rgba(255,255,255, .98);
+  -webkit-box-shadow: 1px 5px 20px -8px rgba(0,0,0,0.3);
+-moz-box-shadow: 1px 5px 20px -8px rgba(0,0,0,0.3);
+box-shadow: 1px 5px 20px -8px rgba(0,0,0,0.3);
+}
+form input ~ label{
+  color: rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: all ease-in-out .2s;
+  transform: translateY(-1.6rem) translateZ(0.0);
+}
+
+form ::placeholder{
+  color: rgba(0,0,0,0.4);
+}
+
+form input:valid ~ label{
+
+  font-size: 0.8rem;
+  opacity: 1;
+  transform: translateY(-2.6rem);
+}
