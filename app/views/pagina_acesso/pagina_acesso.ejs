@@ -17,7 +17,7 @@
     <div class="container">
       <div class="container-right-login">
         <form method="post">
-          <legend>Controle de acesso</legend>
+          <legend>LOGIN</legend>
           <div class="input-container">
             <input type="text" id="email" name="email_usuario" placeholder="Digite seu email" required/>
             <label for="user">Email</label>
@@ -26,11 +26,15 @@
             <input type="password" name="senha_usuario" id="password" placeholder="Senha" required/>
             <label for="password">Senha</label>
           </div>
-              <input type="submit" value="Entrar" class="button" />
+          <div class="container-buttons">
+            <input type="button" value="Cadastrar" class="button-cadastrar" />
+            <input type="submit" value="Entrar" class="button" />
+          </div>
         </form>
       </div>
       <div class="container-cadastrar">
         <form class="container-cadastro" method="post">
+          <legend>CADASTRAR</legend>
           <div class="primary-section">
             <select class="categorias">
               <option  value="" disabled selected>Selecione sua Categoria</option>
@@ -41,21 +45,28 @@
             <button type="button" id="btn-next" name="next">Próximo</button>
           </div>
           <div class="segundary-section cadastro-info">
-            <input type="text" name="nome_usuario" placeholder="Digite seu nome Completo">
-            <label for="nome">Nome Completo:</label>
-
-            <input type="email" name="email_usuario" placeholder="Digite seu EMAIL">
-            <label for="email">Email:</label>
-
-            <input type="password" name="senha_usuario" placeholder="Digite sua senha">
-            <label for="senha">Senha:</label>
-
-            <input type="email" name="email_usuario" placeholder="Digite seu EMAIL">
-            <label for="email">Email:</label>
-
-            <input type="password" name="senha_usuario" placeholder="Digite sua senha">
-            <label for="senha">Senha:</label>
+            <div class="input-container">
+              <input type="text" name="nome_usuario" placeholder="Digite seu nome Completo" required>
+              <label for="nome">Nome Completo:</label>
+            </div>
+            <div class="input-container">
+              <input type="email" name="email_usuario" placeholder="Digite seu EMAIL" required>
+              <label for="email">Email:</label>
+            </div>
+            <div class="input-container">
+              <input type="password" name="senha_usuario" placeholder="Digite sua senha" required>
+              <label for="senha">Senha:</label>
+            </div>
+            <div class="input-container">
+              <input type="email" name="email_usuario" placeholder="Digite seu EMAIL" required>
+              <label for="email">Email:</label>
+            </div>
+            <div class="input-container">
+              <input type="password" name="senha_usuario" placeholder="Digite sua senha" required>
+              <label for="senha">Senha:</label>
+            </div>
           </div>
+          <input type="submit" class="button" value="Cadastrar"/>
         </form>
         <form class="container-professor" method="post">
 
