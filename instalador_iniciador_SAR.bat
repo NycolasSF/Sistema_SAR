@@ -12,7 +12,8 @@ echo Computador: %computername%        Usuario: %username%
 
 cls
 echo SEU DIRETORIO:
-dir %pushd Sistema_SAR%
+dir /W %pushd Sistema_SAR%
+
 
 echo  ==================================
 echo          BEM-VINDOS AO SAR
@@ -73,9 +74,10 @@ goto menu
 
 :opcao5
 cls
-echo FALTA IMPLEMENTAR
+regedit  %Sistema_SAR%
 pause
 goto menu
+
 
 :opcao6
 cls

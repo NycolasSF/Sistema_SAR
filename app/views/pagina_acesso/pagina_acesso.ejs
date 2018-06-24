@@ -5,25 +5,25 @@
     <title>SAR - Página de Acesso</title>
     <link rel="stylesheet" href="css/pg_acesso.css">
     <link href="https://fonts.googleapis.com/css?family=Kanit|Source+Sans+Pro" rel="stylesheet">
-    <link rel="stylesheet" href="packs/CodeEditor/lib/codemirror.css">
-    <link rel="stylesheet" href="packs/CodeEditor/theme/monokai.css">
-    <link rel="stylesheet" href="packs/CodeEditor/theme/neat.css">
-    <script src="packs/CodeEditor/lib/codemirror.js"></script>
-    <script src="packs/CodeEditor/addon/selection/active-line.js"></script>
-    <script src="packs/CodeEditor/addon/edit/matchbrackets.js"></script>
-    <script src="packs/CodeEditor/mode/javascript/javascript.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="container">
+      <div id="btn-home">
+        <a  href="/">
+          <i class="material-icons">home</i>
+        </a>
+      </div>
       <div class="container-right-login">
         <form method="post">
           <legend>LOGIN</legend>
           <div class="input-container">
-            <input type="text" id="email" name="email_usuario" placeholder="Digite seu email" required/>
-            <label for="user">Email</label>
+            <input type="text" id="email" name="email_usuario" placeholder="Digite seu email" autofocus required/>
+            <label for="email_usuario">Email</label>
           </div>
           <div class="input-container">
-            <input type="password" name="senha_usuario" id="password" placeholder="Senha" required/>
+            <input type="password" name="senha_usuario" id="password" placeholder="Digite sua senha" required/>
             <label for="password">Senha</label>
           </div>
           <div class="container-buttons">
@@ -31,52 +31,84 @@
             <input type="submit" value="Entrar" class="button" />
           </div>
         </form>
+        <div class="alert">
+          <span>X</span>
+          <h1>ERROR!</h1>
+          <p>DESC DO ERRO</p>
+        </div>
       </div>
       <div class="container-cadastrar">
-        <form class="container-cadastro" method="post">
+        <form class="container-cadastro forms" method="post">
           <legend>CADASTRAR</legend>
           <div class="primary-section">
-            <select class="categorias">
+            <select class="categorias" required>
               <option  value="" disabled selected>Selecione sua Categoria</option>
               <option value="Professor">Professor</option>
               <option value="Aluno">Aluno</option>
               <option value="Pessoa_Fisica">Pessoa Física</option>
             </select>
-            <button type="button" id="btn-next" name="next">Próximo</button>
+            <input type="submit" id="btn-next" value="Próximo"></input>
           </div>
-          <div class="segundary-section cadastro-info">
+          <div id="info-usuario" class="segundary-section cadastro-info">
+            <div class="titles-section">
+              <h1>Informação de Usuário</h1>
+              <i class="material-icons">navigate_before</i>
+            </div>
             <div class="input-container">
               <input type="text" name="nome_usuario" placeholder="Digite seu nome Completo" required>
-              <label for="nome">Nome Completo:</label>
+              <label for="nome">Nome</label>
             </div>
             <div class="input-container">
-              <input type="email" name="email_usuario" placeholder="Digite seu EMAIL" required>
-              <label for="email">Email:</label>
-            </div>
-            <div class="input-container">
-              <input type="password" name="senha_usuario" placeholder="Digite sua senha" required>
-              <label for="senha">Senha:</label>
-            </div>
-            <div class="input-container">
-              <input type="email" name="email_usuario" placeholder="Digite seu EMAIL" required>
-              <label for="email">Email:</label>
+              <input type="text" name="email_usuario" placeholder="Digite seu email" required>
+              <label for="email">Email</label>
             </div>
             <div class="input-container">
               <input type="password" name="senha_usuario" placeholder="Digite sua senha" required>
-              <label for="senha">Senha:</label>
+              <label for="senha">Senha</label>
             </div>
+            <input type="submit" class="button" id="btn-info-usuario" value="Próximo"/>
           </div>
-          <input type="submit" class="button" value="Cadastrar"/>
+        <form id="info-professor" class="container-professor forms" method="post">
+          <div class="titles-section">
+            <h1>Informação do Professor</h1>
+            <i class="material-icons">navigate_before</i>
+          </div>
+          <div class="input-container">
+            <input type="text" name="instituicao_professor" placeholder="Digite da sua Escola/Universidade" required>
+            <label for="instituicao_professor">Instituição</label>
+          </div>
+          <div class="input-container">
+            <input type="text" name="titulacao_professor" placeholder="Digite sua titulação: Mestrer, Especialista, Doutor.." required>
+            <label for="titulacao_professor">Titulação</label>
+          </div>
+          <div class="input-container">
+            <input type="password" name="area_professor" placeholder="Digite sua área de atuação atual" required>
+            <label for="area_professor">Área de Atuação</label>
+          </div>
+          <button type="submit" class="submit-enviar" name="cadastrar-professor">Cadastrar</button>
         </form>
-        <form class="container-professor" method="post">
-
+        <form id="info-pessoaF" class="container-pessoaF forms" method="post">
+          <div class="titles-section">
+            <h1>Informação de Pessoa Física</h1>
+            <i class="material-icons">navigate_before</i>
+          </div>
+          <div class="input-container pais-cidade">
+            <select class="pais-pesssoF">
+                  <option  value="" disabled selected>Selecione sua Pais</option>
+                <option value="TEST Brasil">Brasil</option>
+            </select>
+            <select class="cidade-pessoaF">
+                <option  value="" disabled selected>Selecione sua Cidade</option>
+                <option value="TEST Dourados">Dourados</option>
+            </select>
+          </div>
+          <div class="input-container">
+            <input type="number" name="email_usuario" placeholder="Digite seu número de celular" required>
+            <label for="email">Número de Celular</label>
+          </div>
+          <button type="submit" class="submit-enviar buttons" name="cadastrar">Cadastrar</button>
         </form>
-        <form class="container-aluno" method="post">
-
-        </form>
-        <form class="container-pessoaF" method="post">
-
-        </form>
+      </form>
       </div>
     </div>
 

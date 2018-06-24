@@ -4,7 +4,7 @@ var acessar_banco = function() {
 	return mysql.createConnection({
 			host:'www.db4free.net',
 			user:'nycolassar',
-			password:'senha_sar',
+			password:'',
 			database:'sar_login'
 		});
 }
