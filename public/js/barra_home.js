@@ -13,9 +13,11 @@ document.querySelector('#menu').onclick = function(){
     fecharMenu();
   }
 };
-document.querySelectorAll('nav a').forEach(function(item){
-  item.onclick = function(){
-    fecharMenu(y);
-    y.classList.toggle("change");
-  }
-});
+document.querySelector('.a').onclick = function () {
+  alert('vai')
+  document.querySelector('nav').className = '';
+  document.querySelector('#menu').className = '';
+}
+function abrir_fechar(x) {
+    x.classList.toggle("change");
+}

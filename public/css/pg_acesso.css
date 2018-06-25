@@ -34,8 +34,13 @@ body{
   display: flex;
   background: url(../img/fundo_pagAcesso.jpg) center center;
   background-repeat: no-repeat;
-  background-size: 100% !important;
+  background-size: cover;
   background-position: 0% auto;
+}
+
+/* ESCONDENDO TAGS */
+.container-cadastrar, #btn-next, #info-professor, #info-usuario, #info-pessoaF{
+  display: none;
 }
 form{
   padding: 1.5rem;
@@ -43,7 +48,6 @@ form{
   flex-direction: column;
 }
 form legend{
-
   font-family: 'Kanit', sans-serif;
   font-size: 2rem;
   font-weight: 800;
@@ -99,6 +103,7 @@ input[type="button"]:hover,input[type="submit"]:hover{
   border-radius: 0px;
 }
 .alert{
+  display: none;
   position: relative;
   width: 80%;
   background: #f44336;
@@ -122,9 +127,6 @@ input[type="button"]:hover,input[type="submit"]:hover{
   top: 15%;
   color: #fff;
 }
-#info-usuario, #info-pessoaF{
-  display: none;
-}
 .input-container{
   display: flex;
   flex-direction: column;
@@ -138,15 +140,20 @@ input[type="button"]:hover,input[type="submit"]:hover{
 .titles-section{
   width: 100%;
   display: flex;
+  flex-direction: row;
 }
-.titles-section h1{
+.titles-section h1, legend{
   flex: 1;
   font-family: 'Source Sans Pro';
   font-size: 1.2rem;
   margin-bottom: 5%;
 }
+.titles-section h1{
+  width: 20%;
+  border-bottom: solid 2px #000;
+}
 .titles-section i{
-  font-size: 2rem;
+  font-size: 3rem;
   cursor: pointer;
 }
 #btn-home{
@@ -158,10 +165,6 @@ input[type="button"]:hover,input[type="submit"]:hover{
   font-size: 2rem;
   padding: 1rem;
   color: #000;
-}
-#btn-info-usuario{
-  width: 50%;
-  margin-left: 30%;
 }
 .container-buttons{
   width: 50%;
@@ -213,7 +216,6 @@ input[type="button"]:hover,input[type="submit"]:hover{
   border-radius: 15px;
   color: #fff;
   background: var(--btn-azul);
-
 }
 
 @media screen and (min-width: 940px){

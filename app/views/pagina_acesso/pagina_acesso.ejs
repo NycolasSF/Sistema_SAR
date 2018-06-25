@@ -2,7 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>SAR - Página de Acesso</title>
+    <title>
+      SAR - Página Acesso
+    </title>
     <link rel="stylesheet" href="css/pg_acesso.css">
     <link href="https://fonts.googleapis.com/css?family=Kanit|Source+Sans+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -15,108 +17,101 @@
           <i class="material-icons">home</i>
         </a>
       </div>
-      <div class="container-right-login">
-        <form method="post">
+      <div class="container-login">
+        <form id="login" action="/login" method="post">
           <legend>LOGIN</legend>
           <div class="input-container">
-            <input type="text" id="email" name="email_usuario" placeholder="Digite seu email" autofocus required/>
+            <input type="text" id="email" name="email" placeholder="Digite seu email" autofocus required/>
             <label for="email_usuario">Email</label>
           </div>
           <div class="input-container">
-            <input type="password" name="senha_usuario" id="password" placeholder="Digite sua senha" required/>
+            <input type="password" name="senha" id="password" placeholder="Digite sua senha" required/>
             <label for="password">Senha</label>
           </div>
           <div class="container-buttons">
-            <input type="button" value="Cadastrar" class="button-cadastrar" />
+            <input type="button" value="Cadastrar" id="btn-cadastrar" class="button-cadastrar" />
             <input type="submit" value="Entrar" class="button" />
           </div>
         </form>
         <div class="alert">
-          <span>X</span>
-          <h1>ERROR!</h1>
-          <p>DESC DO ERRO</p>
+          <%for(var i = 0; validacao.length; i++) {%>
+            <h1><%= Titulo %></h1>
+            <!-- <p><%=validacao[i].msg %></p> -->
+          <%}%>
         </div>
       </div>
       <div class="container-cadastrar">
-        <form class="container-cadastro forms" method="post">
-          <legend>CADASTRAR</legend>
+        <form id="cadastro" class="container-cadastro forms" method="post">
+          <div class="titles-section">
+            <legend>CADASTRAR</legend>
+            <i id="btn-voltar" class="material-icons">navigate_before</i>
+          </div>
           <div class="primary-section">
             <select class="categorias" required>
-              <option  value="" disabled selected>Selecione sua Categoria</option>
-              <option value="Professor">Professor</option>
-              <option value="Aluno">Aluno</option>
-              <option value="Pessoa_Fisica">Pessoa Física</option>
+              <option  id="selected" disabled selected>Selecione sua Categoria</option>
+              <option  value="info-professor">Professor</option>
+              <option  value="info-pessoaF">Pessoa Física</option>
             </select>
-            <input type="submit" id="btn-next" value="Próximo"></input>
+            <input type="button" id="btn-next" value="Próximo"></input>
           </div>
-          <div id="info-usuario" class="segundary-section cadastro-info">
-            <div class="titles-section">
+          <div id="info-usuario" class="segundary-section" method="post">
+           <div class="titles-section">
               <h1>Informação de Usuário</h1>
-              <i class="material-icons">navigate_before</i>
+           </div>
+           <div class="input-container">
+               <input type="text" name="nome_usuario" placeholder="Digite seu nome Completo" required>
+               <label for="nome">Nome</label>
+           </div>
+           <div class="input-container">
+             <input type="text" name="email_usuario" placeholder="Digite seu email" required>
+             <label for="email">Email</label>
+           </div>
+           <div class="input-container">
+                <input type="password" name="senha_usuario" placeholder="Digite sua senha" required>
+                <label for="senha">Senha</label>
+            </div>
+          </div>
+          <div id="info-professor" class="forms info-usuarios">
+            <div class="titles-section">
+              <h1>Informação do Professor</h1>
             </div>
             <div class="input-container">
-              <input type="text" name="nome_usuario" placeholder="Digite seu nome Completo" required>
-              <label for="nome">Nome</label>
+              <input type="text" name="instituicao_professor" placeholder="Digite da sua Escola/Universidade" required>
+              <label for="instituicao_professor">Instituição</label>
             </div>
             <div class="input-container">
-              <input type="text" name="email_usuario" placeholder="Digite seu email" required>
-              <label for="email">Email</label>
+              <input type="text" name="titulacao_professor" placeholder="Digite sua titulação: Mestrer, Especialista, Doutor.." required>
+              <label for="titulacao_professor">Titulação</label>
             </div>
             <div class="input-container">
-              <input type="password" name="senha_usuario" placeholder="Digite sua senha" required>
-              <label for="senha">Senha</label>
+              <input type="password" name="area_professor" placeholder="Digite sua área de atuação atual" required>
+              <label for="area_professor">Área de Atuação</label>
             </div>
-            <input type="submit" class="button" id="btn-info-usuario" value="Próximo"/>
+            <button type="submit" class="submit-enviar" name="cadastrar-professor">Cadastrar</button>
           </div>
-        <form id="info-professor" class="container-professor forms" method="post">
-          <div class="titles-section">
-            <h1>Informação do Professor</h1>
-            <i class="material-icons">navigate_before</i>
-          </div>
-          <div class="input-container">
-            <input type="text" name="instituicao_professor" placeholder="Digite da sua Escola/Universidade" required>
-            <label for="instituicao_professor">Instituição</label>
-          </div>
-          <div class="input-container">
-            <input type="text" name="titulacao_professor" placeholder="Digite sua titulação: Mestrer, Especialista, Doutor.." required>
-            <label for="titulacao_professor">Titulação</label>
-          </div>
-          <div class="input-container">
-            <input type="password" name="area_professor" placeholder="Digite sua área de atuação atual" required>
-            <label for="area_professor">Área de Atuação</label>
-          </div>
-          <button type="submit" class="submit-enviar" name="cadastrar-professor">Cadastrar</button>
-        </form>
-        <form id="info-pessoaF" class="container-pessoaF forms" method="post">
-          <div class="titles-section">
-            <h1>Informação de Pessoa Física</h1>
-            <i class="material-icons">navigate_before</i>
-          </div>
-          <div class="input-container pais-cidade">
-            <select class="pais-pesssoF">
-                  <option  value="" disabled selected>Selecione sua Pais</option>
+          <div id="info-pessoaF" class="container-pessoaF forms info-usuarios">
+            <div class="titles-section">
+              <h1>Informação de Pessoa Física</h1>
+            </div>
+            <div class="input-container pais-cidade">
+             <select class="pais-pesssoF">
+                <option  value="" disabled selected>Selecione sua Pais</option>
                 <option value="TEST Brasil">Brasil</option>
-            </select>
-            <select class="cidade-pessoaF">
-                <option  value="" disabled selected>Selecione sua Cidade</option>
-                <option value="TEST Dourados">Dourados</option>
-            </select>
+             </select>
+             <select class="cidade-pessoaF">
+                  <option  value="" disabled selected>Selecione sua Cidade</option>
+                  <option value="TEST Dourados">Dourados</option>
+             </select>
+             </div>
+             <div class="input-container">
+               <input type="number" name="email_usuario" placeholder="Digite seu número de celular" required>
+              <label for="email">Número de Celular</label>
+             </div>
+             <button type="submit" class="submit-enviar buttons" name="cadastrar">Cadastrar</button>
           </div>
-          <div class="input-container">
-            <input type="number" name="email_usuario" placeholder="Digite seu número de celular" required>
-            <label for="email">Número de Celular</label>
-          </div>
-          <button type="submit" class="submit-enviar buttons" name="cadastrar">Cadastrar</button>
-        </form>
       </form>
       </div>
     </div>
-
-
-    <script type="text/javascript">
-      $(widown).ready(function() {
-
-      })
-    </script>
+    <script type="text/javascript" src="js/pg_acesso.js"></script>
   </body>
 </html>

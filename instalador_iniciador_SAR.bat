@@ -57,7 +57,7 @@ goto menu
 
 :opcao3
 cls
-npm install -g node-modules
+npm i -save
 popd
 echo ==================================
 echo *      NODE MODULOS - Instalado com Sucesso          *
@@ -74,7 +74,8 @@ goto menu
 
 :opcao5
 cls
-regedit  %Sistema_SAR%
+call C:\Windows\System32\cmd.exe /k "C:\Program Files\nodejs\nodevars.bat"
+START  %Sistema_SAR%
 pause
 goto menu
 

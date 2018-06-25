@@ -30,7 +30,7 @@ app.use(express.static('public'));
 
 consign()
 .include('app/routes')
-.then('serv_banco/banco.js')
+.then('serv_config/conexao_banco.js')
 .then('app/controller')
 .then('app/model')
 .into(app);

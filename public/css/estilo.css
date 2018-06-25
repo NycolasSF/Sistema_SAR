@@ -16,6 +16,7 @@ body{
 :root{
   --vermelho: #f13838;
   --preto: #0e0d0d;
+  --preto-tranparencia: rgba(0,0,0,.9);
   --meu-cinza: #d3cfcf;
   --rect-branco: #fff;
 }
@@ -26,37 +27,75 @@ ul{
   list-style: none;
 }
 header{
-  height: 50vh;
-  background: url(../img/Fundo_home.jpg) fixed;
+  width: 100%;
+  height: 80vh;
+  background: url('../img/fundo_index05.jpeg') fixed;
   background-repeat: no-repeat;
- background-size:100%;
- font-family: 'Kanit', sans-serif;
+  background-size: cover;
+  background-position: 20% center;
+  font-family: 'Kanit', sans-serif;
 }
 .title_home{
-  height: 50vh;
+  height: 100%;
+  text-transform: uppercase;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   flex-direction: column;
+  position: relative;
 }
-#btn-ligar{
-  display: flex;
-  font-size: 1rem;
-  background: var(--vermelho);
-  margin-top: 50px;
-  border-radius: .5rem;
-  width: 6rem;
-  height: 60px;
-  color: var(--preto);
-  align-items: center;
-  justify-content: center;
+.title_home h1{
+  /* background: rgba(255, 255, 255, 0.95); */
+  background: #000;
+  padding: 1rem;
+  border-radius: 15px;
+  color: #fff;
+  position: relative;
 }
+.title_home a{
+  position: absolute;
+  bottom: 10%;
+}
+.arrow i{
+  border: solid #fff;
+  border-width: 0px 15px 15px 0px;
+  border-radius: .8rem;
+  display: inline-block;
+  padding: 15px;
+  color: #fff;
+  transform: rotate(45deg);
+   -webkit-transform: rotate(45deg);
+}
+.effect-arrow{
+  animation: effect-arrow 2s infinite;
+}
+@keyframes effect-arrow {
+    0%{
+      transform: translateY(0);
+    }
+    20%{
+      transform: translateY(2rem);
+    }
+    40%{
+      transform: translateY(0);
+    }
+    60%{
+      transform: translateY(1rem);
+    }
+    80%{
+      transform: translateY(0);
+    }
+    100%{
+      transform: translateY(.5rem);
+    }
+}
+
 /*------------MENU------------*/
 nav{
   background: var(--cor-branca);
   height: 100%;
-  left:    -200px;
+  left:  -200px;
   position: fixed;
   transition: all ease-in-out .3s;
   width: 200px;
@@ -64,9 +103,11 @@ nav{
 
 }
 nav a{
-  border-bottom: solid 1px #000;
-  color: var(--preto);
-  background: var(--rect-branco);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border-bottom: solid 1px #fff;
+  color: #fff;
+  background: var(--preto-tranparencia);
   font-weight: bold;
   padding: 1rem;
   height: 100%;;
@@ -80,23 +121,29 @@ header.change{
   background: #000;
 }
 /*w3-exemple*/
+#menu{
+  z-index: 9999;
+}
 .container {
-    cursor: pointer;
+  cursor: pointer;
+    background: var(--preto-tranparencia);
+    border-radius: 0 50% 50% 00%;
+    padding: 1rem;
     display: inline-block;
     cursor: pointer;
-    margin-left: 100%;
+    margin-left: 0%;
 }
 
 .bar1, .bar2, .bar3 {
     width: 35px;
     height: 5px;
-    background-color: var(--preto);
+    background-color: #fff;
     margin: 6px 0;
     transition: 0.4s;
 }
 
 .change .bar1 {
-    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    -webkit-transform: rotate(-45deg) translate(-10px, 6px);
     transform: rotate(-45deg) translate(-9px, 6px);
       background-color: var(--vermelho);
 }
@@ -117,11 +164,7 @@ header.change{
 .opened{
   margin-left: 200px;
 }
-/*------------SOBRE------------*/
-#sobre{
-  margin-top: 5%;
-  height: 100vh;
-}
+
 /***title-main***/
 .title-main{
   font-family: 'Kanit';
@@ -132,56 +175,13 @@ header.change{
   color: var(--preto);
 }
 .title-main h1{
+  text-transform: uppercase;
   text-align: center;
 }
 .forma{
   width: 20vw;
   height: 10vh;
   border-bottom: solid 1px;
-}
-/***desc-sobre***/
-.desc-sobre{
-  width: 100%;
-  height: 100%;
-  font-family: 'Source Sans Pro';
-  text-align: justify;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  line-height: 1.5rem;
-}
-.introducao a{
-  flex: 2;
-  font-family:'Kanit';
-  text-align: center;
-  align-items: center;
-  background: #000;
-  margin: 0 0 0 60px;
-  height:160px;
-  margin-right: 5%;
-}
-.introducao p{
-  flex:3;
-  margin-left: 5%;
-  font-size: 1rem;
-}
-.introducao{
-  display: flex;
-  flex-direction: row;
-}
-/***RESUMO TCC***/
-.resumo{
-  margin-left: 5%;
-  width: 90%;
-  margin: 5%;
-}
-.resumo h2{
-  font-family: 'Kanit';
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.resumo p{
-  text-align: justify;
 }
 /*------------Executar------------*/
 #manual{
@@ -208,7 +208,8 @@ header.change{
   font-size: 1.2rem;
 }
 .exemplo h2{
-  font-size: 1rem;
+  font-family: 'Source Sans Pro';
+  font-size: 1.2rem;
   margin-left: 2%;
 }
 code{
@@ -219,10 +220,68 @@ code{
   font-size: 2rem;
   margin-bottom: 1%;
 }
+
+/*------------SOBRE------------*/
+#sobre{
+  margin-top: 5%;
+  height: 100vh;
+}
+/***desc-sobre***/
+.desc-sobre{
+  height: 100%;
+  font-family: 'Source Sans Pro';
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.5rem;
+}
+.introducao a{
+  color: #fff;
+  flex: 2;
+  font-family:'Kanit';
+  text-align: center;
+  align-items: center;
+  background: url('https://www.zamzar.com/images/filetypes/pdf.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  margin: 0 0 0 60px;
+  height:30vh;
+  margin-right: 5%;
+}
+.introducao p{
+  flex:3;
+  margin-left: 5%;
+  font-size: 1rem;
+}
+.introducao{
+  display: flex;
+  flex-direction: row;
+}
+/***RESUMO TCC***/
+.resumo{
+  margin-left: 5%;
+  width: 90%;
+  margin: 5%;
+}
+.resumo h2{
+  font-family: 'Kanit';
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 3% 0;
+}
+.resumo p{
+  font-family: 'Source Sans Pro';
+  text-align: justify;
+}
 /*------------FOOTER------------*/
 footer{
+  background: var(--preto);
+  font-family: 'Kanit';
   height: 105%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -248,10 +307,6 @@ footer{
   background-repeat: no-repeat;
   background-size: 120%;
 }
-footer{
-  background: var(--preto);
-    font-family: 'Kanit';
-}
 .info-footer{
   color: #fff;
   text-align: center;
@@ -261,15 +316,17 @@ footer h1{
   font-size: 1.3rem
 }
 footer h2{
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin: 1.2rem;
 }
 footer p{
-  font-size: .8rem;
-  margin: 1rem;
+  margin: 0 auto;
+  width: 50%;
+  font-size: 1.2rem;
 }
 .title-footer{
-  width: 20%;
+  width: 80%;
+  margin-top: 2%;
   background: var(--vermelho);
   height: 90px;
   display: flex;
@@ -286,6 +343,9 @@ footer p{
   .title_home{
     height: 100vh;
   }
+  .title_home a{
+    bottom: 10%;
+  }
   .forma{
     width: 20vw;
     height: 10vh;
@@ -299,11 +359,15 @@ footer p{
   }
   nav{
     background: var(--rect-branco);
-    height: 10%;
+    height: 5%;
     width: 50%;
     left:  50%;
     transition: all ease-in-out .3s;
     box-shadow: 0px 3px 3px #555;
+  }
+  nav a{
+    background: var(--branco);
+    color: #000;
   }
   nav ul{
     background: var(--rect-branco);
@@ -317,17 +381,24 @@ footer p{
     border-bottom: none;
     transition: .5s;
   }
-  nav a:hover{
-    transform: scale(1.2);
-  }
   #home{
     margin-left: 40%;
   }
   #sobre p {
     font-size: 1.2rem;
   }
+  .introducao a{
+    background-size: 35%;
+  }
   #executar p {
     font-size: 1.2rem;
+  }
+  footer{
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .title-footer{
+    flex: 2;
   }
 
 }
