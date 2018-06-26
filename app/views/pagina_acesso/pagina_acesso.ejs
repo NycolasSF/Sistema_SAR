@@ -6,6 +6,7 @@
       SAR - Página Acesso
     </title>
     <link rel="stylesheet" href="css/pg_acesso.css">
+    <base href="/">
     <link href="https://fonts.googleapis.com/css?family=Kanit|Source+Sans+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -36,12 +37,12 @@
         <div class="alert">
           <%for(var i = 0; validacao.length; i++) {%>
             <h1><%= Titulo %></h1>
-            <!-- <p><%=validacao[i].msg %></p> -->
+            <p style="background:<%=color%>;color:<%=color_font%>;">EITA</p>
           <%}%>
         </div>
       </div>
       <div class="container-cadastrar">
-        <form id="cadastro" class="container-cadastro forms" method="post">
+        <form id="cadastro" class="container-cadastro forms" action="/cadastrar/user" method="post">
           <div class="titles-section">
             <legend>CADASTRAR</legend>
             <i id="btn-voltar" class="material-icons">navigate_before</i>
@@ -59,15 +60,15 @@
               <h1>Informação de Usuário</h1>
            </div>
            <div class="input-container">
-               <input type="text" name="nome_usuario" placeholder="Digite seu nome Completo" required>
+               <input type="text" name="nome" placeholder="Digite seu nome Completo" required>
                <label for="nome">Nome</label>
            </div>
            <div class="input-container">
-             <input type="text" name="email_usuario" placeholder="Digite seu email" required>
+             <input type="text" name="email" placeholder="Digite seu email" required>
              <label for="email">Email</label>
            </div>
            <div class="input-container">
-                <input type="password" name="senha_usuario" placeholder="Digite sua senha" required>
+                <input type="password" name="senha" placeholder="Digite sua senha" required>
                 <label for="senha">Senha</label>
             </div>
           </div>
@@ -76,11 +77,11 @@
               <h1>Informação do Professor</h1>
             </div>
             <div class="input-container">
-              <input type="text" name="instituicao_professor" placeholder="Digite da sua Escola/Universidade" required>
+              <input type="text" name="instituicao" placeholder="Digite da sua Escola/Universidade" required>
               <label for="instituicao_professor">Instituição</label>
             </div>
             <div class="input-container">
-              <input type="text" name="titulacao_professor" placeholder="Digite sua titulação: Mestrer, Especialista, Doutor.." required>
+              <input type="text" name="titulacao" placeholder="Digite sua titulação: Mestrer, Especialista, Doutor.." required>
               <label for="titulacao_professor">Titulação</label>
             </div>
             <div class="input-container">
@@ -88,6 +89,7 @@
               <label for="area_professor">Área de Atuação</label>
             </div>
             <button type="submit" class="submit-enviar" name="cadastrar-professor">Cadastrar</button>
+          </form>
           </div>
           <div id="info-pessoaF" class="container-pessoaF forms info-usuarios">
             <div class="titles-section">
@@ -104,7 +106,7 @@
              </select>
              </div>
              <div class="input-container">
-               <input type="number" name="email_usuario" placeholder="Digite seu número de celular" required>
+               <input type="number" name="fonecel" placeholder="Digite seu número de celular" required>
               <label for="email">Número de Celular</label>
              </div>
              <button type="submit" class="submit-enviar buttons" name="cadastrar">Cadastrar</button>

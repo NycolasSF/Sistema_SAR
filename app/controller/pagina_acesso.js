@@ -1,5 +1,4 @@
 var nodemailer = require('nodemailer');
-
 module.exports.pagina_acesso = function(app, req, res) {
   res.render('pagina_acesso/pagina_acesso', {
     Titulo: 'SAR - Página de Acesso',
@@ -16,7 +15,7 @@ module.exports.login = function(app, req, res) {
   let email = req.body;
 
   req.assert('email', 'Preencha o campo email!').notEmpty();
-  req.assert('senha', 'Preencha o campo email!').notEmpty();
+  req.assert('senha', 'Preencha o campo senha!').notEmpty();
 
   var erros = req.validationErrors();
   if (erros) {
@@ -30,6 +29,7 @@ module.exports.login = function(app, req, res) {
   }
   sess.email = req.body.email;
   sess.senha = req.body.senha;
+  sess.categoria = req.body.categoria;
   res.redirect('/admin');
 }
 module.exports.admin = function(app, req, res){
@@ -39,6 +39,7 @@ module.exports.admin = function(app, req, res){
   let model = new app.app.model.model_consultasSQL(connection);
 
   model.login(sess.email, sess.senha, function (error, result) {
+    console.log(result);
     if (result.length == 0) {
       res.render('pagina_acesso/pagina_acesso', {
         Titulo: 'ERRo',
@@ -48,9 +49,23 @@ module.exports.admin = function(app, req, res){
           msg: 'Algo de erradoo!!'
         }]
       });
-      console.log(validacao[0].msg);
       return;
     }
-    // ....
-  });
+    res.render('dashboard/admin');
+  });//fim login
+}
+module.exports.cadastrar_user = function () {
+
+  sess = req.session;
+  let usuario = req.body;
+
+  console.log(sess);
+  console.log(usuario);
+
+  let connection = app.serv_config.conexao_banco();
+  let model = new app.app.model.model_consultasSQL(connection);
+
+  if (sess.email = 'nycolasProf@gmail.com') {//colocar categoria
+
+  }
 }
