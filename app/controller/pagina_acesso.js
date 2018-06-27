@@ -1,16 +1,32 @@
 var nodemailer = require('nodemailer');
-module.exports.pagina_acesso = function(app, req, res) {
-  res.render('pagina_acesso/pagina_acesso', {
-    Titulo: 'SAR - Página de Acesso',
-    validacao: {},
-    color: {},
-    color_font: {}
-  });
+
+module.exports.pagina_acesso = function (app, req, res) {
+
+  let connection = app.serv_config.conexao_banco();
+  let informacoes = new app.app.model.model_consultasSQL(connection);
+ //informacoes --> PAIS_CIDADE E CATEGORIAS
+   informacoes.pesquisar_dados(function (error, result) {
+     res.render("pagina_acesso/pagina_acesso", {
+       informacoes: result,
+       validacao: {}
+     });
+   });
 }
 
 var sess;
 
-module.exports.login = function(app, req, res) {
+module.exports.acesso_negado = function(app, req, res){
+
+  sess = req.session;
+
+  if(sess.email && sess.matricula){
+    res.redirect('/admin');
+  }else{
+    res.redirect('/pagina_acesso');
+  }
+}
+
+module.exports.logar = function (app, req, res) {
   sess = req.session;
   let email = req.body;
 
@@ -18,54 +34,41 @@ module.exports.login = function(app, req, res) {
   req.assert('senha', 'Preencha o campo senha!').notEmpty();
 
   var erros = req.validationErrors();
+  console.log(erros);
   if (erros) {
     res.render('pagina_acesso/pagina_acesso', {
-      Titulo: 'SAR - Página de Acesso',
       validacao: erros,
-      color: {},
-      color_font: {}
     });
     return;
   }
   sess.email = req.body.email;
   sess.senha = req.body.senha;
-  sess.categoria = req.body.categoria;
   res.redirect('/admin');
 }
-module.exports.admin = function(app, req, res){
-  sess = req.session;
+
+module.exports.admin = function (app, req, res) {
+  sess= req.session;
 
   let connection = app.serv_config.conexao_banco();
-  let model = new app.app.model.model_consultasSQL(connection);
+  let user = new app.app.model.model_consultasSQL(connection);
 
-  model.login(sess.email, sess.senha, function (error, result) {
-    console.log(result);
-    if (result.length == 0) {
+  user.login(sess.email, sess.senha, function(error, login){
+    if (login.length == 0) {
       res.render('pagina_acesso/pagina_acesso', {
-        Titulo: 'ERRo',
-        color: {},
-        color_font: {},
         validacao: [{
-          msg: 'Algo de erradoo!!'
+          msg: 'Não encontramos seu cadastro, verifique seu email e senha, e tente novamente'
         }]
       });
-      return;
+      return
     }
     res.render('dashboard/admin');
-  });//fim login
+  });//fim-admin
 }
-module.exports.cadastrar_user = function () {
-
+module.exports.sair = function (app, req, res) {
   sess = req.session;
-  let usuario = req.body;
-
-  console.log(sess);
-  console.log(usuario);
-
-  let connection = app.serv_config.conexao_banco();
-  let model = new app.app.model.model_consultasSQL(connection);
-
-  if (sess.email = 'nycolasProf@gmail.com') {//colocar categoria
-
-  }
+  sess.destroy(function (err) {
+    delete sess;
+    req.session = null;
+    res.redirect('/pagina_acesso');
+  });
 }

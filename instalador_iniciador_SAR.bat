@@ -21,7 +21,7 @@ echo              Menu
 echo  ==================================
 echo * 1. Instalar NPM            *
 echo * 2. Instalar nodemon        *
-echo * 3. Instalar NODE MODULOS   *
+echo * 3. Instalar MODULOS   *
 echo * 4. Executar Sistema_SAR    *
 echo * 5. Abrir Diretorio SAR     *
 echo * 6. Sair                    *
@@ -57,8 +57,7 @@ goto menu
 
 :opcao3
 cls
-npm i -save
-popd
+call install_models.bat
 echo ==================================
 echo *      NODE MODULOS - Instalado com Sucesso          *
 echo ==================================

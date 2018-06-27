@@ -103,21 +103,24 @@ input[type="button"]:hover,input[type="submit"]:hover{
   border-radius: 0px;
 }
 .alert{
-  display: none;
   position: relative;
+  margin-bottom: 5%;
   width: 80%;
-  background: #f44336;
+  background: #c0392b;
+  /* background: #e74c3c; */
+  /* background: #f44336; */
   border-radius: 0 15px 15px 0;
 }
 .alert h1, p{
   margin-left: 10%;
+  padding: 1rem;
 }
 .alert h1{
   color: #fff;
-  margin-bottom: 2%;
+  margin-bottom: 1%;
 }
 .alert p{
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #fee8e7;
 }
 .alert span{
