@@ -27,7 +27,6 @@ app.use(expressValidator());
 
 app.use(express.static('public'));
 
-
 consign()
 .include('app/routes')
 .then('serv_config/conexao_banco.js')

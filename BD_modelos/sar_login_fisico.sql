@@ -90,7 +90,7 @@ CREATE TABLE Categoria (
   Professor_id_professor INTEGER,
   PessoaFisica_id_pessoaF INTEGER,
   PRIMARY KEY(id_categoria),
-  FOREIGN KEY(PessoaFisica_id_pessoaF) REFERENCES Pessoa_fisica(id_pessoaF), 
+  FOREIGN KEY(PessoaFisica_id_pessoaF) REFERENCES Pessoa_fisica(id_pessoaF),
   FOREIGN KEY(Professor_id_professor) REFERENCES Professor(id_professor),
   FOREIGN KEY(Aluno_id_aluno) REFERENCES Aluno(id_aluno)
 );
@@ -102,7 +102,7 @@ INSERT INTO Categoria VALUES(4, null, null, 2);
 
 
 CREATE TABLE Usuario (
-  id_usuario INTEGER NOT NULL,
+  id_usuario INTEGER NOT NULL AUTO_INCREMENT,
   nome_usuario VARCHAR(30) NULL,
   email_usuario VARCHAR(30) NULL,
   senha_usuario CHAR(10) NULL,
@@ -110,11 +110,12 @@ CREATE TABLE Usuario (
   Categoria_id_categoria INTEGER NOT NULL,
   PRIMARY KEY(id_usuario),
   FOREIGN KEY(Categoria_id_categoria) REFERENCES Categoria(id_categoria)
-); 
+);
 
---INSERINDO Usuario 
+--INSERINDO Usuario
 --CURRENT_DATE
 INSERT INTO Usuario VALUES(1, 'Nycolas - Professor', 'nycolasProf@gmail.com', '!Senha+dez', now(), 1);
 INSERT INTO Usuario VALUES(2, 'Nycolas - aluno', 'nycolasAluno@gmail.com', '@Senha+dez', now(), 2);
 INSERT INTO Usuario VALUES(3, 'Nycolas - Pessoa Física', 'nycolasPessoaF01@gmail.com', '#Senha+dez', now(), 3);
 INSERT INTO Usuario VALUES(4, 'Nycolas - Pessoa Física2', 'nycolasPessoaF02@gmail.com', '$Senha+dez', now(), 4);
+INSERT INTO Usuario(nome_usuario, email_usuario, senha_usuario, dataAcesso_usuario) VALUES('test', 'test', 't', now(), 4);

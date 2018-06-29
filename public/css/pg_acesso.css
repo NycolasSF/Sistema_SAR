@@ -53,6 +53,13 @@ form legend{
   font-weight: 800;
   margin-bottom: 2rem;
 }
+.titles-section legend{
+  font-family: 'Kanit', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  margin-left: 2%;
+}
 form input, select{
   width: 80%;
   padding: 1rem;
@@ -88,7 +95,7 @@ form input:valid ~ label{
   font-family: 'Source Sans Pro';
  font-weight: bold;
  color: rgba(0,0,0,0.5);
-  width: 30%;
+  width: 50%;
   font-size: 1.3rem;
   opacity: 1;
   transform: translateY(-5rem) translateX(.2rem);
@@ -101,6 +108,9 @@ input[type="button"], input[type="submit"]{
 }
 input[type="button"]:hover,input[type="submit"]:hover{
   border-radius: 0px;
+}
+#cadastrar{
+  height: 100%;
 }
 .alert{
   position: relative;

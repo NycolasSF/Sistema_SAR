@@ -14,6 +14,7 @@ $('#btn-cadastrar').click(function() {
 		height: 'show',
 		opacity: '1'
 	});
+	$('.alert').hide();
 	//limpando valores dos inputs
 	document.getElementById('cadastro').reset();
 

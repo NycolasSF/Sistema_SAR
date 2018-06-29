@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <base href="/">
     <title>
       SAR - Página Acesso
     </title>
-    <link rel="stylesheet" href="css/pg_acesso.css">
+    <meta charset="utf-8">
+    <link href="css/pg_acesso.css" type="text/css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Kanit|Source+Sans+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -18,30 +20,110 @@
         </a>
       </div>
       <div class="container-login">
-        <form id="login" action="/pagina_acesso/login" method="post">
+        <form id="login"  action="/pagina_acesso/login" method="post">
           <legend>LOGIN</legend>
           <div class="input-container">
-            <input type="text" id="email" name="email" placeholder="Digite seu email" autofocus />
+            <input type="text" id="email" name="email_logar" placeholder="Digite seu email" autofocus />
             <label for="email_usuario">Email</label>
           </div>
           <div class="input-container">
-            <input type="password" name="senha" id="password" placeholder="Digite sua senha" />
+            <input type="password" name="senha_logar" id="password" placeholder="Digite sua senha" />
             <label for="password">Senha</label>
           </div>
           <div class="container-buttons">
-            <!-- <input type="button" value="Cadastrar" id="btn-cadastrar" class="button-cadastrar" /> -->
+            <input type="button" value="Cadastrar" id="btn-cadastrar" class="button-cadastrar" />
             <input type="submit" value="Entrar" class="button" />
           </div>
         </form>
-        <%if(validacao.length > 0) {%>
-        <div class="alert">
-          <h1>Ops, Algo de errado !</h1>
-          <% for(var i = 0; i <  validacao.length; i++) {%>
-            <p><%= validacao[i].msg %></p>
-          <%}%>
-        </div>
-        <%}%>
       </div><!--fim-login-->
+      <div id="cadastro" class="container-cadastrar forms">
+          <div class="titles-section">
+            <legend>CADASTRAR</legend>
+            <i id="btn-voltar" class="material-icons">navigate_before</i>
+          </div>
+          <form action="/cadastrar?categoria" >
+            <div class="primary-section">
+                <select name="sele_categorias" class="categorias" >
+                  <option  id="selected" disabled selected>Selecione sua Categoria</option>
+                  <option  value="info-professor">Professor</option>
+                  <option  value="info-pessoaF">Pessoa Física</option>
+                </select>
+                <input type="button" id="btn-next" value="Próximo"></input>
+              </div>
+          </form>
+        <form action="/cadastrar/user/geral" method="post">
+              <div id="info-usuario" class="segundary-section">
+               <div class="titles-section">
+                  <h1>Informação de Usuário</h1>
+               </div>
+               <div class="input-container">
+                   <input type="text" name="nome_cadastro" placeholder="Digite seu nome Completo"  >
+                   <label for="nome">Nome</label>
+               </div>
+               <div class="input-container">
+                 <input type="text" name="email_cadastro" placeholder="Digite seu email" >
+                 <label for="email">Email</label>
+               </div>
+               <div class="input-container">
+                    <input type="password" name="senha_cadastro" placeholder="Digite sua senha" >
+                    <label for="senha">Senha</label>
+                </div>
+              </div>
+          <div id="info-professor" class="forms info-usuarios">
+            <div class="titles-section">
+              <h1>Informação do Professor</h1>
+            </div>
+            <div class="input-container">
+              <input type="text" name="instituicao" placeholder="Digite da sua Escola/Universidade" >
+              <label for="instituicao_professor">Instituição</label>
+            </div>
+            <div class="input-container">
+              <input type="text" name="titulacao_cadastro" placeholder="Digite sua titulação: Mestrer, Especialista, Doutor.." >
+              <label for="titulacao_professor">Titulação</label>
+            </div>
+            <div class="input-container">
+              <input type="password" name="area_professor" placeholder="Digite sua área de atuação atual" >
+              <label for="area_professor">Área de Atuação</label>
+            </div>
+            <button type="submit" class="submit-enviar" name="cadastrar-professor">Cadastrar</button>
+          </div>
+          <div id="info-pessoaF" class="container-pessoaF forms info-usuarios">
+            <div class="titles-section">
+              <h1>Informação de Pessoa Física</h1>
+            </div>
+            <div class="input-container pais-cidade">
+             <select class="pais-pesssoF">
+                <option  value="" disabled selected>Selecione sua Pais</option>
+                <option value="Dourados">Brasil</option>
+                <option value="Itália">Itália</option>
+                <option value="Estados Unidos da América">Estados Unidos da América</option>
+                <!-- <%for(var i = 0; i < informacoes.length; i++) {%> -->
+                  <!-- <option value="<%= informacoes[i].nome_pais%>"><%= informacoes[i].nome_pais %></option> -->
+                 <!-- <%}%> -->
+             </select>
+             <select class="cidade-pessoaF" >
+                  <option  value="" disabled selected>Selecione sua Cidade</option>
+                  <%for(var i = 0; i < informacoes.length; i++) {%>
+                    <option value="<%= informacoes[i].nome_cidade%>"><%= informacoes[i].nome_cidade%></option>
+                  <%}%>
+             </select>
+             </div>
+             <div class="input-container">
+               <input type="number" name="fonecel_pessoaF" placeholder="Digite seu número de celular" >
+              <label for="email">Número de Celular</label>
+             </div>
+             <button type="submit" class="submit-enviar buttons" name="cadastrar">Cadastrar</button>
+          </div>
+      </form>
+      </div><!--fim-cadastro-->
+      <%if(validacao.length > 0) {%>
+      <div class="alert">
+        <h1>Ops, Algo de errado !</h1>
+        <% for(var i = 0; i <  validacao.length; i++) {%>
+          <p><%= validacao[i].msg %></p>
+        <%}%>
+      </div>
+      <%}%>
   </div>
     <script type="text/javascript" src="js/pg_acesso.js"></script>
 </body>
