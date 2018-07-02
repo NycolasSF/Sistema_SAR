@@ -1,6 +1,7 @@
 var nodemailer = require('nodemailer');
 
 module.exports.pagina_acesso = function (app, req, res) {
+  let user = req.body;
 
   let connection = app.serv_config.conexao_banco();
   let informacoes = new app.app.model.model_consultasSQL(connection);
@@ -8,7 +9,10 @@ module.exports.pagina_acesso = function (app, req, res) {
    informacoes.pesquisar_dados(function (error, pais_cidades) {
      res.render("pagina_acesso/pagina_acesso", {
        informacoes: pais_cidades,
-       validacao: {}
+       validacao: [{
+         titulo:{},
+         color_background: {}
+       }]
      });
    });
 }
@@ -41,7 +45,10 @@ module.exports.logar = function (app, req, res) {
   if (erros) {
     informacoes.pesquisar_dados(function (error, pais_cidades) {
       res.render('pagina_acesso/pagina_acesso', {
-        validacao: erros,
+        validacao: [{
+          titulo: 'Ops, algo de errado!',
+          msg: 'Verifique seu email e senha'
+        }],
         informacoes: pais_cidades
       });
     });
@@ -62,10 +69,11 @@ module.exports.admin = function (app, req, res) {
     if (login.length == 0) {
       pesquisa.pesquisar_dados(function(error, pais_cidades) {
         res.render('pagina_acesso/pagina_acesso', {
-          informacoes: pais_cidades,
           validacao: [{
-            msg: 'Não encontramos seu cadastro, verifique seu email e senha, e tente novamente'
-          }]
+            titulo: 'Ops, algo de errado !',
+              msg: 'Não encontramos seu cadastro, verifique seu email e senha, e tente novamente'
+          }],
+          informacoes: pais_cidades
         });
       });
       return
@@ -74,7 +82,11 @@ module.exports.admin = function (app, req, res) {
         pesquisa.login(sess.email, sess.senha, function (error, logado) {
           pesquisa.login_acessado(usuario.id_usuario, function (error, atualizando) {
             res.render("dashboard/admin", {
-              validacao: {},
+              validacao: {
+                titulo:{},
+                color_background: {},
+                erros: {}
+              },
               nome: usuario.nome_usuario,
               informacoes: {}
             });
@@ -91,12 +103,34 @@ module.exports.sair = function (app, req, res) {
     res.redirect('/pagina_acesso');
   });
 }
-module.exports.cadastrar_user = function (app, req, res) {
+module.exports.mostrar_paises = function (app, req, res) {
   let user = req.body;
-//falta implementar
+
+  let connection = app.serv_config.conexao_banco();
+  let pesquisa = new app.app.model.model_consultasSQL(connection);
+
+  console.log('Seu país é: '+user.pais_professor);
+  pesquisa.mostrar_paises(user.pais_professor, function (erros, cidade) {
+    res.render("pagina_acesso/pagina_acesso", {
+      informacoes: cidade,
+      valicacao: {}
+    });
+  });
+}
+
+module.exports.cadastrar_user_professor = function (app, req, res) {
+  let user = req.body;
+
+  //usuarios
   req.assert('nome_cadastro', 'Preencha o campo email!').notEmpty();
   req.assert('email_cadastro', 'Preencha o campo senha com no 10 caracteres!').isEmail();
   req.assert('senha_cadastro', 'Preencha o campo senha com no 10 caracteres!').len(10,10);
+  // professor
+  req.assert('pais_professor','Precisamos saber seu país').notEmpty();
+  req.assert('cidade_professor','Precisamos saber seu cidade').notEmpty();
+  req.assert('titulacao','Professor, Precisamos saber sua titulação').notEmpty();
+  req.assert('instituicao', 'Professor, precisamos saber sua instituição').notEmpty();
+  req.assert('area_professor', 'Professor, precisamos saber sua de atuação').notEmpty();
 
   var erros = req.validationErrors();
   if (erros) {
@@ -104,9 +138,7 @@ module.exports.cadastrar_user = function (app, req, res) {
     let informacoes = new app.app.model.model_consultasSQL(connection);
     informacoes.pesquisar_dados(function (error, pais_cidades) {
       res.render('pagina_acesso/pagina_acesso', {
-        validacao: [{
-          msg: 'Campos a serem preenchidos!'
-        }],
+        validacao: erros,
         informacoes: pais_cidades
       });
     });
@@ -114,5 +146,19 @@ module.exports.cadastrar_user = function (app, req, res) {
   }
   let connection = app.serv_config.conexao_banco();
   let pesquisa = new app.app.model.model_consultasSQL(connection);
-  res.redirect("/pagina_acesso");
+  pesquisa.pesquisar_dados(function(erros, pais_cidades){
+    pesquisa.mostrar_cidades_instituicao(user.pais_cidades, function (erros, Pais_Cidade) {
+      pesquisa.cadastrar_professor(user.nome_cadastro, user.email_cadastro, user.senha_cadastro, function (erros, cadastro) {
+        res.render("pagina_acesso/pagina_acesso", {
+          validacao: [{
+            titulo: 'Cadastro realizado com sucesso!',
+            color_background: 'rgba(41, 128, 185,1.5)',
+            msg: 'Divirta-se com seus alunos e o robozinho SAR'
+          }],
+          informacoes: cidade
+        });
+      });
+    });
+
+  });
 }

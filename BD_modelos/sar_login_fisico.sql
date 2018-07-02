@@ -64,7 +64,7 @@ INSERT INTO Pessoa_fisica VALUES(1, '67998092788', 1);
 INSERT INTO Pessoa_fisica VALUES(2, '393201234567', 4);
 
 CREATE TABLE Professor (
-  id_professor INTEGER NOT NULL,
+  id_professor INTEGER NOT NULL AUTO_INCREMENT,
   titulacao_professor VARCHAR(60) NULL,
   area_professor VARCHAR(60) NULL,
   Instituicao_id_Instituicao INTEGER NOT NULL,
@@ -85,7 +85,7 @@ CREATE TABLE Aluno (
 INSERT INTO Aluno VALUES(1, '67998092788', 1);
 
 CREATE TABLE Categoria (
-  id_categoria INTEGER NOT NULL,
+  id_categoria INTEGER NOT NULL AUTO_INCREMENT,
   Aluno_id_aluno INTEGER,
   Professor_id_professor INTEGER,
   PessoaFisica_id_pessoaF INTEGER,

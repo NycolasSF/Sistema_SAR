@@ -65,3 +65,7 @@ if (next == null) {
 		$('#'+next).show(800);
 	});
 }
+
+$('#alert-close').click(function (){
+	$('.alert').hide('fast');
+});
