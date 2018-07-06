@@ -24,7 +24,8 @@ echo * 2. Instalar nodemon        *
 echo * 3. Instalar MODULOS   *
 echo * 4. Executar Sistema_SAR    *
 echo * 5. Abrir Diretorio SAR     *
-echo * 6. Sair                    *
+echo * 6. Executar Sistema_SAR COM NODE(caso a opcao 4 nao funcione)    *
+echo * 7. Sair                    *
 echo  ==================================
 
 set /p opcao= Escolha uma opcao:
@@ -35,7 +36,8 @@ if %opcao% equ 3 goto opcao3
 if %opcao% equ 4 goto opcao4
 if %opcao% equ 5 goto opcao5
 if %opcao% equ 6 goto opcao6
-if %opcao% GEQ 7 goto opcao7
+if %opcao% equ 7 goto opcao7
+if %opcao% GEQ 8 goto opcao8
 
 :opcao1
 cls
@@ -67,6 +69,7 @@ goto menu
 
 :opcao4
 cls
+echo Executando app com nodemon
 nodemon app
 pause
 goto menu
@@ -81,11 +84,17 @@ goto menu
 
 :opcao6
 cls
+echo Executando app com node
+node app
+goto menu
+
+:opcao7
+cls
 exit
 pause
 goto menu
 
-:opcao7
+:opcao8
 echo ==============================================
 echo * Opcao Invalida! Escolha outra opcao do menu *
 echo ==============================================

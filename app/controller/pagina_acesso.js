@@ -148,7 +148,7 @@ module.exports.cadastrar_user_professor = function (app, req, res) {
   let pesquisa = new app.app.model.model_consultasSQL(connection);
   pesquisa.pesquisar_dados(function(erros, pais_cidades){
     pesquisa.mostrar_cidades_instituicao(user.pais_cidades, function (erros, Pais_Cidade) {
-      pesquisa.cadastrar_professor(user.nome_cadastro, user.email_cadastro, user.senha_cadastro, function (erros, cadastro) {
+      pesquisa.cadastrar_professor(user.nome_cadastro, user.email_cadastro, user.senha_cadastro,, function (erros, cadastro) {
         res.render("pagina_acesso/pagina_acesso", {
           validacao: [{
             titulo: 'Cadastro realizado com sucesso!',
