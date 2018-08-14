@@ -92,7 +92,7 @@ header{
 nav{
   background: var(--cor-branca);
   height: 100%;
-  left:  -200px;
+  left:   -200px;
   position: fixed;
   transition: all ease-in-out .3s;
   width: 200px;
@@ -274,25 +274,29 @@ code{
 }
 /*------------FOOTER------------*/
 footer{
+  text-align: center;
   background: var(--preto);
   font-family: 'Kanit';
   height: 105%;
+}
+.content-footer{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
 .circle{
   width: 200px;
   height: 200px;
   border-radius: 100px;
 }
 .pessoa{
+  flex:2;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: .5rem;
 }
 #img_Um{
   background: url(../img/nycolas.jpg);
@@ -322,15 +326,31 @@ footer p{
   font-size: 1.2rem;
 }
 .title-footer{
+  flex: 2;
   width: 80%;
   margin-top: 2%;
   background: var(--vermelho);
-  height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  height: 20vh;
+  line-height:  20vh;
   border-radius: 20px;
   color: var(--preto);
+}
+.mobile i{
+  margin-left: 5%;
+  border: solid #000;
+  border-width: 0px 15px 15px 0px;
+  border-radius: .5rem;
+  display: inline-block;
+  padding: 5px;
+  transform: rotate(45deg);
+   -webkit-transform: rotate(45deg);
+}
+.desktop{
+  display: none;
+}
+.copyright{
+  color: #fff;
 }
 /*¨¨¨¨¨¨¨¨¨¨¨DESKTOP¨¨¨¨¨¨¨¨¨¨¨*/
 @media screen and (min-width: 840px){
@@ -355,6 +375,7 @@ footer p{
     display: none;
   }
   nav{
+    text-align: center;
     background: var(--rect-branco);
     height: 5%;
     width: 50%;
@@ -365,6 +386,7 @@ footer p{
   nav a{
     background: var(--branco);
     color: #000;
+    transition: .5s;
   }
   nav ul{
     background: var(--rect-branco);
@@ -372,11 +394,7 @@ footer p{
     flex-direction: row;
   }
   nav li{
-    flex: 1;
-  }
-  nav a{
-    border-bottom: none;
-    transition: .5s;
+    flex: 2;
   }
   #home{
     margin-left: 40%;
@@ -390,12 +408,30 @@ footer p{
   #executar p {
     font-size: 1.2rem;
   }
-  footer{
+  .content-footer{
     flex-direction: row;
     flex-wrap: wrap;
   }
+  .desktop{
+    display: inline-block;
+  }
+  .desktop i{
+    margin-left: 10%;
+    border: solid #000;
+    border-width: 0px 15px 15px 0px;
+    border-radius: .5rem;
+    display: inline-block;
+    padding: 5px;
+    transform: rotate(-45deg);
+     -webkit-transform: rotate(-45deg);
+  }
+  .mobile{
+    display: none;
+  }
   .title-footer{
-    flex: 2;
+    width: 50%;
+    margin-left: 5%;
+
   }
 
 }
