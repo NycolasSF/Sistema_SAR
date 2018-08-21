@@ -92,12 +92,11 @@ header{
 nav{
   background: var(--cor-branca);
   height: 100%;
-  left:   -200px;
+  right: -200px;
   position: fixed;
   transition: all ease-in-out .3s;
   width: 200px;
   z-index: 99999;
-
 }
 nav a{
   font-size: 1.2rem;
@@ -107,28 +106,22 @@ nav a{
   background: var(--preto-tranparencia);
   font-weight: bold;
   padding: 1rem;
-  height: 100%;;
-  text-decoration: none;
   display: flex;
   flex-direction: row;
 }
-header.change{
-  opacity: 50%;
-  transition: all ease .5s;
-  background: #000;
-}
 /*w3-exemple*/
 #menu{
+  position: fixed;
+  transition: all ease-in-out .3s;
   z-index: 9999;
+  right: 0;
 }
 .container {
+  background: var(--preto-tranparencia);
+  border-radius: 45% 0 0 45%;
+  padding: 1rem;
+  display: inline-block;
   cursor: pointer;
-    background: var(--preto-tranparencia);
-    border-radius: 0 50% 50% 00%;
-    padding: 1rem;
-    display: inline-block;
-    cursor: pointer;
-    margin-left: 0%;
 }
 
 .bar1, .bar2, .bar3 {
@@ -153,13 +146,8 @@ header.change{
       background-color: var(--vermelho);
 }
 /*menu-pront*/
-#menu{
-  position: absolute;
-  position: fixed;
-  transition: all ease-in-out .3s;
-}
 .opened{
-  margin-left: 200px;
+  margin-right: 200px;
 }
 
 /***title-main***/
@@ -186,7 +174,6 @@ header.change{
 }
 #titulo-manual{
   color: #000;
-  height: 40vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -221,14 +208,13 @@ code{
 /*------------SOBRE------------*/
 #sobre{
   margin-top: 5%;
-  height: 100vh;
+  height: 100%;
 }
 /***desc-sobre***/
 .desc-sobre{
-  height: 100%;
   font-family: 'Source Sans Pro';
   text-align: justify;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: center;
   line-height: 1.5rem;
@@ -260,6 +246,7 @@ code{
 .resumo{
   margin-left: 5%;
   width: 90%;
+  height: 50%;
   margin: 5%;
 }
 .resumo h2{
@@ -271,6 +258,7 @@ code{
 .resumo p{
   font-family: 'Source Sans Pro';
   text-align: justify;
+  height:
 }
 /*------------FOOTER------------*/
 footer{
@@ -360,6 +348,9 @@ footer p{
   .title_home{
     height: 100vh;
   }
+  .title-main{
+    height: 35vh;
+  }
   .title_home a{
     bottom: 10%;
   }
@@ -376,28 +367,26 @@ footer p{
   }
   nav{
     text-align: center;
-    background: var(--rect-branco);
     height: 5%;
     width: 50%;
     left:  50%;
-    transition: all ease-in-out .3s;
-    box-shadow: 0px 3px 3px #555;
+    transition: all ease-out .8s;
   }
   nav a{
+    border-bottom: none;
     background: var(--branco);
     color: #000;
-    transition: .5s;
+    transition: .8s;
+    font-size: 1.2rem;
+    padding: none;
   }
   nav ul{
     background: var(--rect-branco);
     display: flex;
     flex-direction: row;
-  }
-  nav li{
-    flex: 2;
-  }
-  #home{
-    margin-left: 40%;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0px 3px 3px #555;
   }
   #sobre p {
     font-size: 1.2rem;

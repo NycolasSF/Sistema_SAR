@@ -14,9 +14,6 @@ class consultar{
   mostrar_paises(callback){
     this.connection.query("SELECT * FROM pais", callback);
   }
-  pesquisar_dados(callback){
-    this.connection.query("SELECT nome_pais, nome_cidade FROM Pais_Cidade, Cidade, Pais WHERE Cidade_id_cidade = id_cidade AND Pais_id_pais = id_pais", callback);
-  }
   input_pesquisarInstituicao(instituicao, callback){
     this.connection.query("SELECT id_pais_cidade, id_pais, id_cidade, nome_instituicao, nome_pais, nome_cidade FROM Instituicao, Pais_Cidade, Pais, Cidade  WHERE  PaisCidade_id_paiscidade = id_pais_cidade and Cidade_id_cidade = id_cidade and Pais_id_pais = id_pais and nome_instituicao like '%"+instituicao+"%'")
   }

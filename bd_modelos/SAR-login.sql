@@ -15,8 +15,8 @@ CREATE TABLE Instituicao(
   PRIMARY KEY(id_instituicao)
 );
 
-INSERT INTO  Instituicao VALUES(1, 'IFMS - Campus Dourados', '6734108500', '79833-520');
-INSERT INTO  Instituicao VALUES('UFGD', '6734102002', '79825-070');
+INSERT INTO  Instituicao VALUES(1, 'IFMS - Campus Dourados', '6734108500', '79833520');
+INSERT INTO  Instituicao VALUES(2,'UFGD', '6734102002', '79825070');
 
 CREATE TABLE Professor(
   id_professor INTEGER NOT NULL AUTO_INCREMENT,
@@ -46,16 +46,18 @@ CREATE TABLE Aluno(
   PRIMARY KEY(id_aluno)
 );
 
-INSERT INTO Aluno VALUES(1, 'NycolasSF', '05456103117', 'nycolassilvafroes@gmail.com', '17/08/2000', now());
+INSERT INTO Aluno VALUES(1, 'NycolasSF', '05456103117', 'nycolassilvafroes@gmail.com', '2000-08-17', now());
 
 CREATE TABLE Sala(
   id_sala INTEGER NOT NULL AUTO_INCREMENT,
   nome_turma VARCHAR(30),
   dataCriacao_sala date,
-  PRIMARY KEY(id_sala)
+  Professor_id_professor INTEGER NOT NULL,
+  PRIMARY KEY(id_sala),
+  FOREIGN KEY(Professor_id_professor) REFERENCES Professor(id_professor)
 );
 
-INSERT INTO Sala VALUES(1, '1D', now());.
+INSERT INTO Sala VALUES(1, '1D', now(), 1);
 
 CREATE TABLE Sala_Aluno(
   id_salaAluno INTEGER NOT NULL AUTO_INCREMENT,

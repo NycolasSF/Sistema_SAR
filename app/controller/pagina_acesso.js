@@ -5,15 +5,12 @@ module.exports.pagina_acesso = function (app, req, res) {
 
   let connection = app.serv_config.conexao_banco();
   let informacoes = new app.app.model.model_consultasSQL(connection);
- //informacoes --> PAIS_CIDADE E CATEGORIAS
-   informacoes.pesquisar_dados(function (error, pais_cidades) {
-     res.render("pagina_acesso/pagina_acesso", {
-       informacoes: pais_cidades,
-       validacao: [{
-         titulo:{},
-         color_background: {}
-       }]
-     });
+
+  res.render("pagina_acesso/pagina_acesso", {
+     validacao: [{
+       titulo:{},
+       color_background: {}
+     }]
    });
 }
 
@@ -43,13 +40,12 @@ module.exports.logar = function (app, req, res) {
 
   var erros = req.validationErrors();
   if (erros) {
-    informacoes.pesquisar_dados(function (error, pais_cidades) {
+    informacoes.pesquisar_dados(function (error, result) {
       res.render('pagina_acesso/pagina_acesso', {
         validacao: [{
           titulo: 'Ops, algo de errado!',
           msg: 'Verifique seu email e senha'
-        }],
-        informacoes: pais_cidades
+        }]
       });
     });
     return;
@@ -68,15 +64,12 @@ module.exports.admin = function (app, req, res) {
   pesquisa.login(sess.email, sess.senha, function(error, login){
     if (login.length == 0) {
       pesquisa.pesquisar_dados(function(error, pais_cidades) {
-        res.render('pagina_acesso/pagina_acesso', {
           validacao: [{
             titulo: 'Ops, algo de errado !',
               msg: 'Não encontramos seu cadastro, verifique seu email e senha, e tente novamente'
-          }],
-          informacoes: pais_cidades
+          }]
         });
-      });
-      return
+      return;
     }
     login.forEach(function (usuario) {
         pesquisa.login(sess.email, sess.senha, function (error, logado) {
@@ -87,8 +80,7 @@ module.exports.admin = function (app, req, res) {
                 color_background: {},
                 erros: {}
               },
-              nome: usuario.nome_usuario,
-              informacoes: {}
+              nome: usuario.nome_usuario
             });
         });
       });
@@ -103,20 +95,6 @@ module.exports.sair = function (app, req, res) {
     res.redirect('/pagina_acesso');
   });
 }
-module.exports.mostrar_paises = function (app, req, res) {
-  let user = req.body;
-
-  let connection = app.serv_config.conexao_banco();
-  let pesquisa = new app.app.model.model_consultasSQL(connection);
-
-  console.log('Seu país é: '+user.pais_professor);
-  pesquisa.mostrar_paises(user.pais_professor, function (erros, cidade) {
-    res.render("pagina_acesso/pagina_acesso", {
-      informacoes: cidade,
-      valicacao: {}
-    });
-  });
-}
 
 module.exports.cadastrar_user_professor = function (app, req, res) {
   let user = req.body;
@@ -126,7 +104,6 @@ module.exports.cadastrar_user_professor = function (app, req, res) {
   req.assert('email_cadastro', 'Preencha o campo senha com no 10 caracteres!').isEmail();
   req.assert('senha_cadastro', 'Preencha o campo senha com no 10 caracteres!').len(10,10);
   // professor
-  req.assert('pais_professor','Precisamos saber seu país').notEmpty();
   req.assert('cidade_professor','Precisamos saber seu cidade').notEmpty();
   req.assert('titulacao','Professor, Precisamos saber sua titulação').notEmpty();
   req.assert('instituicao', 'Professor, precisamos saber sua instituição').notEmpty();
@@ -134,15 +111,9 @@ module.exports.cadastrar_user_professor = function (app, req, res) {
 
   var erros = req.validationErrors();
   if (erros) {
-    let connection = app.serv_config.conexao_banco();
-    let informacoes = new app.app.model.model_consultasSQL(connection);
-    informacoes.pesquisar_dados(function (error, pais_cidades) {
-      res.render('pagina_acesso/pagina_acesso', {
-        validacao: erros,
-        informacoes: pais_cidades
-      });
+    res.render('pagina_acesso/pagina_acesso', {
+      validacao: erros,
     });
-    return;
   }
   let connection = app.serv_config.conexao_banco();
   let pesquisa = new app.app.model.model_consultasSQL(connection);
@@ -155,10 +126,8 @@ module.exports.cadastrar_user_professor = function (app, req, res) {
             color_background: 'rgba(41, 128, 185,1.5)',
             msg: 'Divirta-se com seus alunos e o robozinho SAR'
           }],
-          informacoes: cidade
         });
       });
     });
-
   });
 }
