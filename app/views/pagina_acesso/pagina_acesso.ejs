@@ -33,8 +33,8 @@
             <label for="password">Senha</label>
           </div>
           <div class="container-buttons">
-            <input type="button" value="Cadastrar" id="btn-cadastrar" class="button-cadastrar" />
             <input type="submit" value="Entrar" class="button" />
+            <input type="button" value="Cadastrar" id="btn-cadastrar" class="button-cadastrar" />
           </div>
         </form>
       </div><!--fim-login-->
@@ -44,21 +44,20 @@
             <i id="btn-voltar" class="material-icons">navigate_before</i>
           </div>
           <form class="primary-section" action="/cadastrar/user/professor" method="post">
-              <div id="info-usuario">
                <div class="titles-section">
                   <h1>Informação de Usuário</h1>
                </div>
                <div class="input-container">
-                   <input type="text" name="nome_professor" placeholder="Digite seu nome Completo"  >
-                   <label for="nome_professor">Nome do Professor</label>
+                   <input type="text" name="nome_usuario" placeholder="Digite seu nome Completo"  >
+                   <label for="nome_usuario">Nome do Professor</label>
                </div>
                <div class="input-container">
-                 <input type="text" name="email_professor" placeholder="Digite seu email" >
-                 <label for="email_professor">Email Institucional</label>
+                 <input type="text" name="email_usuario" placeholder="Digite seu email" >
+                 <label for="email_usuario">Email Institucional</label>
                </div>
                <div class="input-container">
-                    <input type="password" name="senha_professor" placeholder="Digite sua senha, min: 8" >
-                    <label for="senha_professor">Senha</label>
+                    <input type="password" name="senha_usuario" placeholder="Digite sua senha, min: 8" >
+                    <label for="senha_usuario">Senha</label>
                 </div>
                 <div class="titles-section">
                   <h1>Sobre Professor</h1>
@@ -68,34 +67,35 @@
                   <label for="instituicao_professor">Instituição</label>
                 </div>
                 <div class="input-container">
-                  <input type="text" name="cidade_professor" placeholder="Digite o nome da sua Escola/Universidade" >
-                  <label for="cidade_professor">Cidade-UF</label>
+                  <input type="text" name="cidadeUF_professor" placeholder="Digite o nome da sua Escola/Universidade" >
+                  <label for="cidadeUF_professor">Cidade-UF</label>
                 </div>
                 <div class="input-container">
                   <input type="password" name="formacao_professor" placeholder="Digite sua formação atual" >
                   <label for="formacao_professor">Formação</label>
                 </div>
                 <div class="input-container">
-                  <input type="text" name="cpf" placeholder="Digite seu CPF" >
+                  <input type="text" name="cpf_professor" placeholder="Digite seu CPF" >
                   <label for="cpf_professor">CPF (Somente Números)</label>
                 </div>
                 <div class="input-container">
                   <input type="text" name="celular_professor" placeholder="Digite seu Número de Celular" >
-                  <label for="">Número de Celular (Somente Números)</label>
+                  <label for="celular_professor">Número de Celular (Somente Números)</label>
                 </div>
-            <button type="submit" class="submit-enviar" name="cadastrar-professor">Cadastrar</button>
+                <button type="submit" class="submit-enviar" name="cadastrar-professor">Cadastrar</button>
         </form>
       </div><!--fim-cadastro-->
-          <%if(validacao.length > 0) {%>
+          <%if(validacao) {%>
               <% for(var i = 0; i <  validacao.length; i++) {%>
-                <div class="alert" style="background:<%= validacao[i].color_background %>;">
-                  <span id="alert-close">X</span>
+                <div id="modal<%=[i]%>" class="alert" style="background:<%= validacao[i].color_background %>;">
+                  <span id="alert-close<%=[i]%>" onclick="fechar(this.id, 'modal<%=[i]%>')">X</span>
                  <h1><%= validacao[i].titulo %></h1>
                  <p ><%= validacao[i].msg %></p>
                </div>
+               <% console.log('alert-close'+[i]) %>
                <%}%>
           <%}%>
-        </div>
+    </div>
     <script type="text/javascript" src="js/pg_acesso.js"></script>
 </body>
 </html>

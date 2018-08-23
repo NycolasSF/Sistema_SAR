@@ -24,6 +24,6 @@ $('#btn-voltar').click(function() {
 });
 
 //fecha alerts
-$('#alert-close').click(function (){
-	$('.alert').hide('fast');
-});
+function fechar(button, classe) {
+	$('#'+classe).hide('fast');
+}

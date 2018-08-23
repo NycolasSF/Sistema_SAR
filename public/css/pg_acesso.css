@@ -40,10 +40,10 @@ body{
 
 /* ESCONDENDO TAGS */
 .container-cadastrar{
- /* display: none; */
+ display: none;
 
 }
-
+/* Estilização Forms */
 form{
   padding: 1.5rem;
   display: flex;
@@ -63,12 +63,9 @@ form legend{
   margin-left: 2%;
 }
 form input{
-  border: solid;
-  width: 80%;
   padding: 1rem;
-  margin: 1%;
+  margin: 2%;
   background: #eceff1;
-  /* #ecf0f1; */
   border-radius: 10px;
   outline: none;
 }
@@ -81,11 +78,10 @@ form input ~ label{
 form ::placeholder{
   color: rgba(0,0,0,0.4);
 }
-form input:valid ~ label{
+form input:focus ~ label{
   font-family: 'Source Sans Pro';
   font-weight: bold;
   color: rgba(0,0,0,0.5);
-  width: 50%;
   font-size: 1rem;
   opacity: 1;
   transform: translateY(-5rem) translateX(.2rem);
@@ -101,6 +97,7 @@ input[type="button"]:hover,input[type="submit"]:hover{
 .input-container{
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .container{
   margin: auto;
