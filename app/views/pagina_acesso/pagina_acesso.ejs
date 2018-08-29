@@ -43,21 +43,21 @@
             <legend>CADASTRAR</legend>
             <i id="btn-voltar" class="material-icons">navigate_before</i>
           </div>
-          <form class="primary-section" action="/cadastrar/user/professor" method="post">
+          <form class="primary-section" action="/cadastrar/professor" method="post">
                <div class="titles-section">
                   <h1>Informação de Usuário</h1>
                </div>
                <div class="input-container">
-                   <input type="text" name="nome_usuario" placeholder="Digite seu nome Completo"  >
-                   <label for="nome_usuario">Nome do Professor</label>
+                   <input type="text" name="nome_professor" placeholder="Digite seu nome Completo"  >
+                   <label for="nome_professor">Nome do Professor</label>
                </div>
                <div class="input-container">
-                 <input type="text" name="email_usuario" placeholder="Digite seu email" >
-                 <label for="email_usuario">Email Institucional</label>
+                 <input type="text" name="email_professor" placeholder="Digite seu email" >
+                 <label for="email_professor">Email Institucional</label>
                </div>
                <div class="input-container">
-                    <input type="password" name="senha_usuario" placeholder="Digite sua senha, min: 8" >
-                    <label for="senha_usuario">Senha</label>
+                    <input type="password" name="senha_professor" placeholder="Digite sua senha, min: 8" >
+                    <label for="senha_professor">Senha</label>
                 </div>
                 <div class="titles-section">
                   <h1>Sobre Professor</h1>
@@ -67,19 +67,19 @@
                   <label for="instituicao_professor">Instituição</label>
                 </div>
                 <div class="input-container">
-                  <input type="text" name="cidadeUF_professor" placeholder="Digite o nome da sua Escola/Universidade" >
+                  <input type="text" name="cidadeUF_professor" placeholder="Digite o nome da Cidade onde mora" >
                   <label for="cidadeUF_professor">Cidade-UF</label>
                 </div>
                 <div class="input-container">
-                  <input type="password" name="formacao_professor" placeholder="Digite sua formação atual" >
+                  <input type="text" name="formacao_professor" placeholder="Digite sua formação atual" >
                   <label for="formacao_professor">Formação</label>
                 </div>
                 <div class="input-container">
-                  <input type="text" name="cpf_professor" placeholder="Digite seu CPF" >
+                  <input type="number" name="cpf_professor" placeholder="Digite seu CPF" >
                   <label for="cpf_professor">CPF (Somente Números)</label>
                 </div>
                 <div class="input-container">
-                  <input type="text" name="celular_professor" placeholder="Digite seu Número de Celular" >
+                  <input type="number" name="celular_professor" placeholder="Digite seu Número de Celular" >
                   <label for="celular_professor">Número de Celular (Somente Números)</label>
                 </div>
                 <button type="submit" class="submit-enviar" name="cadastrar-professor">Cadastrar</button>
