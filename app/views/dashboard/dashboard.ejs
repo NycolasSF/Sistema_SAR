@@ -7,6 +7,7 @@
     <title>SAR - PAINEL CONTROLES</title>
 
     <link rel="stylesheet" href="css/dashboard.css">
+    <link href="css/forms.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kanit|Source+z+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="packs/Highlight/styles/monokai.css">
@@ -39,25 +40,38 @@
 <!-- </header> <nav>  -->
     <nav>
       <ul class="list-nav">
-        <li class="elements-nav manual">
+        <a id="btn-manual" href="/dashboard#manual" class="elements-nav manual">
           <img src="img/manual.svg" alt="Manual SAR">
           <span class="legend l-manual">Manual</span>
-        </li>
-        <li class="elements-nav add-estudantes">
-          <img src="img/add-estudante.svg" alt="Adicionar Estudante">
-          <span class="legend l-add-estudantes">Adicionar Estudante</span>
-        </li>
-        <li class="elements-nav salas-terminal">
+        </a>
+        <a id="btn-add_estudante" href="/dashboard#CadastrarEstudante" class="elements-nav add-estudantes">
+          <img src="img/add-estudante.svg" alt="Cadastrar Estudante">
+          <span class="legend l-add-estudantes">Cadastrar Estudante</span>
+        </a>
+        <a id="btn-salas_terminal" href="/dashboard#salasTerminal" class="elements-nav salas-terminal">
           <img src="img/code.svg" alt="Terminal e Salas">
           <span class="legend l-salas-terminal">Salas e Terminal</span>
-        </li>
+        </a>
       </ul>
+      <div class="container-contatos">
+        <h1>CONECTADOS</h1>
+        <div class="contatos">
+          <span class="status"></span>
+          <img src="img/nycolas.jpg" alt="ft-perfil">
+          <p>NOME </p>
+        </div>
+        <div class="contatos">
+          <span class="status"></span>
+          <img src="img/nycolas.jpg" alt="ft-perfil">
+          <p>NOME </p>
+        </div>
+      </div>
     </nav>
 <!-- </nav> <main>  -->
     <main>
       <div class="risco"></div>
       <!-- CONTAINER-1 - MANUAL -->
-      <div class="container-1">
+      <div id="manual" class="container-1">
         <div class="introducao">
           <h1>Manual</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
@@ -87,19 +101,94 @@
          </div>
       </div>
       <!-- CONTAINER-2 - SALA E TERMINAL -->
-      <div class="container-2 invisivel">
-        <!--CODE EDITOR - REFERENCES CODEMIRROR-->
-        <div id="container-code" class="Code-editor">
-          <h1>Execute seus Códigos:</h1>
-          <div id="codeeditor"></div>
+      <div id="salasTerminal" class="container-2 invisivel">
+        <div class="content C-salas">
+          <div class="info-inicial-salas">
+            <h1>Salas</h1>
+            <img src="img/add-classrom.svg" alt="adicionar Sala">
+          </div>
+          <div class="salas-form invisivel">
+            <form action="" method="post">
+              <input type="text" name="" placeholder="OPA">
+              <label for="">OPA</label>
+            </form>
+          </div>
+          <div class="container-salas">
+
+            <div class="salas">
+              <div class="content-salas-1">
+                <h2>NOME SALA</h2><!-- MIN: 8 MAX: 8  -->
+                <p>TURMA</p>
+              </div>
+              <p class="content-salas-2">QTS ALUNOS</p>
+            </div>
+
+            <div class="salas">
+              <div class="content-salas-1">
+                <h2>NOME SALA</h2>
+                <p>TURMA</p>
+              </div>
+              <p class="content-salas-2">QTS ALUNOS</p>
+            </div>
+
+            <div class="salas">
+              <div class="content-salas-1">
+                <h2>NOME SALA</h2>
+                <p>TURMA</p>
+              </div>
+              <p class="content-salas-2">QTS ALUNOS</p>
+            </div>
+
+            <div class="salas">
+              <div class="content-salas-1">
+                <h2>NOME SALA</h2>
+                <p>TURMA</p>
+              </div>
+              <p class="content-salas-2">QTS ALUNOS</p>
+            </div>
+
+            <div class="salas">
+              <div class="content-salas-1">
+                <h2>NOME SALA</h2>
+                <p>TURMA</p>
+              </div>
+              <p class="content-salas-2">QTS ALUNOS</p>
+            </div>
+
+            <div class="salas">
+              <div class="content-salas-1">
+                <h2>NOME</h2>
+                <p>TURMA</p>
+              </div>
+              <p class="content-salas-2">QTS ALUNOS</p>
+            </div>
+          </div>
+        </div>
+        <div class="content C-terminal">
+          <!--CODE EDITOR - REFERENCES CODEMIRROR-->
+          <div id="container-code" class="Code-editor">
+            <h1>Execute seus Códigos:</h1>
+            <div id="codeeditor"></div>
+          </div>
         </div>
       </div>
       <!-- CONTAINER-3 - ADD ESTUDANTE -->
-      <div class="container-modal invisivel">
-        <!--CODE EDITOR - REFERENCES CODEMIRROR-->
-        <div id="container-code" class="Code-editor">
-          <h1>Execute seus Códigos:</h1>
-          <div id="codeeditor"></div>
+      <div id="CadastrarEstudante" class="container-modal ">
+        <div class="container-forms">
+          <form class="container-cadastrar" action="index.html" method="post">
+            <div class="titles-section">
+              <h1>Cadastrar Estudante</h1>
+            </div>
+            <div class="input-container">
+                <input type="text" name="nome_estudante" placeholder="Digite o nome do Estudante"  >
+                <label for="nome_estudante">Nome da Estudante</label>
+            </div>
+            <div class="input-container">
+                <input type="text" name="nome_aluno" placeholder="Digite seu nome Completo do aluno"  >
+                <label for="nome_aluno">Nome do Aluno</label>
+            </div>
+            <button class="submit-enviar" type="submit" name="criar-sala">Criar</button>
+          </form>
         </div>
       </div>
     </main>
@@ -115,6 +204,8 @@
          <p>Solicitação  Cancelada !!!</p>
        </div>
     </div>
+    <!-- SCRIPTS -->
+    <script type="text/javascript" src="js/dashboard_acoes-menu.js"></script>
     <script type="text/javascript" src="js/dashboard_icons_menu.js"></script>
     <script type="text/javascript" src="js/codeeditor.js"></script>
   </body>
