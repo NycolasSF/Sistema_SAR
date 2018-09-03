@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="-399 161 480 480" style="enable-background:new -399 161 480 480;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:#030104;}
+	.st2{font-family:'Kanit-Regular';}
+	.st3{font-size:34.6285px;}
+</style>
+<symbol  id="engrenagem" viewBox="-7 -4 14 8">
+	<path id="XMLID_42_" class="st0" d="M7-4H-7l2.2,5.9C-4.3,3.2-3.1,4-1.7,4h3.5c1.4,0,2.6-0.8,3.1-2.1L7-4z"/>
+</symbol>
+<g id="Capa_1">
+	<g>
+		<g>
+			<path d="M73,161h-208c-4.4,0-8,3.6-8,8v168c0,4.4,3.6,8,8,8s8-3.6,8-8V177H65v448h-456c-4.4,0-8,3.6-8,8s3.6,8,8,8H73
+				c4.4,0,8-3.6,8-8V169C81,164.6,77.4,161,73,161z"/>
+		</g>
+	</g>
+	<g>
+		<g>
+			<path d="M-137,363c-4.4,0-8,3.6-8,8v56c0,4.4,3.6,8,8,8s8-3.6,8-8v-56C-129,366.6-132.6,363-137,363z"/>
+		</g>
+	</g>
+</g>
+<g id="set">
+	<g>
+		<g>
+			<path d="M9.7,487.3l-32-32c-3.2-3.1-8.2-3-11.3,0.2c-3,3.1-3,8,0,11.1l18.3,18.4H-100c-4.4,0-8,3.6-8,8s3.6,8,8,8h84.7
+				l-18.3,18.3c-3.2,3.1-3.3,8.1-0.2,11.3c3.1,3.2,8.1,3.3,11.3,0.2c0.1-0.1,0.1-0.1,0.2-0.2l32-32C12.8,495.5,12.8,490.5,9.7,487.3
+				z"/>
+		</g>
+	</g>
+</g>
+<g id="robo">
+	<g>
+		<g id="XMLID_39_">
+			<path id="XMLID_6_" class="st1" d="M-239.4,604.9c0,5.5-2.7,10.2-6.9,13.1c-2.6,1.8-5.6,2.8-8.9,2.8c-1.3,0-2.6-0.2-3.8-0.5
+				h-109.4c-8.5,0-15.4-6.9-15.4-15.4l0,0c0-8.5,6.9-15.4,15.4-15.4h109.4c1.2-0.3,2.5-0.5,3.8-0.5c3.3,0,6.4,1,8.9,2.8
+				C-242.2,594.7-239.4,599.5-239.4,604.9z"/>
+			<path id="XMLID_5_" class="st1" d="M-107,605L-107,605c0,8.5-6.9,15.4-15.4,15.4h-115V618c4.2-2.8,6.9-7.6,6.9-13.1
+				c0-5.4-2.7-10.2-6.9-13v-2.4h115C-113.9,589.6-107,596.5-107,605z"/>
+		</g>
+		<rect id="XMLID_4_" x="-370.4" y="454.1" class="st1" width="249.9" height="132"/>
+		<g id="XMLID_2_">
+			<circle id="XMLID_3_" class="st0" cx="-345" cy="605.2" r="11.8"/>
+			
+				<use xlink:href="#engrenagem"  width="14" height="8" id="XMLID_33_" x="-7" y="-4" transform="matrix(0.5309 0 0 -0.5309 -345.0258 593.5543)" style="overflow:visible;"/>
+			
+				<use xlink:href="#engrenagem"  width="14" height="8" id="XMLID_32_" x="-7" y="-4" transform="matrix(0.3413 -0.4067 -0.4067 -0.3413 -353.9698 597.725)" style="overflow:visible;"/>
+			
+				<use xlink:href="#engrenagem"  width="14" height="8" id="XMLID_34_" x="-7" y="-4" transform="matrix(-9.218944e-002 -0.5228 -0.5228 9.218944e-002 -356.524 607.2574)" style="overflow:visible;"/>
+			
+				<use xlink:href="#engrenagem"  width="14" height="8" id="XMLID_35_" x="-7" y="-4" transform="matrix(-0.4598 -0.2654 -0.2654 0.4598 -350.8635 615.3414)" style="overflow:visible;"/>
+			
+				<use xlink:href="#engrenagem"  width="14" height="8" id="XMLID_36_" x="-7" y="-4" transform="matrix(-0.4989 0.1816 0.1816 0.4989 -341.0323 616.2014)" style="overflow:visible;"/>
+			
+				<use xlink:href="#engrenagem"  width="14" height="8" id="XMLID_37_" x="-7" y="-4" transform="matrix(-0.1816 0.4989 0.4989 0.1816 -334.0542 609.2231)" style="overflow:visible;"/>
+			
+				<use xlink:href="#engrenagem"  width="14" height="8" id="XMLID_38_" x="-7" y="-4" transform="matrix(0.2654 0.4598 0.4598 -0.2654 -334.9144 599.392)" style="overflow:visible;"/>
+		</g>
+		<g id="XMLID_40_">
+			<circle id="XMLID_49_" class="st0" cx="-133" cy="605.2" r="11.8"/>
+			
+				<use xlink:href="#engrenagem"  width="14" height="8" id="XMLID_48_" x="-7" y="-4" transform="matrix(0.5309 0 0 -0.5309 -133.0258 593.5543)" style="overflow:visible;"/>
+			
+				<use xlink:href="#engrenagem"  width="14" height="8" id="XMLID_47_" x="-7" y="-4" transform="matrix(0.3413 -0.4067 -0.4067 -0.3413 -141.9699 597.725)" style="overflow:visible;"/>
+			
+				<use xlink:href="#engrenagem"  width="14" height="8" id="XMLID_46_" x="-7" y="-4" transform="matrix(-9.218944e-002 -0.5228 -0.5228 9.218944e-002 -144.524 607.2574)" style="overflow:visible;"/>
+			
+				<use xlink:href="#engrenagem"  width="14" height="8" id="XMLID_45_" x="-7" y="-4" transform="matrix(-0.4598 -0.2654 -0.2654 0.4598 -138.8635 615.3414)" style="overflow:visible;"/>
+			
+				<use xlink:href="#engrenagem"  width="14" height="8" id="XMLID_44_" x="-7" y="-4" transform="matrix(-0.4989 0.1816 0.1816 0.4989 -129.0323 616.2014)" style="overflow:visible;"/>
+			
+				<use xlink:href="#engrenagem"  width="14" height="8" id="XMLID_43_" x="-7" y="-4" transform="matrix(-0.1816 0.4989 0.4989 0.1816 -122.0542 609.2231)" style="overflow:visible;"/>
+			
+				<use xlink:href="#engrenagem"  width="14" height="8" id="XMLID_41_" x="-7" y="-4" transform="matrix(0.2654 0.4598 0.4598 -0.2654 -122.9144 599.392)" style="overflow:visible;"/>
+		</g>
+		<text id="XMLID_1_" transform="matrix(1 0 0 1 -185.9225 581.5467)" class="st0 st2 st3">SAR</text>
+	</g>
+</g>
+</svg>
