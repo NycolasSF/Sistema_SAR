@@ -90,15 +90,17 @@ module.exports.dashboard = function (app, req, res) {
 
   pesquisa.login(sess.email, sess.senha, function(error, login){
     if (login.length == 0) {
-          validacao: [{
-            titulo: 'Ops, algo de errado !',
-              msg: 'Não encontramos seu cadastro, verifique seu email e senha, e tente novamente'
-          }]
+        res.render("pagina_acesso/pagina_acesso", {
+            validacao: [{
+              titulo: 'Ops, algo de errado !',
+                msg: 'Não encontramos seu cadastro, verifique seu email e senha, e tente novamente'
+            }]
+        })
       return;
     }
     login.forEach(function (usuario) {
       pesquisa.login(sess.email, sess.senha, function (error, logado) {
-        if (usuario.email_professor == sess.email) {
+        if (usuario.email_professor == sess.email) { //professor
           res.render("dashboard/dashboard", {
               validacao: {
               titulo:{},
@@ -108,7 +110,7 @@ module.exports.dashboard = function (app, req, res) {
               nome: usuario.nome_professor
           });
         //fim-professor
-        }else{
+      }else{//aluno
           res.render("dashboard/dashboard", {
               validacao: {
               titulo:{},
@@ -130,4 +132,13 @@ module.exports.sair = function (app, req, res) {
     req.session = null;
     res.redirect('/pagina_acesso');
   });
+}
+module.exports.cadastro_aluno = function (aap, req, res){
+  let user = req.body;
+
+  req.assert('nome_aluno', 'Precisamos saber o nome do aluno!').notEmpty();
+  req.assert('cpf_aluno', 'Digite o CPF com 11 digitos').len(11, 11).isInt();
+  req.assert('email_aluno', 'Digite um email valido!').isEmail();
+  req.assert('anoNascimento_aluno','Digite a data de nascimento do seu aluno').isDate();
+
 }

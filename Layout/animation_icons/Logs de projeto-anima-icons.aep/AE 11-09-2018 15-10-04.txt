@@ -1,0 +1,37 @@
+Log de renderização do Adobe After Effects v13.5 Windows 64 para o projeto“projeto-anima-icons.aep”
+
+Renderização iniciada em 11/09/2018 às 15:10:04
+
+  11/09/2018 15:10:04: iniciando composição “terminal”.
+
+  Saída para: C:\Users\familiafroes\Desktop\Nycolas\IFMS\TCC\Sistema_SAR\Layout\animation_icons\Arquivos\RENDER\terminal.mov    11/09/2018 15:10:05: composição concluída “terminal”.
+
+
+  11/09/2018 15:10:05: iniciando composição “robo”.
+
+  Saída para: C:\Users\familiafroes\Desktop\Nycolas\IFMS\TCC\Sistema_SAR\Layout\animation_icons\Arquivos\RENDER\robo.mov    11/09/2018 15:10:06: composição concluída “robo”.
+
+
+  11/09/2018 15:10:06: iniciando composição “manual”.
+
+  Saída para: C:\Users\familiafroes\Desktop\Nycolas\IFMS\TCC\Sistema_SAR\Layout\animation_icons\Arquivos\RENDER\manual.mov    11/09/2018 15:10:07: composição concluída “manual”.
+
+
+  11/09/2018 15:10:07: iniciando composição “gear”.
+
+  Saída para: C:\Users\familiafroes\Desktop\Nycolas\IFMS\TCC\Sistema_SAR\Layout\animation_icons\Arquivos\RENDER\gear.mov    11/09/2018 15:10:09: composição concluída “gear”.
+
+
+  11/09/2018 15:10:09: iniciando composição “exit”.
+
+  Saída para: C:\Users\familiafroes\Desktop\Nycolas\IFMS\TCC\Sistema_SAR\Layout\animation_icons\Arquivos\RENDER\exit.mov    11/09/2018 15:10:10: composição concluída “exit”.
+
+
+  11/09/2018 15:10:10: iniciando composição “add-contacts”.
+
+  Saída para: C:\Users\familiafroes\Desktop\Nycolas\IFMS\TCC\Sistema_SAR\Layout\animation_icons\Arquivos\RENDER\add-contacts.mov    11/09/2018 15:10:11: composição concluída “add-contacts”.
+
+
+  Tempo total decorrido: 7 segundos
+Log fechado em 11/09/2018 às 15:10:11
+

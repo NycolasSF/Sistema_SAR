@@ -1,0 +1,12 @@
+Log de renderização do Adobe After Effects v13.5 Windows 64 para o projeto“projeto-anima-icons.aep”
+
+Renderização iniciada em 11/09/2018 às 14:51:57
+
+  11/09/2018 14:51:57: iniciando composição “manual”.
+
+  Saída para: C:\Users\familiafroes\Desktop\Nycolas\IFMS\TCC\Sistema_SAR\Layout\animation_icons\Arquivos\RENDER\manual.mov    11/09/2018 14:51:58: composição concluída “manual”.
+
+
+  Tempo total decorrido: 1 segundos
+Log fechado em 11/09/2018 às 14:51:58
+

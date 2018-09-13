@@ -1,0 +1,12 @@
+Log de renderização do Adobe After Effects v13.5 Windows 64 para o projeto“projeto-anima-icons.aep”
+
+Renderização iniciada em 11/09/2018 às 14:57:45
+
+  11/09/2018 14:57:45: iniciando composição “add-contacts”.
+
+  Saída para: C:\Users\familiafroes\Desktop\Nycolas\IFMS\TCC\Sistema_SAR\Layout\animation_icons\Arquivos\RENDER\add-contacts\add-contacts_[#####].psd    11/09/2018 14:58:08: composição concluída “add-contacts”.
+
+
+  Tempo total decorrido: 23 segundos
+Log fechado em 11/09/2018 às 14:58:08
+

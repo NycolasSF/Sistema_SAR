@@ -41,7 +41,7 @@ body{
   background: var(--branco);
   -webkit-box-shadow: 1px 4px 11px -1px rgba(0,0,0,0.2);
   -moz-box-shadow: 1px 4px 11px -1px rgba(0,0,0,0.2);
-  box-shadow: 1px 4px 11px -1px rgba(0,0,0,0.2);
+  box-shadow: 1px 4px 5px -3px rgba(0,0,0,0.2);
 }
 .title-header{
   display: flex;
@@ -93,7 +93,7 @@ nav{
   display: none;
   -webkit-box-shadow: 4px 3px 20px -4px rgba(0,0,0,0.75);
   -moz-box-shadow: 4px 3px 20px -4px rgba(0,0,0,0.75);
-  box-shadow: 4px 3px 20px -4px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 20px -4px rgba(0,0,0,0.75);
 }
 .contatos{
   display: flex;
@@ -153,12 +153,15 @@ main {
   opacity: 1;
 }
 /* SALAS */
+#btn-add_classrom{
+  cursor: pointer;
+}
 .info-inicial-salas{
   display: flex;
   justify-content: space-between;
 }
 .info-inicial-salas img{
-  margin-right: 2%;
+  margin-right: 6%;
   width: 3%;
   height: 3%
 }
@@ -198,8 +201,64 @@ main {
 #codeeditor{
   width: 95%;
 }
+/* CadastrarEstudante */
+.inputs-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input-container{
+  width: 50%!important;
+}
+.container-forms{
+  width:60%!important;
+  -webkit-box-shadow: 0px 6px 12px 2px rgba(0,0,0,0.15);
+  -moz-box-shadow: 0px 6px 12px 2px rgba(0,0,0,0.15);
+  box-shadow: 0px 6px 12px 2px rgba(0,0,0,0.15);
+}
+/* Configurações */
+.title-config{
+  font-size: 2rem;
+}
+.flex-config{
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  align-items: center;
+}
+.editar-usuario{
+  padding: 2rem;
+}
+.ft-perfil{
+  display: flex;
+  align-items: center;
+}
+.ft-perfil img{
+  margin: 10% auto;
+  width: 50%;
+  border-radius: 50%;
+}
+form input{
+  width: 20vw;
+}
+.file-input{
+  background: #e1e1e1!important;
+}
+.submit-enviar{
+  width: 50%!important;
+  border-radius: 0!important;
+}
+.btn-file{
+  width: 20%!important;
+  border-radius:  0!important;
+  padding: .5rem!important;
+}
+.btn-editar{
+  padding: 1rem!important;
+}
 footer{
-  background: var(--cor-footer);
+  text-align: center;
+  background: var(--preto);
   color: rgba(255,255,255,0.9);
 }
 
@@ -233,8 +292,6 @@ footer{
     width: 50%;
   }
   /* CONTATOS */
-  .container-contatos{
-  }
   .contatos{
     display: flex;
     flex-direction: row;
