@@ -10,7 +10,7 @@ Ao observar as dificuldades vivenciadas pelos estudantes do Curso Técnico em In
 ## Como executar
 
 > 1. NO WINDOWS
-abra o **instalador_iniciador_SAR** e execute a opção 4, caso a 4 não funcione execute a 5
+abra o **instalador_iniciador_SAR** e execute a opção 2, caso a 2 não funcione execute a 4
 
 > 2. NA MAC 
 abra o terminal na pasta do repositório e **execute nodemon app** ou **node app**
