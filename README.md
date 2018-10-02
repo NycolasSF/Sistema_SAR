@@ -1,6 +1,6 @@
 # SAR - Seu Amigo Robô
 
-SAR é um sistema que vincula o robô com a página web, após essa vinculação o usuário manda seus códigos para o robô
+SAR é um sistema que vincula o robô com a página web, após essa vinculação o usuário manda seus códigos para o robô.
 
 ## O TCC - Resumo
 
@@ -9,26 +9,25 @@ Ao observar as dificuldades vivenciadas pelos estudantes do Curso Técnico em In
 
 ## Como executar
 
-> 1. NO WINDOWS
-SE TODOS OS MODULOS INSTALADOS:
-abra o **instalador_iniciador_SAR** e execute a opção 2, caso a 2 não funcione execute a 4.
-
-SE NÃO: 
-abra o **instalador_iniciador_SAR** e execute a opção 1
-
-> 2. NA MAC 
-SE TODOS OS MODULOS INSTALADOS:
-abra o terminal na pasta do repositório e **execute nodemon app** ou **node app**
-
-SE NÃO: 
-abra o terminal na pasta do repositório e instale * npm install -g nodemon
-                                                  * npm install express -save
-                                                  * npm install consign -save
-                                                  * npm install body-parser -save
-                                                  * npm install express-validator -save
-                                                  * npm install express-session -save
-                                                  * npm install mysql -save
-                                                  * npm install nodemailer -save
-                                                  * npm install ejs -save
-
-Por fim execute **execute nodemon app** ou **node app**
+1. __NO WINDOWS__
+    - SE TODOS OS MODULOS INSTALADOS:
+      > abra o **instalador_iniciador_SAR** e execute a opção 2, caso a 2 não funcione execute a 4.
+    - SE NÃO:
+      > abra o **instalador_iniciador_SAR** e execute a opção 1 e depois a 2.
+  
+2. __NA MAC__ 
+    - SE TODOS OS MODULOS INSTALADOS:
+      > abra o terminal na pasta do repositório e **execute nodemon app** ou **node app**
+    - SE NÃO: 
+    > abra o terminal na pasta do repositório e instale:
+      >  1. npm install -g nodemon 
+      >  2. npm install express -save
+      >  3. npm install consign -save
+      >  4. npm install body-parser -save
+      >  5. npm install express-validator -save
+      >  6. npm install express-session -save
+      >  7. npm install mysql -save
+      >  8. npm install nodemailer -save
+      >  9. npm install ejs -save
+    
+      > Por fim execute **execute nodemon app** ou **node app**
