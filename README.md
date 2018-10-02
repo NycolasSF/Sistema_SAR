@@ -10,7 +10,25 @@ Ao observar as dificuldades vivenciadas pelos estudantes do Curso Técnico em In
 ## Como executar
 
 > 1. NO WINDOWS
-abra o **instalador_iniciador_SAR** e execute a opção 2, caso a 2 não funcione execute a 4
+SE TODOS OS MODULOS INSTALADOS:
+abra o **instalador_iniciador_SAR** e execute a opção 2, caso a 2 não funcione execute a 4.
+
+SE NÃO: 
+abra o **instalador_iniciador_SAR** e execute a opção 1
 
 > 2. NA MAC 
+SE TODOS OS MODULOS INSTALADOS:
 abra o terminal na pasta do repositório e **execute nodemon app** ou **node app**
+
+SE NÃO: 
+abra o terminal na pasta do repositório e instale * npm install -g nodemon
+                                                  * npm install express -save
+                                                  * npm install consign -save
+                                                  * npm install body-parser -save
+                                                  * npm install express-validator -save
+                                                  * npm install express-session -save
+                                                  * npm install mysql -save
+                                                  * npm install nodemailer -save
+                                                  * npm install ejs -save
+
+Por fim execute **execute nodemon app** ou **node app**
