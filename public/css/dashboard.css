@@ -11,6 +11,8 @@
   --cor-nav: #4D2D52;
   --cor-footer: #9A4C95;
 
+  --verde: #27ae60;
+
   --preto-tranparencia: rgba(0, 0, 0, 0.9);
 }
 .invisivel{
@@ -25,8 +27,6 @@ li{
 html,
 body{
   height: 100%;
-}
-body{
   display: grid;
   grid-template-rows: 5rem 5rem auto 5rem;
   font-family:  'Kanit', sans-serif;
@@ -91,9 +91,9 @@ nav{
 .container-contatos{
   margin-top: 5%;
   display: none;
-  -webkit-box-shadow: 4px 3px 20px -4px rgba(0,0,0,0.75);
-  -moz-box-shadow: 4px 3px 20px -4px rgba(0,0,0,0.75);
-  box-shadow: 10px 10px 20px -4px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 1px 1px 10px -2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 1px 1px 10px -2px rgba(0,0,0,0.75);
+  box-shadow: 1px 1px 10px -2px rgba(0,0,0,0.75);
 }
 .contatos{
   display: flex;
@@ -149,6 +149,10 @@ main {
   border-radius: 15px
 }
 /* SALAS E TERMINAL */
+.titles-section h1{
+    font-family:  'Kanit', sans-serif !important;
+    font-size: 1.6rem!important;
+}
 #salasTerminal{
   opacity: 1;
 }
@@ -157,6 +161,7 @@ main {
   cursor: pointer;
 }
 .info-inicial-salas{
+  width: 85%;
   display: flex;
   justify-content: space-between;
 }
@@ -190,6 +195,10 @@ main {
 
 /* TERMINAL */
 /*code editor*/
+.CodeMirror{
+    border-radius: 10px;
+    padding: 1rem;
+}
 .Code-editor{
   margin-bottom: 2%;
 }
@@ -212,15 +221,19 @@ main {
 }
 .container-forms{
   width:60%!important;
-  -webkit-box-shadow: 0px 6px 12px 2px rgba(0,0,0,0.15);
-  -moz-box-shadow: 0px 6px 12px 2px rgba(0,0,0,0.15);
-  box-shadow: 0px 6px 12px 2px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 0px 6px 20px 2px rgba(0,0,0,0.15);
+  -moz-box-shadow: 0px 6px 20px 2px rgba(0,0,0,0.15);
+  box-shadow: 0px 6px 20px 5px rgba(0,0,0,0.15);
 }
 /* Configurações */
+
 .title-config{
+  padding: 1rem;
   font-size: 2rem;
+  border-bottom: solid 5px;
 }
 .flex-config{
+  margin: 0 auto;
   display: flex;
   width: 80%;
   justify-content: space-around;
@@ -228,6 +241,7 @@ main {
 }
 .editar-usuario{
   padding: 2rem;
+  border-right: solid 2px var(--preto);
 }
 .ft-perfil{
   display: flex;
@@ -247,14 +261,11 @@ form input{
 .submit-enviar{
   width: 50%!important;
   border-radius: 0!important;
-}
-.btn-file{
-  width: 20%!important;
-  border-radius:  0!important;
-  padding: .5rem!important;
+  margin: 1rem 0;
+  padding: 1rem!important;
 }
 .btn-editar{
-  padding: 1rem!important;
+  background: var(--verde)!important
 }
 footer{
   text-align: center;
@@ -265,17 +276,17 @@ footer{
 @media screen and (min-width: 960px){
   body{
     grid-template-columns: 1fr 6fr;
-    grid-template-rows: 10% auto 3rem;
+    grid-template-rows: 5% calc(100vh + 100%) 3rem;
   }
-
   header{
     grid-column: 1/4;
+    position: relative!important;
   }
   nav{
     grid-row: 2/3;
     grid-column: 1/2;
     background: var(--branco);
-    margin-top: 35%;
+    margin-top: 70%;
     display: flex;
     flex-direction: column;
   }
@@ -314,16 +325,15 @@ footer{
   }
   .contatos p{
     margin: 10%;
-}
+  }
   main{
-    margin-top: 4%;
+    margin-top: 10%;
     padding: 2%;
     grid-row: 2/3;
   }
   .risco{
     display: none;
   }
-
   footer{
     grid-row: 4/3;
     grid-column: 1/3;

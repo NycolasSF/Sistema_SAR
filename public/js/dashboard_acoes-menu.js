@@ -58,3 +58,15 @@ $('.btn-config').click(function () {
     height: 'show'
   });
 });
+function abrirCode() {
+// fechar
+  $('#CadastrarEstudante').hide();
+  $('#manual').hide();
+  $('#config').hide();
+  $('#salas').hide();
+  $('#salas-title').hide();
+// abrir
+  $('#terminal-CodeEditor').animate({
+    height: 'show'
+  });
+}

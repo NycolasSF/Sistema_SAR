@@ -25,7 +25,7 @@ module.exports.logar = function (app, req, res) {
   let user = req.body;
 
   req.assert('email_logar', 'Preencha o campo email!').isEmail();
-  req.assert('senha_logar', 'Preencha o campo senha!').len(8,11);
+  req.assert('senha_logar', 'Preencha o campo senha!').notEmpty();
 
 
   var erros = req.validationErrors();
@@ -83,47 +83,26 @@ module.exports.cadastrar_professor = function (app, req, res) {
 }
 // dashboard
 module.exports.dashboard = function (app, req, res) {
+
   sess = req.session;
 
   let connection = app.serv_config.conexao_banco();
   let pesquisa = new app.app.model.model_consultasSQL(connection);
 
-  pesquisa.login(sess.email, sess.senha, function(error, login){
-    if (login.length == 0) {
-        res.render("pagina_acesso/pagina_acesso", {
-            validacao: [{
-              titulo: 'Ops, algo de errado !',
-                msg: 'Não encontramos seu cadastro, verifique seu email e senha, e tente novamente'
-            }]
-        })
+  sess.email = 'nycolassilvafroes@gmail.com';
+  sess.senha = '1234567891';
+
+  pesquisa.login(sess.email, sess.senha, function (error, logado) {
+    if (logado.length == 0) {
+      res.render('pagina_acesso/pagina_acesso',{
+        validacao: [{
+          titulo: 'Usuário não encontrado!',
+          msg: 'Por favor, tente novamente.'
+        }]
+      });
       return;
     }
-    login.forEach(function (usuario) {
-      pesquisa.login(sess.email, sess.senha, function (error, logado) {
-        if (usuario.email_professor == sess.email) { //professor
-          res.render("dashboard/dashboard", {
-              validacao: {
-              titulo:{},
-              color_background: {},
-              erros: {}
-            },
-              nome: usuario.nome_professor
-          });
-        //fim-professor
-      }else{//aluno
-          res.render("dashboard/dashboard", {
-              validacao: {
-              titulo:{},
-              color_background: {},
-              erros: {}
-            },
-              nome: usuario.nome_aluno
-          });
-        }
-        //fim-aluno
-      });//fim-login
-    });//fim-forEach
-  });//fim-pesquisa
+  });
 }
 module.exports.sair = function (app, req, res) {
   sess = req.session;
@@ -133,7 +112,7 @@ module.exports.sair = function (app, req, res) {
     res.redirect('/pagina_acesso');
   });
 }
-module.exports.cadastro_aluno = function (aap, req, res){
+module.exports.cadastro_aluno = function (app, req, res){
   let user = req.body;
 
   req.assert('nome_aluno', 'Precisamos saber o nome do aluno!').notEmpty();

@@ -6,11 +6,14 @@ var string =
 'var sar = new Robo(connetion) \n'+
 '//Passando movimentos para ele \n'+
 'sar.move(10)'
+function criarCode() {
+  abrirCode()
+  var editor = CodeMirror(document.querySelector('#codeeditor'), {
+    mode: "javascript",
+    value: string,
+    tabSize: 5,
+    lineNumbers: true,
+    theme: 'monokai'
+  });
 
-var editor = CodeMirror(document.querySelector('#codeeditor'), {
-  mode: "javascript",
-  value: string,
-  tabSize: 5,
-  lineNumbers: true,
-  theme: 'monokai'
-});
+}

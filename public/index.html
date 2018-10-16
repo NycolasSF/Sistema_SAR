@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Seu Amigo Robô</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <link href="https://fonts.googleapis.com/css?family=Kanit|Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="packs/Highlight/styles/monokai.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="packs/Highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+  <body>
+    <header id="Home">
+<!--MENU-->
+      <span id="menu">
+          <div class="container" onclick="abrir_fechar(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+          </div>
+      </span>
+<!--NAV-->
+      <nav id="navbar">
+        <ul >
+          <li><a  href="#Home" id="home_link">HOME</a></li>
+          <li><a  href="#manual">Manual</a></li>
+          <li><a  href="#sobre">Sobre</a></li>
+          <li><a  href="/pagina_acesso">LOGIN<!--img src="img/icon-login.svg" id="login"--></a></li>
+        </ul>
+      </nav>
+<!--TEXTO ENTRADA-->
+      <div class="title_home">
+        <h1>Olá, vamos aprender POO?</h1>
+        <a href="#manual">
+            <div class="arrow effect-arrow">
+              <i></i>
+            </div>
+        </a>
+      </div>
+    </header>
+      <main>
+<!--MANUAL-->
+      <section id="manual">
+        <div id="titulo-manual" class="title-main">
+           <div class="forma">
+              <h1>Manual</h1>
+           </div>
+        </div>
+         <video id="video" src=""  controls poster="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoNSZFjcM2TYllOcGKr6T_ujMorL9q60xM0v5j6bSy87N0AyUT">
+              <source src="" type="video">
+        </video>
+<!--exemplo-->
+        <div class="exemplo">
+          <div class="title-exemplo">
+            <h1>Como Executar?</h1>
+         </div>
+<!--exemplo-VINCULAR-->
+         <div id="ligar" class="vincular">
+            <h2>1 - Vincule seu aparelho com robô</h2>
+            <pre>
+              <code class="">
+                    EX: 140.140.12.22
+              </code>
+            </pre>
+          </div>
+<!--exemplo-EXECUTAR CÓDIGOS-->
+           <div class="executar">
+             <h2>2 - Execute seus códigos</h2>
+              <pre>
+                <code class="jsvascript">
+                    var robo = new Robo();
+                    robo.move(x);
+                </code>
+              </pre>
+            </div>
+          </div>
+      </section>
+<!--SOBRE-->
+      <section id="sobre">
+          <div id="title-sobre" class="title-main">
+            <div class="forma">
+              <h1>SobRe Projeto</h1>
+            </div>
+          </div>
+          <div class="desc-sobre">
+            <div class="introducao">
+              <p> Está página se trata de um trabalho de conclusão de curso (TCC), na qual a partir dela você poderá executar códigos para o meu robô,  dando vida a ele.
+              <br>Podendo ser executado nessa plataforma códigos em javascript de acordo com o material didático para o professor, para entender melhor o funcionamento e como ensinar seus alunos a partir desse protótipo.</p>
+              <a href="mateiral/apostila.pdf" download></a>
+            </div>
+        <!--RESUMO TCC-->
+            <div class="resumo">
+              <h2>Resumo TCC</h2>
+              <p>Em meio das dificuldades vivenciadas pelos estudantes na área de programação, no curso de Informática para Internet no IFMS câmpus Dourados, com  a linguagem de programação Javascript, foi pensado a construção de um robô, reutilizando materiais recicláveis. O robô será uma ferramenta nas mãos dos professores que ensinaram a programação orientada a objetos, e com ele deixará o conteúdo mais atrativo.
+                <br>Tanto professores quanto estudantes se divertiram com robô, pois com ajuda da plataforma web será executado ações a ele, tais como andar, mover um braço, estando todas as ações ligada ao conteúdo disciplinar.
+                <br>Por fim o resultado esperado é que esse robô consiga facilitar a aprendizagem e proporcionar um novo modo de ensino e aprendizagem.
+              </p>
+            </div>
+          </div>
+      </section>
+      </main>
+<!--FOOTER-->
+      <footer>
+        <div class="content-footer">
+          <h1 class="title-footer">PRODUTORES <span class="desktop"><i></i></span> <span class="mobile"><i></i></span> </h1>
+  <!--PESSOA 1 -NYCOLAS -->
+          <div class="pessoa UM">
+            <div id="img_Um" class="circle"></div>
+            <div class="info-footer">
+              <h1>ESTUDANTE: Nycolas Silva Fróes</h1>
+              <h2>Breve Descrição</h2>
+              <p>Estudante do IFMS Campus Dourados.</p>
+              <p>Gosta de Jogar Paladins com seu Professor/Orientador. Estuda Muito!</p>
+            </div>
+          </div>
+  <!--PESSOA 2 - JÓNISON-->
+          <div class="pessoa DOIS">
+            <div id="img_Dois" class="circle"></div>
+            <div class="info-footer">
+              <h1>PROFESSOR: Jónison Almeida dos Santos</h1>
+              <h2>Breve Descrição</h2>
+              <p>Professor do ifms campus dourados.</p>
+              <p>Gosta de Jogar Paladins com seu Aluno/orientando. Joga Muito!</p>
+            </div>
+          </div>
+        </div>
+          <p class="copyright">&copy Copyright - NSF</p>
+      </footer>
+  </body>
+<!--SCRIPTS-->
+  <script type="text/javascript" src="js/codeeditor.js"></script>
+  <script type="text/javascript" src="js/effect-roll.js"></script>
+  <script type="text/javascript" src="js/barra_home.js"></script>
+</html>

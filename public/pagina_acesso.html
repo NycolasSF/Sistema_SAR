@@ -86,15 +86,7 @@
                 <button type="submit" class="submit-enviar" name="cadastrar-professor">Cadastrar</button>
         </form>
       </div><!--fim-cadastro-->
-          <%if(validacao) {%>
-              <% for(var i = 0; i <  validacao.length; i++) {%>
-                <div id="modal<%=[i]%>" class="alert" style="background:<%= validacao[i].color_background %>;">
-                  <span id="alert-close<%=[i]%>" onclick="fechar(this.id, 'modal<%=[i]%>')">X</span>
-                 <h1><%= validacao[i].titulo %></h1>
-                 <p ><%= validacao[i].msg %></p>
-               </div>
-               <%}%>
-          <%}%>
+        
     </div>
     <script type="text/javascript" src="js/pg_acesso.js"></script>
 </body>

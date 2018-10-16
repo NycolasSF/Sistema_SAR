@@ -46,15 +46,15 @@
 <!-- </header> <nav>  -->
     <nav>
       <ul class="list-nav">
-        <a id="btn-manual" class="elements-nav manual">
+        <a id="btn-manual" href="/dashboard#manual1" class="elements-nav manual">
           <img src="img/manual.svg" alt="Manual SAR">
           <span class="legend l-manual">Manual</span>
         </a>
-        <a id="btn-add_estudante"  class="elements-nav add-estudantes">
+        <a id="btn-add_estudante" href="/dashboard#CadastrarEstudante" class="elements-nav add-estudantes">
           <img src="img/add-estudante.svg" alt="Cadastrar Estudante">
           <span class="legend l-add-estudantes">Cadastrar Estudante</span>
         </a>
-        <a id="btn-salas_terminal" class="elements-nav salas-terminal">
+        <a id="btn-salas_terminal" href="/dashboard#salasTerminal" class="elements-nav salas-terminal">
           <img src="img/code.svg" alt="Terminal e Salas">
           <span class="legend l-salas-terminal">Salas e Terminal</span>
         </a>
@@ -159,7 +159,6 @@
           </div>
         </div>
       </div>
-    </div>
       <!-- CONTAINER-3 - ADD ESTUDANTE -->
       <div id="CadastrarEstudante" class="container-modal invisivel">
         <div class="container-forms">
@@ -226,7 +225,8 @@
                 <label for="Senha">Senha</label>
                 <input type="password" name="senha" maxlength="8" placeholder="Digite o Nome da sala, com até 8 caracteres">
               </div>
-              <button type="submit" class="submit-enviar btn-editar" name="cadastrar_sala">Editar</button>
+
+              <button type="submit" class="submit-enviar btn-editar" name="cadastrar_sala">Cadastrar</button>
             </form>
           </div>
         </div>

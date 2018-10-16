@@ -15,8 +15,17 @@ dir /W %pushd Sistema_SAR%
 echo Instalando todos os modulos do Sistema_SAR
 echo ****Lembre-se de ter NPM instalado e o NODE*****
 echo ************************************************
-echo caso nao funcione execute o instalador_iniciador.bat com permissao ADM
 
+
+call npm install -g nodemon
+echo ==================================
+echo *      NODEMON - Instalado com Sucesso          *
+echo ==================================
+
+call npm install npm@latest -g
+echo ==================================
+echo *      NPM - Instalado com Sucesso          *
+echo ==================================
 
 call npm install express -save
 echo EXPRESS INSTALADO COM SUCESSO
@@ -45,7 +54,7 @@ call npm install nodemailer -save
 echo NODEMAILER INSTALADO COM SUCESSO
 
 
-call npm install ejs -save
+  call npm install ejs -save
 echo EJS INSTALADO COM SUCESSO
 
 pause
