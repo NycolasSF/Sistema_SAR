@@ -89,8 +89,6 @@ module.exports.dashboard = function (app, req, res) {
   let connection = app.serv_config.conexao_banco();
   let pesquisa = new app.app.model.model_consultasSQL(connection);
 
-  sess.email = 'nycolassilvafroes@gmail.com';
-  sess.senha = '1234567891';
 
   pesquisa.login(sess.email, sess.senha, function (error, logado) {
     if (logado.length == 0) {
@@ -102,6 +100,7 @@ module.exports.dashboard = function (app, req, res) {
       });
       return;
     }
+    res.render('dashboard/dashboard', {user: logado})
   });
 }
 module.exports.sair = function (app, req, res) {

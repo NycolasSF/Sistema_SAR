@@ -1,0 +1,34 @@
+<script type="text/javascript">
+    class Robo {
+    constructor(connection, time) {
+      this.connection = connection;
+
+      this.frente = '/comando_robo/FRENTE';
+      this.tras = '/comando_robo/TRAS';
+
+      this.virarEsquerda = '/comando_robo/ANTIHORARIO';
+      this.virarDireita = '/comando_robo/HORARIO';
+
+      this.time = time;
+      this.https = 'http://'
+    }
+    stop(){
+
+      window.location.href = this.https+this.connection+'/comando_robo/STOP';
+
+    }
+    moveFrente(){
+      let url = this.https+this.connection+this.frente;
+      window.location.href = url
+
+      setTimeout(this.stop, this.time);
+    }
+  }
+
+  var connection = '192.168.25.194';
+  var time = '2000';
+
+  var sar = new Robo(connection, time);
+  sar.moveFrente()
+
+</script>

@@ -80,6 +80,7 @@ input[type="button"]:hover,input[type="submit"]:hover{
   background: rgba(255,255,255, .9);
 }
 .titles-section{
+  padding-left: 2%;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -95,6 +96,7 @@ input[type="button"]:hover,input[type="submit"]:hover{
   border-bottom: solid 2px #000;
 }
 .titles-section i{
+  margin-right: 5%;
   font-size: 3rem;
   cursor: pointer;
 }
@@ -109,24 +111,13 @@ input[type="button"]:hover,input[type="submit"]:hover{
   color: #000;
 }
 .container-buttons{
-  width: 50%;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-.container-buttons input{
-  color: #fff;
-}
-.button-cadastrar{
-  background: var(--btn-azul);
-  flex: 1;
-}
-.button{
-  flex: 2;
-  background: var(--vermelho);
-  color: #fff;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
 }
 .submit-enviar{
+  text-transform: uppercase;
   width: 40%;
   padding: 1rem;
   font-size: 1rem;

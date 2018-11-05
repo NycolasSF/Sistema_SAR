@@ -4,12 +4,13 @@ $('#btn-cadastrar').click(function() {
 		height: 'hide',
 		opacity: '0'
 	}, 200);
-	$('.container-cadastrar').animate({//abre cadastro
+	$('#type_user').animate({//abre cadastro
 		display: 'flex',
 		height: 'show',
 		opacity: '1'
 	});
 });
+
 
 // BTN HIDE CADASTRAR
 $('#btn-voltar').click(function() {
@@ -17,11 +18,53 @@ $('#btn-voltar').click(function() {
 		height: 'show',
 		opacity: '1'
 	});
-	$('.container-cadastrar').animate({
+	$('#type_user').animate({
+		height: 'hide',
+		opacity: '0'
+	},200);
+	$('#cadastro').animate({
 		height: 'hide',
 		opacity: '0'
 	},200);
 });
+
+
+// BTN HIDE type_user
+$('#btn-voltar-type').click(function() {
+	$('#type_user').animate({
+		height: 'show',
+		opacity: '1'
+	},200);
+	$('#cadastro').animate({
+		height: 'hide',
+		opacity: '0'
+	},250);
+});
+
+
+// Função para saber sobre a opção selecionada decidindo: PROFESSOR OU TREINEIRO
+function OptionSelected() {
+	let value = document.getElementById('selector').value;
+	if (value == 'Professor') {
+		
+		$('#type_user').hide('fast');
+		$('#cadastro').animate({
+			height: 'show',
+			opacity: '1'
+		});
+		$('#treineiro').hide('height');
+		$('#professor').show('slow');
+	}else{
+		$('#type_user').hide('fast');
+		$('#cadastro').animate({
+			height: 'show',
+			opacity: '1'
+		},200);
+		$('#professor').hide('height');
+		$('#treineiro').show('slow');
+	}
+}
+
 
 //fecha alerts
 function fechar(button, classe) {
