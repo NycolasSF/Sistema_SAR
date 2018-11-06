@@ -37,10 +37,16 @@
           <h1>SAR - PAINEL CONTROLES </h1>
         </div>
         <div class="config">
-          <img src="img/config.svg" class="btn-config" alt="configurações"></img>
-          <a href="/sair">
-            <img src="img/exit.svg" class="btn-sair" alt="sair"></img>
-          </a>
+          <img src="img/icons/config.svg" class="btn-config" alt="configurações"></img>
+          <%  if(user.nome_grupo){  %>
+            <a href="/sair">
+              <img src="img/icons/exit.svg" class="btn-sair" alt="sair"></img>
+            </a>
+          <% } else { %>
+            <a href="/sair_grupo">
+              <img src="img/icons/exit.svg" class="btn-sair" alt="sair"></img>
+            </a>
+          <% } %>
         </div>
       </div>
     </header>
@@ -48,15 +54,24 @@
     <nav>
       <ul class="list-nav">
         <a id="btn-manual" class="elements-nav manual">
-          <img src="img/manual.svg" alt="Manual SAR">
+          <img src="img/icons/manual.svg" alt="Manual SAR">
           <span class="legend l-manual">Manual</span>
         </a>
-        <a id="btn-add_estudante"  class="elements-nav add-estudantes">
-          <img src="img/add-estudante.svg" alt="Cadastrar Estudante">
-          <span class="legend l-add-estudantes">Cadastrar Estudante</span>
-        </a>
+
+        <%  if(user[0].tipo_aluno == 'Líder') {  %>
+          <a id="btn-add_estudante"  class="elements-nav add-estudantes">
+            <img src="img/icons/add-estudante.svg" alt="Cadastrar Estudante">
+            <span class="legend l-add-estudantes">Cadastrar Estudante</span>
+          </a>
+        <% } else if(user[0].nome_professor) { %>
+          <a id="btn-add_ver_estudantes"  class="elements-nav ver-estudantes">
+            <img src="img/icons/ver_estudantes.svg" alt="Ver Estudantes">
+            <span class="legend l-add-estudantes">Cadastrar Estudante</span>
+          </a>
+        <% } %>
+
         <a id="btn-salas_terminal" class="elements-nav salas-terminal">
-          <img src="img/code.svg" alt="Terminal e Salas">
+          <img src="img/icons/code.svg" alt="Terminal e Salas">
           <span class="legend l-salas-terminal">Salas e Terminal</span>
         </a>
       </ul>
@@ -113,7 +128,7 @@
         <div class="content C-salas">
           <div id="salas-title" class="info-inicial-salas">
             <h1>Salas</h1>
-            <img id="btn-add_classrom" src="img/add-classrom.svg" alt="adicionar Sala">
+            <img id="btn-add_classrom" src="img/icons/add-classrom.svg" alt="adicionar Sala">
           </div>
           <div id="cadastrar_sala" class="container-forms salas-form invisivel">
             <form action="/cadastrar_sala" method="post">
@@ -164,26 +179,45 @@
       <!-- CONTAINER-3 - ADD ESTUDANTE -->
       <div id="CadastrarEstudante" class="container-modal invisivel">
         <div class="container-forms">
-          <form class="container-cadastrar" action="/cadastrar/aluno" method="post">
+          <form class="container-cadastrar" action="/lider/cadastro/aluno" method="post">
             <div class="titles-section">
               <h1>Cadastrar Estudante</h1>
             </div>
             <div class="inputs-container">
               <div class="input-container">
-                  <input type="text" name="nome_aluno" placeholder="Digite o nome do Estudante"  >
-                  <label for="nome_aluno">Nome da Estudante</label>
+                <label for="nome_aluno">Nome da Estudante</label>
+                <input type="text" name="nome_aluno" placeholder="Digite o nome do Estudante"  >
               </div>
               <div class="input-container">
-                  <input type="text" class="cpf" name="cpf_aluno" placeholder="Digite o CPF do aluno">
-                  <label for="cpf_aluno">CPF</label>
+                <label for="email_aluno">Email</label>
+                <input type="email" name="email_aluno" placeholder="Digite o email do aluno"  >
               </div>
               <div class="input-container">
-                  <input type="email" name="email_aluno" placeholder="Digite o email do aluno"  >
-                  <label for="email_aluno">Email</label>
+                <label for="email_aluno">Email</label>
+                <input type="password" name="senha_aluno" placeholder="Digite uma senha para o aluno"  >
               </div>
               <div class="input-container">
-                  <input type="date" name="anoNascimento_aluno" placeholder="Digite a data de nascimento do aluno"  >
-                  <label for="anoNascimento_aluno">Data nascimento</label>
+                <div id="type_user" class="select-tipo-usuario">
+                  <div class="titles-section">
+                    <h2>Categoria de Estudante</h2>
+                  </div>
+                  <!-- References: https://codepen.io/THEORLAN2/pen/Kaewmw -->
+                  <div class="select_mate" data-mate-select="active" >
+                    <select id="selector" name="" onchange="" onclick="return false;" id="">
+                      <option value="" selected disabled>Selecione uma para o Categoria</option>
+                      <option value="Montador">Montador</option>
+                      <option value="Programador">Programador</option>
+                      <option value="Procurador">Procurador</option>
+                    </select>
+                    <p class="selecionado_opcion"  onclick="open_select(this)" ></p><span onclick="open_select(this)" class="icon_select_mate" ><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+                        <path d="M0-.75h24v24H0z" fill="none"/>
+                    </svg></span>
+                    <div class="cont_list_select_mate">
+                      <ul class="cont_select_int">  </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
               <button class="submit-enviar" type="submit" name="cadastrar_aluno">Cadastrar</button>
             </div>
@@ -241,5 +275,6 @@
     <script type="text/javascript" src="js/dashboard_acoes-menu.js"></script>
     <script type="text/javascript" src="js/dashboard_icons_menu.js"></script>
     <script type="text/javascript" src="js/codeeditor.js"></script>
+    <script type="text/javascript" src="js/selectOption.js"></script>
   </body>
 </html>

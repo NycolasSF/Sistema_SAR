@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="/">
+    <title>
+      SAR - Página Acesso - GRUPO
+    </title>
+    <meta charset="utf-8">
+    <meta name="description" content="Sistema SAR">
+    <meta name="keywords" content="HTML,CSS,JQUERY,JavaScript,EXPRESS">
+    <meta name="author" content="Nycolas Silva Fróes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/pg_acesso.css" type="text/css" rel="stylesheet">
+    <link href="css/forms.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kanit|Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style >
+        body{
+          background: url('img/fundo_index07.jpg');
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: 0 80%;
+        }
+        .container-forms{
+          transform: translateX(-20%);
+          padding: 1rem;
+          margin: auto;
+        }
+        .alert{
+          margin-left: -1rem;
+        }
+        @media screen and (max-width: 940px){
+          body{
+            background-position: center;
+          }
+          .container-forms{
+            padding: 0;
+            transform: translateX(0)
+          }
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container-forms">
+      <div id="btn-home">
+        <a  href="/">
+          <i class="material-icons">home</i>
+        </a>
+      </div>
+      <div class="container-login">
+        <form id="login"  action="/pagina_acesso_grupo/login" method="post" style="height: 80%">
+          <div class="titles-section">
+            <legend>LOGIN ALUNOS</legend>
+          </div>
+          <div class="input-container">
+            <input type="text"  name="email_aluno" placeholder="Digite seu email"  />
+            <label for="email_aluno">Email do Aluno</label>
+          </div>
+          <div class="input-container">
+            <input type="password"  name="senha_aluno" placeholder="Digite sua senha"  />
+            <label for="senha_aluno">Senha do Aluno</label>
+          </div>
+          <div class="container-buttons">
+            <input type="submit" value="Entrar" class="submit-enviar" >
+          </div>
+        </form>
+      </div>
+      <%if(validacao) {%>
+        <% for(var i = 0; i <  validacao.length; i++) {%>
+          <div id="modal<%=[i]%>" class="alert" style="background:<%= validacao[i].color_background %>;">
+            <span id="alert-close<%=[i]%>" onclick="fechar(this.id, 'modal<%=[i]%>')">X</span>
+            <h1><%= validacao[i].titulo %></h1>
+            <p ><%= validacao[i].msg %></p>
+          </div>
+          <%}%>
+      <%}%>
+    </div>
+    <script type="text/javascript" src="js/pg_acesso.js"></script>
+</body>
+</html>

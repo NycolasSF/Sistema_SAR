@@ -14,7 +14,7 @@ var sess;
 module.exports.acesso_negado = function(app, req, res){
   sess = req.session;
 
-  if(sess.email && sess.senha){
+  if(sess.email && sess.senha || sess.nome && sess.senha ){
     res.redirect('/dashboard');
   }else{
     res.redirect('/pagina_acesso');
@@ -38,7 +38,7 @@ module.exports.logar = function (app, req, res) {
       });
     return;
   }
-  // Professor
+  // Professor ou Treineiro
   sess.email = req.body.email_logar;
   sess.senha = req.body.senha_logar;
   res.redirect("/dashboard");
@@ -78,8 +78,6 @@ module.exports.cadastrar_professor = function (app, req, res) {
         });
     });
   }
-
-
 }
 // dashboard
 module.exports.dashboard = function (app, req, res) {
@@ -90,17 +88,24 @@ module.exports.dashboard = function (app, req, res) {
   let pesquisa = new app.app.model.model_consultasSQL(connection);
 
 
-  pesquisa.login(sess.email, sess.senha, function (error, logado) {
+  pesquisa.login_professor(sess.email, sess.senha, function (error, logado) {
     if (logado.length == 0) {
-      res.render('pagina_acesso/pagina_acesso',{
-        validacao: [{
-          titulo: 'Usuário não encontrado!',
-          msg: 'Por favor, tente novamente.'
-        }]
-      });
-      return;
+      pesquisa.login_treineiro(sess.email, sess.senha, function (error, logado2){
+        if (logado2.length == 0) {
+          res.render('pagina_acesso/pagina_acesso',{
+            validacao: [{
+              titulo: 'Usuário não encontrado!',
+              msg: 'Por favor, tente novamente.'
+            }]
+          });
+          return;
+        }else{
+          res.render('dashboard/dashboard', {user: logado2});
+        }
+      })
+    }else{
+      res.render('dashboard/dashboard', {user: logado})
     }
-    res.render('dashboard/dashboard', {user: logado})
   });
 }
 module.exports.sair = function (app, req, res) {

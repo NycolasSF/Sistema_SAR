@@ -5,4 +5,10 @@ module.exports = function (app) {
   app.post('/pagina_acesso/login', function (req, res) {
     app.app.controller.dashboard.logar(app, req, res);
   });
+  app.get('/pagina_acesso_grupo', function(req, res) {
+    app.app.controller.grupos.pagina_acesso_grupo(app, req, res);
+  });
+  app.post('/pagina_acesso_grupo/login', function(req, res) {
+    app.app.controller.grupos.pagina_acesso_grupo(app, req, res);
+  });
 }
