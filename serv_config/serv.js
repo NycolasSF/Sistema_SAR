@@ -6,8 +6,7 @@ var session = require('express-session');
 
 var app = express();
 
-
-
+// PUBLIC
 app.set('view engine','ejs');
 app.set('views','./app/views');
 
@@ -17,7 +16,11 @@ app.use(session({
   saveUninitialized: true,
    resave: true,
   saveUninitialized: true,
-   cookie: { _expires:new Date() ,originalMaxAge: 1000000}
+   cookie: {
+      secure: true,
+     _expires:new Date() ,
+     originalMaxAge: 1000000
+   }
 }));
 
 

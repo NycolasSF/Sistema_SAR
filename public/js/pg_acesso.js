@@ -4,6 +4,7 @@ $('#btn-cadastrar').click(function() {
 		height: 'hide',
 		opacity: '0'
 	}, 200);
+	$('.alert').hide('fast');//fecha os alerts abertos
 	$('#type_user').animate({//abre cadastro
 		display: 'flex',
 		height: 'show',
@@ -46,7 +47,7 @@ $('#btn-voltar-type').click(function() {
 function OptionSelected() {
 	let value = document.getElementById('selector').value;
 	if (value == 'Professor') {
-		
+
 		$('#type_user').hide('fast');
 		$('#cadastro').animate({
 			height: 'show',

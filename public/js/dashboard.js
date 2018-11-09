@@ -1,4 +1,5 @@
 
+
 function sair(logico) {
 	if (logico == true) {
 		window.location.href='/sessao_finalizada';

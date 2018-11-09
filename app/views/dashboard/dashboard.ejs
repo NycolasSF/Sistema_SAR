@@ -28,7 +28,6 @@
 
   </head>
   <body>
-    <% console.log(user) %>
 <!-- header -->
     <header>
       <div class="container-header">
@@ -66,167 +65,275 @@
         <% } else if(user[0].nome_professor) { %>
           <a id="btn-add_ver_estudantes"  class="elements-nav ver-estudantes">
             <img src="img/icons/ver_estudantes.svg" alt="Ver Estudantes">
-            <span class="legend l-add-estudantes">Cadastrar Estudante</span>
+            <span class="legend l-ver-estudantes">Ver Estudantes</span>
+          </a>
+          <a id="btn-add_classrom"  class="elements-nav add_classrom">
+            <img  src="img/icons/add-classrom.svg" alt="adicionar Sala">
+            <span class="legend l-add-salas">Adicionar Salas</span>
+          </a>
+        <% }else { %>
+          <a id="btn-salas_terminal" class="elements-nav treineiro-terminal">
+            <img src="img/icons/code.svg" alt="Terminal e Salas">
+            <span class="legend l-terminal">Terminal</span>
           </a>
         <% } %>
 
         <a id="btn-salas_terminal" class="elements-nav salas-terminal">
           <img src="img/icons/code.svg" alt="Terminal e Salas">
-          <span class="legend l-salas-terminal">Salas e Terminal</span>
+          <span class="legend l-salas-terminal">Grupos e Terminal</span>
         </a>
       </ul>
       <!-- DE salasTerminal -->
+      <div class="icon-contatos mobile">
+        <img src="img/icons/contatos.svg" alt="">
+      </div>
       <div class="container-contatos">
         <h1>CONECTADOS</h1>
-        <div class="contatos">
-          <span class="status"></span>
-          <img src="img/nycolas.jpg" alt="ft-perfil">
-          <p>NOME </p>
+        <!-- <div class="input-container search">
+          <input type="search" placeholder="Pesquisar">
+        </div> -->
+        <% if(othesInfos) { %>
+          <% for(let i = 4; i < othesInfos.length; i--) { %>
+              <div class="contatos">
+                <span class="status <%= othesInfos[i].status_aluno %>"></span>
+                <img src="<%= othesInfos[i].ft_perfil %>" alt="ft-perfil">
+                <p><%= othesInfos[i].nome_aluno %></p>
+              </div>
+            <% } for(let i = 4; i < othesInfos.length; i++) { %>
+              <div class="contatos contatos_hide">
+                <span class="status <%= othesInfos[i].status_aluno %>"></span>
+                <img src="<%= othesInfos[i].ft_perfil %>" alt="ft-perfil">
+                <p><%= othesInfos[i].nome_aluno %></p>
+              </div>
+            <% } %>
+        <% }else{ %>
+          <div class="others-infos">
+            <p>Não tem alunos online</p>
+          </div>
+          <% } %>
+
+        <div class="btn-verAll">
+          <button type="button" onclick="verAll()">VER +</button>
         </div>
-        <div class="contatos">
-          <span class="status"></span>
-          <img src="img/nycolas.jpg" alt="ft-perfil">
-          <p>NOME </p>
-        </div>
+        <script type="text/javascript">
+            $('.contatos_hide').hide();
+            function verAll(){
+              $('.contatos_hide').show();
+            }
+        </script>
       </div>
     </nav>
 <!-- </nav> <main>  -->
     <main>
+      <!-- section-1 - MANUAL -->
       <div id="manual1" class="risco"></div>
-      <!-- CONTAINER-1 - MANUAL -->
-      <div id="manual" class="container-1">
-        <div class="introducao">
-          <h1>Manual</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-          <ul>
-            <li><a href="#" download="manual-SAR">Apostila</a></li>
-          </ul>
-        </div>
-        <div class="exemplo">
-          <h1>Exemplo de execução</h1>
-          <div class="vincular">
-             <h2>1 - Vincule seu aparelho com robô</h2>
-             <pre>
-               <code class="">
-                    var ip = 192.168.25.204;
-               </code>
-             </pre>
-           </div>
-           <div class="executar">
-             <h2>2 - Execute seus códigos</h2>
+      <section id="manual" class="container-1">
+          <div class="introducao">
+            <h1>Manual</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+            <ul>
+              <li class="download_apostila"><a href="#" download="manual-SAR">Apostila</a></li>
+            </ul>
+          </div>
+          <div class="exemplo">
+            <h1>Exemplo de execução</h1>
+            <div class="vincular">
+              <h2>1 - Vincule seu aparelho com robô</h2>
               <pre>
-                <code class="jsvascript">
-                    var robo = new Robo();
-                    robo.move(x);
+                <code class="">
+                  const connection = 192.168.25.204;
                 </code>
               </pre>
             </div>
-         </div>
-      </div>
-      <!-- CONTAINER-2 - SALA E TERMINAL -->
-      <div id="salasTerminal" class="container-2 invisivel">
-        <div class="content C-salas">
-          <div id="salas-title" class="info-inicial-salas">
-            <h1>Salas</h1>
-            <img id="btn-add_classrom" src="img/icons/add-classrom.svg" alt="adicionar Sala">
-          </div>
-          <div id="cadastrar_sala" class="container-forms salas-form invisivel">
-            <form action="/cadastrar_sala" method="post">
-              <div class="titles-section" >
-                <legend>Cadastrar SALA</legend>
-              </div>
-              <div class="input-container">
-                <input type="text" name="nome_sala" maxlength="8" placeholder="Digite o Nome da sala, com até 8 caracteres">
-                <label for="nome_sala">Nome da Sala</label>
-              </div>
-              <button type="submit" class="submit-enviar" name="cadastrar_sala">Cadastrar</button>
-            </form>
-          </div>
-          <div id="salas" class="container-salas">
-            <div class="salas" onclick="criarCode()">
-              <div class="content-salas-1">
-                <h2>NOME</h2>
-                <p>TURMA</p>
-              </div>
-              <p class="content-salas-2">QTS ALUNOS</p>
-            </div>
+            <div class="executar">
+              <h2>2 - Execute seus códigos</h2>
+              <pre>
+                <code class="jsvascript">
+                  const connection = 192.168.0.0;
 
-            <div class="salas">
-              <div class="content-salas-1">
-                <h2>NOME</h2>
-                <p>TURMA</p>
-              </div>
-              <p class="content-salas-2">QTS ALUNOS</p>
+                  var robo = new Robo(connection);
+                  robo.move(x);
+                </code>
+              </pre>
             </div>
-
-            <div class="salas">
-              <div class="content-salas-1">
-                <h2>NOME</h2>
-                <p>TURMA</p>
-              </div>
-              <p class="content-salas-2">QTS ALUNOS</p>
-            </div>
-        </div>
-        <div id="terminal-CodeEditor" class="content C-terminal invisivel">
-          <!--CODE EDITOR - REFERENCES CODEMIRROR-->
-          <div id="container-code" class="Code-editor">
-            <h1>Execute seus Códigos:</h1>
-            <div id="codeeditor"></div>
           </div>
-        </div>
-      </div>
-    </div>
-      <!-- CONTAINER-3 - ADD ESTUDANTE -->
-      <div id="CadastrarEstudante" class="container-modal invisivel">
-        <div class="container-forms">
-          <form class="container-cadastrar" action="/lider/cadastro/aluno" method="post">
-            <div class="titles-section">
-              <h1>Cadastrar Estudante</h1>
+      </section>
+      <!-- section-2 - SALA E TERMINAL -->
+      <section id="salasTerminal" class="container-2 invisivel">
+        <% if(!user.nome_treineiro) {  %>
+          <div class="content C-salas">
+            <div id="salas-title" class="info-inicial-salas">
+              <h1>Salas</h1>
             </div>
-            <div class="inputs-container">
-              <div class="input-container">
-                <label for="nome_aluno">Nome da Estudante</label>
-                <input type="text" name="nome_aluno" placeholder="Digite o nome do Estudante"  >
-              </div>
-              <div class="input-container">
-                <label for="email_aluno">Email</label>
-                <input type="email" name="email_aluno" placeholder="Digite o email do aluno"  >
-              </div>
-              <div class="input-container">
-                <label for="email_aluno">Email</label>
-                <input type="password" name="senha_aluno" placeholder="Digite uma senha para o aluno"  >
-              </div>
-              <div class="input-container">
-                <div id="type_user" class="select-tipo-usuario">
-                  <div class="titles-section">
-                    <h2>Categoria de Estudante</h2>
+            <div id="salas" class="container-salas">
+            <% if(othesInfos) { %>
+              <% for(let i = 0; i < othesInfos.length; i++ ) { %>
+                <div class="salas" onclick="criarCode()">
+                  <div class="content-salas-1">
+                    <h2><%= othesInfos[i].nome_grupo %></h2>
                   </div>
-                  <!-- References: https://codepen.io/THEORLAN2/pen/Kaewmw -->
-                  <div class="select_mate" data-mate-select="active" >
-                    <select id="selector" name="" onchange="" onclick="return false;" id="">
-                      <option value="" selected disabled>Selecione uma para o Categoria</option>
-                      <option value="Montador">Montador</option>
-                      <option value="Programador">Programador</option>
-                      <option value="Procurador">Procurador</option>
-                    </select>
-                    <p class="selecionado_opcion"  onclick="open_select(this)" ></p><span onclick="open_select(this)" class="icon_select_mate" ><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
-                        <path d="M0-.75h24v24H0z" fill="none"/>
-                    </svg></span>
-                    <div class="cont_list_select_mate">
-                      <ul class="cont_select_int">  </ul>
-                    </div>
+                  <p class="content-salas-2">QTD: <%= othesInfos[i].qtd_alunos %></p>
+                </div>
+              <% } %>
+            <% }else {  %>
+              <div class="others-infos">
+                <p><strong>Caro(a) <%= othesInfos[i].nome_professor %></strong>, cadastre suas salas.</p>
+              </div>
+            <% } %>
+            </div>
+        <% } %>
+          <div id="terminal-CodeEditor" class="content C-terminal invisivel">
+              <!--CODE EDITOR - REFERENCES CODEMIRROR-->
+              <div id="container-code" class="Code-editor">
+                <h1>Execute seus Códigos:</h1>
+                <div id="codeeditor"></div>
+              </div>
+            </div>
+          </div>
+      </section>
+      <% if(user[0].id_professor) {%>
+      <!-- section - VER ESTUDANTES -->
+      <section id="ver_estudantes" class="invisivel">
+        <div class="container-ver_estudantes ">
+          <div class="search">
+            <input id="search" type="search" class="search-box" placeholder="Pesquisar estudante" onkeyup="filter(this)"  />
+            <span class="search-button">
+              <span class="search-icon"></span>
+            </span>
+            <span class="qtd_alunos"></span>
+          </div>
+          <ul id="contact" class="contact">
+
+            <% if(othesInfos) { %>
+              <% for( let i = 0; i < othesInfos.length; i++ ) { %>
+              <li id="<%= othesInfos[i].id_aluno %>-nome" onclick="showInfos(this)">
+                <div class="contact-view" >
+                  <div class="img-contact" style="background-image: url('<%= othesInfos[i].ft_perfil %>')"></div>
+                  <div class="contact-discription">
+                    <div id="nome_contato" class="name"><a><%= othesInfos[i].nome_aluno %></a></div>
+                    <div class="others-infos"><%= othesInfos[i].nome_professor %></div>
                   </div>
                 </div>
-              </div>
-              <button class="submit-enviar" type="submit" name="cadastrar_aluno">Cadastrar</button>
-            </div>
-          </form>
+                  <div id="extras-infos<%= othesInfos[i].id_aluno %>" class="extras-infos invisivel">
+                      <div class="others-infos others-infos-extras">
+                        <p><strong>Sala:</strong> <%= othesInfos[i].nome_sala %> </p>
+                        <p><strong>Grupo:</strong> <%= othesInfos[i].nome_grupo %> </p>
+                        <p><strong>Email:</strong>  <%= othesInfos[i].email_aluno %> </p>
+                        <p><strong>Status:</strong>  <%= othesInfos[i].status_aluno %> </p>
+                      </div>
+                  </div>
+              </li>
+              <% } %>
+             <% } else { %>
+               <div class="others-infos">
+                 <p><strong>Caro(a) <%= othesInfos[i].nome_professor %></strong>, cadastre seus alunos.</p>
+               </div>
+              <% } %>
+          </ul>
         </div>
-      </div>
-      <!-- infors Editaveis -->
+      </section>
+      <% } %>
+      <% if(user[0].tipo_aluno == 'Líder') { %>
+      <!-- section - ADD ESTUDANTE -->
+        <section id="CadastrarEstudante" class="container-modal">
+            <div class="container-forms">
+              <form class="container-cadastrar" action="/lider/cadastro/aluno" method="post">
+                <div class="titles-section">
+                  <h1>Cadastrar Estudante</h1>
+                </div>
+                <div class="inputs-container">
+                  <div class="input-container">
+                    <label for="nome_aluno">Nome da Estudante</label>
+                    <input type="text" name="nome_aluno" placeholder="Digite o nome do Estudante"  >
+                  </div>
+                  <div class="input-container">
+                    <label for="email_aluno">Email</label>
+                    <input type="email" name="email_aluno" placeholder="Digite o email do aluno"  >
+                  </div>
+                  <div class="input-container">
+                    <label for="email_aluno">Email</label>
+                    <input type="password" name="senha_aluno" placeholder="Digite uma senha para o aluno"  >
+                  </div>
+                  <div class="input-container">
+                    <div id="type_user" class="select-tipo-usuario">
+                      <div class="titles-section">
+                        <h2>Categoria de Estudante</h2>
+                      </div>
+                      <!-- References: https://codepen.io/THEORLAN2/pen/Kaewmw -->
+                      <div class="select_mate" data-mate-select="active" >
+                        <select id="selector" name="" onchange="" onclick="return false;" id="">
+                          <option value="" selected disabled>Selecione uma para o Categoria</option>
+                          <option value="Montador">Montador</option>
+                          <option value="Programador">Programador</option>
+                          <option value="Procurador">Procurador</option>
+                        </select>
+                        <p class="selecionado_opcion"  onclick="open_select(this)" ></p><span onclick="open_select(this)" class="icon_select_mate" ><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+                          <path d="M0-.75h24v24H0z" fill="none"/>
+                        </svg></span>
+                        <div class="cont_list_select_mate">
+                          <ul class="cont_select_int">  </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="submit-enviar" type="submit" name="cadastrar_aluno">Cadastrar</button>
+                </div>
+              </form>
+             </div>
+          </section>
+          <% }else if(user[0].id_professor) { %>
+            <!-- CADASTRAR SALAS E GRUPOS LÍDES -->
+            <section id="cadastrar_sala" class="invisivel ">
+              <form class="container-forms salas-form"  action="/professor/cadastro/grupo" method="post">
+                <div class="titles-section" >
+                  <legend>Cadastrar Sala</legend>
+                </div>
+                <div class="input-container">
+                  <label for="nome_grupo">Nome da Sala</label>
+                  <input type="text" name="nome_grupo" maxlength="8" placeholder="Digite o Nome da sala, com até 8 caracteres">
+                </div>
+                <div class="input-container">
+                  <div class="select_mate c-salas" data-mate-select="active" >
+                    <select id="selector" name="select_sala" onchange="" onclick="return false;" id="" required>
+                      <option value="" selected disabled>Selecione a sala para o Grupo</option>
+                      <% if(othesInfos) { %>
+                        <% for(let i = 0; i < othesInfos.length; i++) { %>
+                          <option value="<%= othesInfos[i].nome_sala%>"><%= othesInfos[i].nome_sala%></option>
+                          <% } %>
+                          <% } else { %>
+                            <option value="sem registros" disabled>sem registros</option>
+                            <% } %>
+                          </select>
+                          <p class="selecionado_opcion"  onclick="open_select(this)" ></p><span onclick="open_select(this)" class="icon_select_mate" ><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+                            <path d="M0-.75h24v24H0z" fill="none"/>
+                          </svg></span>
+                          <div class="cont_list_select_mate">
+                            <ul class="cont_select_int">  </ul>
+                          </div>
+                        </div>
+                </div>
+                <div class="titles-section">
+                  <h1>Informações do Aluno Líder</h1>
+                </div>
+                <div class="flex-row">
+                  <div class="input-container">
+                    <label for="nome_aluno">Nome do Estudante</label>
+                    <input type="text" name="nome_aluno" placeholder="Digite o nome do estudante">
+                  </div>
+                  <div class="input-container">
+                    <label for="email_aluno">Email do Estudante</label>
+                    <input type="email" name="email_aluno" placeholder="Digite o email do estudante">
+                  </div>
+                </div>
+                <button type="submit" class="submit-enviar" name="cadastrar_grupo">Cadastrar</button>
+              </form>
+            </section>
+        <% } %>
+      <!-- section - infors Editaveis -->
       <section id="config" class="invisivel">
-        <h1 class="title-config">Configurações</h1>
+        <h1 class="title-config">Configurações Pessoais</h1>
         <div class="flex-config">
           <div class="editar-usuario">
             <div class="ft-perfil">
@@ -253,11 +360,6 @@
                 <input type="email" name="email" placeholder="Digite seu email, para alterar">
               </div>
               <div class="input-container">
-                <label for="cpf">CPF</label>
-                <input type="text" name="cpf" placeholder="Digite o Nome da sala, com até 8 caracteres">
-              </div>
-
-              <div class="input-container">
                 <label for="Senha">Senha</label>
                 <input type="password" name="senha" maxlength="8" placeholder="Digite o Nome da sala, com até 8 caracteres">
               </div>
@@ -266,11 +368,23 @@
           </div>
         </div>
       </section>
+
     </main>
+    <%if(validacao) {%>
+        <% for(var i = 0; i <  validacao.length; i++) {%>
+          <div id="modal<%=[i]%>" class="alert" style="background:<%= validacao[i].color_background %>;">
+            <span id="alert-close<%=[i]%>" onclick="fechar(this.id, 'modal<%=[i]%>')">X</span>
+           <h1><%= validacao[i].titulo %></h1>
+           <p ><%= validacao[i].msg %></p>
+         </div>
+         <%}%>
+    <%}%>
     <footer>
-    &copy NycolasSF
+      &copy NycolasSF
+      Nycolas Silva Fróes
     </footer>
     <!-- SCRIPTS -->
+    <script type="text/javascript" src="js/functions.js"></script>
     <script type="text/javascript" src="js/mask.js"></script>
     <script type="text/javascript" src="js/dashboard_acoes-menu.js"></script>
     <script type="text/javascript" src="js/dashboard_icons_menu.js"></script>
