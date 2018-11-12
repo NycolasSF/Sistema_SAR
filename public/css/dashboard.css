@@ -233,8 +233,12 @@ main {
 }
 #codeeditor{
   width: 95%;
+  max-width: 100%;
 }
 /* CadastrarEstudante */
+.container-forms button{
+  cursor: pointer;
+}
 .inputs-container{
   display: flex;
   flex-direction: column;
@@ -254,6 +258,47 @@ main {
 }
 .select-tipo-usuario{
   margin: 2rem;
+}
+/* CADASTRAR cadastrar_sala_grupos */
+#cadastrar_sala_grupos form input{
+  width: 95%!important;
+}
+.select-style{
+  width: 50%!important;
+}
+#nome_sala{
+  border: none;
+}
+.container-buttons{
+  width: 100%
+}
+.button-cadastrar_grupo{
+  cursor: pointer;
+}
+.select_sala{
+  margin: 2rem 0;
+}
+.cusSelBlock{
+  margin: auto;
+  width: 80%!important;
+
+}
+@keyframes inputVazio {
+    0%{
+      border: solid var(--vermelho);
+      transform: translateX(0);
+    }
+    25%{
+      transform: translateX(20px);
+    }
+    50%{
+      border: solid var(--vermelho);
+      transform: translateX(-20px);
+    }
+    100%{
+      border: solid var(--vermelho);
+      transform: translateX(0);
+    }
 }
 /* VER ESTUDANTES */
 .container-ver_estudantes {
@@ -430,6 +475,7 @@ main {
 }
 /* CADASTRAR SALAS */
 .flex-row{
+  width: 100%;
   display: flex;
 }
 .flex-row .input-container{
@@ -498,7 +544,34 @@ footer{
   -moz-box-shadow: 12px 10px 20px -10px rgba(0,0,0,0.15);
   box-shadow: 8px 5px 20px -5px rgba(0,0,0,0.5);
 }
-.alert h1, p{
+.modal{
+  z-index: 999999;
+}
+.alert_sair{
+  transform: translateY(-50%);
+  width: 100%;
+  height: 30%;
+  border-radius: none;
+}
+.alert_sair h1{
+  color: #000!important;
+}
+.content-buttons{
+  margin: auto;
+  width: 100%;
+}
+.content-buttons a{
+  color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+}
+.btn-sair_alert{
+  background: var(--vermelho)
+}
+.btn-nao_alert{
+  background: var(--btn-azul2)
+}
+.alert h1, .alert p{
   margin-left: 10%;
   padding: 1rem;
 }
@@ -514,7 +587,7 @@ footer{
   cursor: pointer;
   position: absolute;
   right: 5%;
-  top: 15%;
+  top: 10%;
   color: #fff;
 }
 @media screen and (min-width: 960px){
@@ -575,7 +648,10 @@ footer{
     align-items: center;
   }
   .elements-nav{
-    padding-bottom:  2rem;
+    padding-bottom:  .5rem;
+  }
+  #btn-add_classrom{
+    padding-bottom:1rem;
   }
   .elements-nav img{
     width: 50%;
@@ -625,5 +701,9 @@ footer{
   footer{
     grid-row: 4/3;
     grid-column: 1/3;
+  }
+  .content-buttons{
+    margin: auto;
+    width: 80%;
   }
 }

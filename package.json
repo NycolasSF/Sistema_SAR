@@ -18,7 +18,10 @@
   "homepage": "https://github.com/NycolasSF/Sistema_SAR#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "browser-cookies": "^1.2.0",
+    "connect": "^3.6.6",
     "consign": "^0.1.6",
+    "cookie-parser": "^1.4.3",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
@@ -27,6 +30,6 @@
     "mysql": "^2.16.0",
     "nodemailer": "^4.6.8",
     "nodemailer-express-handlebars": "^3.0.0",
-    "nodemailer-sendgrid-transport": "^0.2.0"
+    "vhost": "^3.0.2"
   }
 }

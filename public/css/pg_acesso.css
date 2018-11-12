@@ -73,7 +73,9 @@ body{
   text-align: center;
   transform: translateX(-5%);
 }
-
+.select-tipo-usuario{
+  margin-bottom: 1rem ;
+}
 /* ALERT FINAL */
 .alert{
   position: relative;

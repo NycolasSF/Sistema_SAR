@@ -34,7 +34,14 @@ INSERT INTO Professores VALUES(0, 'Jónison Almeida dos Santos', 'senhajonison',
 INSERT INTO Professores VALUES(0, 'Nycolas Silva fróes', 'senhanycolas', 'nycolassilvafroes@gmail.com', 'img/ft_sar.png', 'of');
 
 /*CRIANDO SALAS*/
-CREATE TABLE Salas (id_sala INTEGER AUTO_INCREMENT PRIMARY KEY, nome_sala VARCHAR(60), qtd_alunos INT, dataCriacao_sala TEXT, Professor_id_professor INTEGER, Grupos_id_grupo INTEGER, FOREIGN KEY(Professor_id_professor) REFERENCES Professores(id_professor), FOREIGN KEY(Grupos_id_grupo) REFERENCES Grupos(id_grupo));
+CREATE TABLE Salas (id_sala INTEGER AUTO_INCREMENT PRIMARY KEY, nome_sala VARCHAR(60), qtd_alunos INT, dataCriacao_sala TEXT, Professor_id_professor INTEGER, FOREIGN KEY(Professor_id_professor) REFERENCES Professores(id_professor) );
 /*INSERINDO SALAS*/
-INSERT INTO Salas VALUES(0, 'Técnico em Informática para Internet - 3º Semestre', 0, 'now()', 1, 2);
-INSERT INTO Salas VALUES(0, 'Técnico em Informática para Internet - 6º Semestre', 0, 'now()', 2, 1);
+INSERT INTO Salas VALUES(0, 'INFO 3ºA', 0, 'now()', 1);
+INSERT INTO Salas VALUES(0, 'INFO 4ºA', 0, 'now()', 2);
+
+
+/*CRIANDO REGISTROS SALA*/
+CREATE TABLE Registros_sala(id_registro_sala INTEGER AUTO_INCREMENT PRIMARY KEY, Salas_id_sala INTEGER,  Grupos_id_grupo INTEGER, FOREIGN KEY(Salas_id_sala) REFERENCES Salas (id_sala), FOREIGN KEY(Grupos_id_grupo) REFERENCES Grupos(id_grupo));
+/*INSERINDO REGISTROS SALA*/
+INSERT INTO registros_sala VALUES(0, 1, 1);
+INSERT INTO registros_sala VALUES(0, 2, 2);

@@ -10,14 +10,17 @@
 
     <title>SAR - PAINEL CONTROLES</title>
 
-    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="css/dashboard.css" type="text/css" rel="stylesheet">
     <link href="css/forms.css" type="text/css" rel="stylesheet">
+    <link href="css/select.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kanit|Source+z+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="packs/Highlight/styles/monokai.css">
     <link rel="stylesheet" href="packs/CodeEditor/lib/codemirror.css">
     <link rel="stylesheet" href="packs/CodeEditor/theme/monokai.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="packs/Highlight/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -37,12 +40,12 @@
         </div>
         <div class="config">
           <img src="img/icons/config.svg" class="btn-config" alt="configurações"></img>
-          <%  if(user.nome_grupo){  %>
-            <a href="/sair">
+          <%  if(user.nome_aluno){  %>
+            <a href="/sair_grupo">
               <img src="img/icons/exit.svg" class="btn-sair" alt="sair"></img>
             </a>
           <% } else { %>
-            <a href="/sair_grupo">
+            <a href="#modalSair" rel="modal:open">
               <img src="img/icons/exit.svg" class="btn-sair" alt="sair"></img>
             </a>
           <% } %>
@@ -69,7 +72,7 @@
           </a>
           <a id="btn-add_classrom"  class="elements-nav add_classrom">
             <img  src="img/icons/add-classrom.svg" alt="adicionar Sala">
-            <span class="legend l-add-salas">Adicionar Salas</span>
+            <span class="legend l-add-salas">Cadastrar Salas e Grupos</span>
           </a>
         <% }else { %>
           <a id="btn-salas_terminal" class="elements-nav treineiro-terminal">
@@ -92,18 +95,18 @@
         <!-- <div class="input-container search">
           <input type="search" placeholder="Pesquisar">
         </div> -->
-        <% if(othesInfos) { %>
-          <% for(let i = 4; i < othesInfos.length; i--) { %>
+        <% if(othersInfos) { %>
+          <% for(let i = 4; i < othersInfos.length; i--) { %>
               <div class="contatos">
-                <span class="status <%= othesInfos[i].status_aluno %>"></span>
-                <img src="<%= othesInfos[i].ft_perfil %>" alt="ft-perfil">
-                <p><%= othesInfos[i].nome_aluno %></p>
+                <span class="status <%= othersInfos[i].status_aluno %>"></span>
+                <img src="<%= othersInfos[i].ft_perfil %>" alt="ft-perfil">
+                <p><%= othersInfos[i].nome_aluno %></p>
               </div>
-            <% } for(let i = 4; i < othesInfos.length; i++) { %>
+            <% } for(let i = 4; i < othersInfos.length; i++) { %>
               <div class="contatos contatos_hide">
-                <span class="status <%= othesInfos[i].status_aluno %>"></span>
-                <img src="<%= othesInfos[i].ft_perfil %>" alt="ft-perfil">
-                <p><%= othesInfos[i].nome_aluno %></p>
+                <span class="status <%= othersInfos[i].status_aluno %>"></span>
+                <img src="<%= othersInfos[i].ft_perfil %>" alt="ft-perfil">
+                <p><%= othersInfos[i].nome_aluno %></p>
               </div>
             <% } %>
         <% }else{ %>
@@ -166,18 +169,19 @@
               <h1>Salas</h1>
             </div>
             <div id="salas" class="container-salas">
-            <% if(othesInfos) { %>
-              <% for(let i = 0; i < othesInfos.length; i++ ) { %>
+            <% if(othersInfos) { %>
+              <% for(let i = 0; i < othersInfos.length; i++ ) { %>
                 <div class="salas" onclick="criarCode()">
                   <div class="content-salas-1">
-                    <h2><%= othesInfos[i].nome_grupo %></h2>
+                    <h2><%= othersInfos[i].nome_grupo %></h2>
+                    <p><%= othersInfos[i].nome_sala %></p>
                   </div>
-                  <p class="content-salas-2">QTD: <%= othesInfos[i].qtd_alunos %></p>
+                  <p class="content-salas-2">QTD: <%= othersInfos[i].qtd_alunos %></p>
                 </div>
               <% } %>
             <% }else {  %>
               <div class="others-infos">
-                <p><strong>Caro(a) <%= othesInfos[i].nome_professor %></strong>, cadastre suas salas.</p>
+                <p><strong>Caro(a) <%= othersInfos[i].nome_professor %></strong>, cadastre suas salas.</p>
               </div>
             <% } %>
             </div>
@@ -204,29 +208,29 @@
           </div>
           <ul id="contact" class="contact">
 
-            <% if(othesInfos) { %>
-              <% for( let i = 0; i < othesInfos.length; i++ ) { %>
-              <li id="<%= othesInfos[i].id_aluno %>-nome" onclick="showInfos(this)">
+            <% if(othersInfos) { %>
+              <% for( let i = 0; i < othersInfos.length; i++ ) { %>
+              <li id="<%= othersInfos[i].id_aluno %>-nome" onclick="showInfos(this)">
                 <div class="contact-view" >
-                  <div class="img-contact" style="background-image: url('<%= othesInfos[i].ft_perfil %>')"></div>
+                  <div class="img-contact" style="background-image: url('<%= othersInfos[i].ft_perfil %>')"></div>
                   <div class="contact-discription">
-                    <div id="nome_contato" class="name"><a><%= othesInfos[i].nome_aluno %></a></div>
-                    <div class="others-infos"><%= othesInfos[i].nome_professor %></div>
+                    <div id="nome_contato" class="name"><a><%= othersInfos[i].nome_aluno %></a></div>
+                    <div class="others-infos"><%= othersInfos[i].nome_professor %></div>
                   </div>
                 </div>
-                  <div id="extras-infos<%= othesInfos[i].id_aluno %>" class="extras-infos invisivel">
+                  <div id="extras-infos<%= othersInfos[i].id_aluno %>" class="extras-infos invisivel">
                       <div class="others-infos others-infos-extras">
-                        <p><strong>Sala:</strong> <%= othesInfos[i].nome_sala %> </p>
-                        <p><strong>Grupo:</strong> <%= othesInfos[i].nome_grupo %> </p>
-                        <p><strong>Email:</strong>  <%= othesInfos[i].email_aluno %> </p>
-                        <p><strong>Status:</strong>  <%= othesInfos[i].status_aluno %> </p>
+                        <p><strong>Sala:</strong> <%= othersInfos[i].nome_sala %> </p>
+                        <p><strong>Grupo:</strong> <%= othersInfos[i].nome_grupo %> </p>
+                        <p><strong>Email:</strong>  <%= othersInfos[i].email_aluno %> </p>
+                        <p><strong>Status:</strong>  <%= othersInfos[i].status_aluno %> </p>
                       </div>
                   </div>
               </li>
               <% } %>
              <% } else { %>
                <div class="others-infos">
-                 <p><strong>Caro(a) <%= othesInfos[i].nome_professor %></strong>, cadastre seus alunos.</p>
+                 <p><strong>Caro(a) <%= othersInfos[i].nome_professor %></strong>, cadastre seus alunos.</p>
                </div>
               <% } %>
           </ul>
@@ -259,21 +263,13 @@
                       <div class="titles-section">
                         <h2>Categoria de Estudante</h2>
                       </div>
-                      <!-- References: https://codepen.io/THEORLAN2/pen/Kaewmw -->
-                      <div class="select_mate" data-mate-select="active" >
-                        <select id="selector" name="" onchange="" onclick="return false;" id="">
+                      <div class="input-container" >
+                        <select id="cusSelectbox">
                           <option value="" selected disabled>Selecione uma para o Categoria</option>
                           <option value="Montador">Montador</option>
                           <option value="Programador">Programador</option>
-                          <option value="Procurador">Procurador</option>
+                          <option value="Procurador">Mecânico</option>
                         </select>
-                        <p class="selecionado_opcion"  onclick="open_select(this)" ></p><span onclick="open_select(this)" class="icon_select_mate" ><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
-                          <path d="M0-.75h24v24H0z" fill="none"/>
-                        </svg></span>
-                        <div class="cont_list_select_mate">
-                          <ul class="cont_select_int">  </ul>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -284,36 +280,52 @@
           </section>
           <% }else if(user[0].id_professor) { %>
             <!-- CADASTRAR SALAS E GRUPOS LÍDES -->
-            <section id="cadastrar_sala" class="invisivel ">
-              <form class="container-forms salas-form"  action="/professor/cadastro/grupo" method="post">
+            <section id="cadastrar_sala_grupos" class="invisivel">
+              <form id="form_Csala" class="container-forms salas-form">
                 <div class="titles-section" >
                   <legend>Cadastrar Sala</legend>
                 </div>
                 <div class="input-container">
-                  <label for="nome_grupo">Nome da Sala</label>
-                  <input type="text" name="nome_grupo" maxlength="8" placeholder="Digite o Nome da sala, com até 8 caracteres">
+                  <label for="nome_sala">Nome da Sala</label>
+                  <input id="nome_sala" type="text" maxlength="8" placeholder="Digite o Nome da sala, com até 8 caracteres" >
                 </div>
-                <div class="input-container">
-                  <div class="select_mate c-salas" data-mate-select="active" >
-                    <select id="selector" name="select_sala" onchange="" onclick="return false;" id="" required>
-                      <option value="" selected disabled>Selecione a sala para o Grupo</option>
-                      <% if(othesInfos) { %>
-                        <% for(let i = 0; i < othesInfos.length; i++) { %>
-                          <option value="<%= othesInfos[i].nome_sala%>"><%= othesInfos[i].nome_sala%></option>
-                          <% } %>
-                          <% } else { %>
-                            <option value="sem registros" disabled>sem registros</option>
-                            <% } %>
-                          </select>
-                          <p class="selecionado_opcion"  onclick="open_select(this)" ></p><span onclick="open_select(this)" class="icon_select_mate" ><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
-                            <path d="M0-.75h24v24H0z" fill="none"/>
-                          </svg></span>
-                          <div class="cont_list_select_mate">
-                            <ul class="cont_select_int">  </ul>
-                          </div>
-                        </div>
+                <div class="container-buttons">
+                  <button id="btn-cadastrar_sala" type="button" class="submit-enviar">Cadastrar Sala</button>
+                  <div id="btn-cadastrar_grupo" class="button-cadastrar_grupo">
+                    <p>Cadastrar apenas grupo? <strong>Clique Aqui!</strong></p>
+                  </div>
                 </div>
+              </form>
+              <script type="text/javascript">
+                $('#btn-cadastrar_sala').click(function(){
+                    var nome_sala = document.getElementById('nome_sala').value;
+
+                    if (nome_sala != ' ') {
+                      abrirCadastro()
+                      let select = document.querySelector('#cusSelectbox');
+                      let classSelect= document.querySelector('.options');
+                      select.innerHTML += '<option value="'+nome_sala+'">'+nome_sala+'</option>';
+                      classSelect.innerHTML += '<li rel="'+nome_sala+'" >'+nome_sala+'</li>';
+                      select.display = 'none';
+                      newSelect()
+                    }else{
+                      $('#nome_sala').css('animation', 'inputVazio linear 2s')
+                      $('#modalAlert').show('slow');
+                      $('#modalAlert').css('background', 'var(--vermelho)');
+                      document.getElementById('title_alert').innerHTML = 'Error ao cadastrar sala!'
+                      document.getElementById('msg_alert').innerHTML = 'Professor, Preencha o campo Nome de Sala!'
+                    }
+                });
+              </script>
+              <div id="forms_Cgrupos" class="invisivel">
+                <form class="container-forms grupos-form" action="/professor/cadastro/grupo" method="post">
+                  <div class="titles-section">
+                    <h1>Informações do Grupo</h1>
+                    <i id="btn-voltar_Csalas" class="material-icons">navigate_before</i>
+                  </div><div class="input-container">
+                    <label for="nome_grupo">Nome do Grupo</label>
+                    <input type="text" name="nome_grupo" maxlength="8" placeholder="Digite o nome do grupo, com até 8 caracteres">
+                  </div>
                 <div class="titles-section">
                   <h1>Informações do Aluno Líder</h1>
                 </div>
@@ -327,9 +339,22 @@
                     <input type="email" name="email_aluno" placeholder="Digite o email do estudante">
                   </div>
                 </div>
+                <div class="input-container select_sala">
+                  <select id="cusSelectbox" class="select-style" name="select_sala" required>
+                    <option selected disabled>Selecione a sala</option>
+                    <% if(othersInfos) { %>
+                      <% for(let i = 0; i < othersInfos.length; i++) { %>
+                        <option value="<%= othersInfos[i].nome_sala%>"><%= othersInfos[i].nome_sala%></option>
+                        <% } %>
+                  <% } else { %>
+                    <option value="sem registros" disabled>sem registros</option>
+                  <% } %>
+                  </select>
+                </div>
                 <button type="submit" class="submit-enviar" name="cadastrar_grupo">Cadastrar</button>
               </form>
-            </section>
+            </div>
+          </section>
         <% } %>
       <!-- section - infors Editaveis -->
       <section id="config" class="invisivel">
@@ -370,6 +395,19 @@
       </section>
 
     </main>
+    <!-- ALERTS -->
+    <div id="modalSair" class="alert alert_sair modal " >
+      <h1>Ei! Já vai sair?</h1>
+      <div class="content-buttons">
+        <a class="btn-sair_alert" href="/sair">VOU SAIR!</a>
+        <a class="btn-nao_alert" href="#" rel="modal:close">VOU FICA MAIS</a>
+      </div>
+   </div>
+    <div id="modalAlert" class="alert invisivel" >
+      <span id="alert-close" onclick="fechar(this.id, 'modalAlert')">X</span>
+     <h1 id="title_alert"></h1>
+     <p id="msg_alert"></p>
+   </div>
     <%if(validacao) {%>
         <% for(var i = 0; i <  validacao.length; i++) {%>
           <div id="modal<%=[i]%>" class="alert" style="background:<%= validacao[i].color_background %>;">
@@ -384,6 +422,7 @@
       Nycolas Silva Fróes
     </footer>
     <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
     <script type="text/javascript" src="js/mask.js"></script>
     <script type="text/javascript" src="js/dashboard_acoes-menu.js"></script>

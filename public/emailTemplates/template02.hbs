@@ -1,0 +1,331 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title>SAR- Seu Amigo Robô</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link href="https://fonts.googleapis.com/css?family=Kanit|Source+z+Pro" rel="stylesheet">
+  <!--  General CSS  -->
+  <style type="text/css">
+    .main_container{
+      max-width: 740px;
+      height: 100%;
+      margin: 10px auto 0px auto;
+    }
+    .in_container{
+      background: #fafafa;
+      border-radius: 2px;
+      box-shadow: 0 0 6px #c9d1de;
+      -webkit-box-shadow: 0 0 6px #c9d1de;
+      -moz-box-shadow: 0 0 6px #c9d1de;
+      -o-box-shadow: 0 0 6px #c9d1de;
+    }
+    .back_link{
+      display: block;
+      text-decoration: none;
+      margin-top: 80px;
+      text-align: center;
+      color: #3E3E3E;
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+    .back_link .back_arrow_icon{
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+    html{
+        width: 100%;
+    }
+    body{
+      width: 100%;
+      margin:0;
+      padding:0;
+
+      mso-margin-top-alt:0px;
+      mso-margin-bottom-alt:0px;
+      mso-padding-alt: 0px 0px 0px 0px;
+      background: #eef1f2;
+
+    p,h1,h2,h3,h4{
+      margin-top:0;
+      margin-bottom:0;
+      padding-top:0;
+      padding-bottom:0;
+    }
+    table{
+      font-size: 14px;
+      border: 0;
+    }
+    img{
+      border: none!important;
+    }
+  </style>
+  <!--  Responsive CSS  -->
+  <style type="text/css">
+    @media only screen and (max-width: 600px) {
+      body[yahoo] .full_width_600 {width:90% !important;}
+    }
+    @media only screen and (max-width: 700px) {
+      body[yahoo] .full_width_700 {width:100% !important;}
+      body[yahoo] .txt_center {text-align:center !important;}
+      body[yahoo] .separator {height: 40px !important;}
+    }
+  </style>
+
+  </head>
+  <body style="margin: 0; padding: 0;" yahoo="fix">
+
+    <div class="main_container">
+      <!--  Header  -->
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
+        <tr>
+          <td align="center">
+            <table class="full_width_700" width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;">
+              <tr><td height="10" width="100%" style="height:10px;"></td></tr>
+              <tr>
+                <td>
+                  <!--  Header Logo  -->
+                  <table class="full_width_700 txt_center" width="65%" align="left" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;">
+                    <tr>
+                      <td>
+                        <a href="{{linkButton}}">
+                          <img src="https://marketing-image-production.s3.amazonaws.com/uploads/1e3235de52756ae9b18efb8e5902a4a7dd7e7bf1d37f55e4d54d348d4f896cd49f33cebe74abd394cc8520dbd11c1fb8ed19e439de74f7f36f56299e950da159.png" alt="Logo sar" title="Logo SAR" border="0" style="width: 20%;"/>
+                        </a>
+                    </td>
+                    </tr>
+                  </table>
+                  <!--  End Header Logo  -->
+                  <!--  Date  -->
+                  <table class="full_width_700" width="34%" align="right" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;">
+                    <tr><td height="10" width="100%" style="height:20px;"></td></tr>
+                    <tr>
+                      <td class="txt_center" style="text-align:right;">
+                        <table class="full_width_700 txt_center" align="right" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;">
+                          <td id="time" style="color: #8b8e94; font-family: 'Source Sans Pro', sans-serif;; font-size: 14px; font-weight: 400; letter-spacing:0.5px; text-transform:capitalize;">
+                            {{time}}
+                          </td>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <!--  End Date  -->
+                </td>
+              </tr>
+              <tr><td height="10" width="100%" style="height:10px;"></td></tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!--  End Header  -->
+      <!-- In Container -->
+      <table class="in_container" border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
+        <tr>
+          <td>
+            <!--  Hero  -->
+            <table border="0" cellpadding="0" cellspacing="0"  width="100%" align="center" background="http://ryanhallmedia.com/thirdspace/img/email/topback.jpg" bgcolor="3d424e" style="background-image:url('img/topback.jpg'); background-size: cover; -webkit-background-size: cover; -moz-background-size: cover -o-background-size: cover; background-position: bottom center; background-repeat: no-repeat; background-color:#3d424e;border-radius:2px 2px 0px 0px;">
+              <tr><td height="65" width="100%" style="height:65px;"></td></tr>
+              <tr>
+                <td>
+                  <!--  Caption  -->
+                  <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;">
+                    <tr>
+                      <td style="text-align:center; color: #ffffff; font-family: 'Source Sans Pro', sans-serif;; font-size: 30px; font-weight: 600;">Bem-vindo estudante!</td>
+                    </tr>
+                  </table>
+                  <!--  End Caption  -->
+                </td>
+              </tr>
+              <tr><td height="15" width="100%" style="height:15px;"></td></tr>
+              <tr>
+                <td>
+                  <!--  Sub Caption  -->
+                  <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0; text-align:center; color: #efefef; font-family: 'Source Sans Pro', sans-serif;; font-size: 12px; letter-spacing:4px; font-weight: 400;">
+                    <tr>
+                      <td>&#169;SAR</td>
+                    </tr>
+                  </table>
+                  <!--  End Sub Caption  -->
+                </td>
+              </tr>
+              <tr><td height="40" width="100%" style="height:40px;"></td></tr>
+              <tr>
+                <td align="center">
+                  <!--  Download Button  -->
+                  <table width="200" cellpadding="0" cellspacing="0" align="center" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; background: #37cf87; border-radius:2px;" class="center">
+                    <tr>
+                      <td width="100%" height="15"></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <table width="100%" cellpadding="0" cellspacing="0" align="center" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; text-align:center;">
+                          <tr>
+                            <td align="center" style="text-align:center;">
+                              <a href="{{linkButton}}" style="display: block; width: 100%; color: #fff; font-family: 'Source Sans Pro', sans-serif;; font-size: 18px; font-weight: 400; text-decoration:none; letter-spacing:1px;">Logar</a>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td width="100%" height="15"></td>
+                    </tr>
+                  </table>
+                  <!--  End Download Button  -->
+                </td>
+              </tr>
+              <tr><td height="105" width="100%" style="height:105px;"></td></tr>
+            </table>
+            <!--  End Hero  -->
+            <!-- About  -->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" bgcolor="ffffff" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; background-color:#ffffff;">
+              <tr><td height="65px" width="100%" style="height:65px;"></td></tr>
+              <tr>
+                <td align="center">
+                  <table class="full_width_600" width="600" border="0" cellpadding="0" cellspacing="0" align="center" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;text-align:center;">
+                    <tr>
+                      <td>
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;">
+                          <tr>
+                            <td align="right" width="46%" style="width:46%; text-align:right; color: #37cf87; font-family: 'Source Sans Pro', sans-serif;; font-size: 25px; font-weight: 600; line-height:30px;">Olá,</td>
+                            <td align="left" width="54%" style="width:54%; text-align:left; color: #676f84; font-family: 'Source Sans Pro', sans-serif;; font-size: 25px; font-weight: 600; line-height:30px;">&nbsp; Sou NycolasSF</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr><td height="15px" width="100%" style="height:15px;"></td></tr>
+                    <tr>
+                      <td>
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0" style="max-width: 400px; margin:0 auto;border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;">
+                          <tr>
+                            <td style="text-align:center; color: #b4c0c5; font-family: 'Source Sans Pro', sans-serif;; font-size: 1rem; font-weight: 600; line-height: 20px;border-bottom: solid;padding-bottom: 50px ">
+                              Se você recebeu este email então significa que seu professor te cadastrou. <br>Se atentes as dicas abaixo!
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0" style="max-width: 400px; margin:0 auto;border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;">
+                          <tr>
+                            <td style="text-align:center;color: #676f84; font-family: 'Source Sans Pro', sans-serif;; font-size: 1.2rem; font-weight: 600; line-height: 20px; padding-top: 3%">
+                              DICAS IMPORTANTES PARA REALIZAR O LOGIN
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0" style="max-width: 400px; margin:0 auto;border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;">
+                          <tr>
+                            <td style="text-align:center;color: #b4c0c5; font-family: 'Source Sans Pro', sans-serif;; font-size: 1.2rem; font-weight: 600; line-height: 20px;">
+                              <ul style="padding-top: 5%;color: #b4c0c5">
+                                <li>Seu email é: este email!</li>
+                                <li>Sua senha é: senhaSEUNOME</li>
+                                <p style="font-size: 16px">SEUNOME é seu nome completo</p>
+                                <p style="font-size: 16px">NÃO ESQUECE {{nomeAluno}}</p>
+                              </ul>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr><td height="65px" width="100%" style="height:65px;"></td></tr>
+            </table>
+            <!-- End About  -->
+
+
+            <!-- Bottom -->
+            <table border="0" cellpadding="0" cellspacing="0"  width="100%" align="center" background="http://ryanhallmedia.com/thirdspace/img/email/lastback.jpg" bgcolor="3d424e" style="background-image:url('img/lasback.jpg'); background-size: cover; -webkit-background-size: cover; -moz-background-size: cover -o-background-size: cover; background-position: bottom center; background-repeat: no-repeat; background-color:#3d424e;border-radius:0px 0px 2px 2px;">
+              <tr>
+                <td>
+                  <!--  Caption  -->
+                  <table border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td>
+                        <table width="100%" border="0" cellpadding="20" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;">
+                          <tr>
+                            <td>
+                              <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;">
+                                <tr>
+                                  <td align="left" style=" text-align:left; color: #cbd8de; font-family: 'Source Sans Pro', sans-serif;; font-size: 18px; font-weight: 700;line-height:24px;letter-spacing:0.5px;"> NycolasSF,</td>
+                                </tr>
+                                <tr>
+                                  <td align="left" style=" text-align:left; color: #cbd8de; font-family: 'Source Sans Pro', sans-serif;; font-size: 18px; font-weight: 400;line-height:24px;letter-spacing:0.5px;"> Time SAR</td>
+                                </tr>
+                              </table>
+                            </td>
+                          </tr>
+
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <!--  End Caption  -->
+                </td>
+              </tr>
+            </table>
+            <!-- Bottom -->
+          </td>
+        </tr>
+      </table>
+      <!-- End In Container -->
+      <!--  Footer  -->
+      <table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;">
+        <tr>
+          <td align="center">
+            <table class="full_width_700" border="0" cellpadding="0" cellspacing="0" align="center"style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;">
+              <tr><td height="30" width="100%" style="height:30px;"></td></tr>
+              <tr>
+                <td>
+                  <!--  Social Icons  -->
+                  <table class="full_width_700 txt_center" width="235" align="center" border="0" cellpadding="0" cellspacing="0" style="width:235px;border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;">
+                    <tr>
+                      <td align="center">
+                        <a href="https://twitter.com/Nycolas_SF">
+                          <img src="http://ryanhallmedia.com/thirdspace/img/email/social-twitter.png" alt="Twitter" title="Twitter" border="0" style="color: #595959; font-family: Helvetica, Arial, sans-serif; font-size: 22px;"/>
+                        </a>
+                      </td>
+                      <td height="1" width="25px">
+                      </td>
+
+                    </tr>
+                  </table>
+                  <!--  End Social Icons  -->
+                  <!--  Info  -->
+                  <table class="full_width_700" width="100%" align="right" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;">
+                    <tr><td height="30" width="100%" style="height:30px;"></td></tr>
+                    <tr>
+                      <td class="txt_center" style="text-align:center;">
+                        <table class="full_width_700 txt_center" align="right" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt; border:0;">
+                          <tr>
+                            <td style="color: #c9d1de; font-family: 'Source Sans Pro', sans-serif;; font-size: 14px; font-weight: 400; letter-spacing:0.5px; text-transform:capitalize; text-align:center;">
+                              &#169; Copyright 2018 <a href="http://www.ryanhallmedia.com/thirdspace" style="color: #c9d1de; font-family: 'Source Sans Pro', sans-serif;; font-size: 14px; font-weight: 600; letter-spacing:0.5px;"> &copySAR &copyNSF</a>
+                            </td>
+                          </tr>
+                          <tr><td height="10" width="100%" style="height:10px;"></td></tr>
+                          <tr>
+                            <td style="color: #c9d1de; font-family: 'Source Sans Pro', sans-serif;; font-size: 14px; font-weight: 600; letter-spacing:0.5px; text-align:center;">
+                              Modified: - <a href="https://www.facebook.com/name.Nycolas" target="_blank" style="color: #c9d1de; font-family: 'Source Sans Pro', sans-serif;; font-size: 14px; font-weight: 600; letter-spacing:0.5px;"> Nycolas Silva Fróes</a>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <!--  End Info  -->
+                </td>
+              </tr>
+              <tr><td height="30" width="100%" style="height:30px;"></td></tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!--  End Footer  -->
+    </div>
+
+  </body>
+</html>

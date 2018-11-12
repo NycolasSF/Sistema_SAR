@@ -3,22 +3,25 @@ var consign = require('consign');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var session = require('express-session');
+var cookieParser = require('cookie-parser')
+var vhost = require('vhost')
 
 var app = express();
+app.use(cookieParser());
 
 // PUBLIC
 app.set('view engine','ejs');
 app.set('views','./app/views');
 
-
+var expiryDate = new Date( Date.now() + 60 * 60 * 1500 );
 app.use(session({
   secret: 'sshhhhh',
   saveUninitialized: true,
-   resave: true,
+  resave: true,
   saveUninitialized: true,
    cookie: {
       secure: true,
-     _expires:new Date() ,
+     _expires: expiryDate ,
      originalMaxAge: 1000000
    }
 }));

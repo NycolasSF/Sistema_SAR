@@ -5,8 +5,9 @@ class consultar{
   constructor(connection){
     this.connection = connection;
   }
+
+  //Informações do BD:
   /*
-  REGRA:
       p --> professores
       a --> alunos
       t --> treineiros
@@ -15,15 +16,16 @@ class consultar{
       get --> SELECT
       upd --> UPDATE
       func --> funcoes js
-  */
+    */
+
   // LOGIN --> SELECTs
-  login_professor(email, senha, callback){
+  p_login(email, senha, callback){
     this.connection.query("SELECT * FROM Professores WHERE email_professor = '"+email+"' and senha_professor = '"+senha+"' ",callback);
   }
-  login_treineiro(email, senha, callback){
+  t_login(email, senha, callback){
     this.connection.query("SELECT * FROM Treineiros WHERE email_treineiro = '"+email+"' and senha_treineiro = '"+senha+"' ",callback);
   }
-  login_aluno(emailAluno, senhaAluno, callback){
+  a_login(emailAluno, senhaAluno, callback){
     this.connection.query("SELECT * FROM Grupos INNER JOIN Alunos WHERE Alunos_id_aluno = id_aluno and  email_aluno = '"+emailAluno+"' and senha_aluno = '"+senhaAluno+"' ", callback)
   }
   login_acessado(id_usuario, callback){
@@ -32,7 +34,7 @@ class consultar{
 
   // p --> SELECTs
   p_getAlunos(id, callback){
-    this.connection.query("SELECT nome_sala, nome_grupo, id_aluno, nome_aluno, email_aluno, ft_perfil, status_aluno, nome_professor, COUNT(id_aluno) AS qtd_alunos FROM professores INNER JOIN salas INNER JOIN grupos INNER JOIN resgistros INNER JOIN alunos where Professor_id_professor = id_professor and salas.Grupos_id_grupo = id_grupo and resgistros.Grupos_id_grupo = id_grupo and Alunos_id_aluno = id_aluno and id_professor = "+id+"", callback);
+    this.connection.query("SELECT nome_sala, nome_grupo, id_aluno, nome_aluno, email_aluno, ft_perfil, status_aluno, nome_professor, COUNT(id_aluno) AS qtd_alunos FROM professores INNER JOIN salas INNER JOIN registros_sala INNER JOIN grupos INNER JOIN resgistros INNER JOIN alunos where Professor_id_professor = id_professor and registros_sala.Salas_id_sala = id_sala and registros_sala.Grupos_id_grupo = id_grupo and resgistros.Grupos_id_grupo = id_grupo and Alunos_id_aluno = id_aluno and id_professor ="+id+"", callback);
   }
   p_getUltimoGrupo(callback){
     this.connection.query("SELECT id_grupo FROM grupos ORDER BY id_grupo DESC LIMIT 1", callback)
@@ -48,20 +50,20 @@ class consultar{
     this.connection.query("INSERT INTO Grupos VALUES(0, '"+nomeSala+"', 'img/ft_sar.png')", callback);
   }
   p_inRegistros(idGrupo, idAluno, callback){
-    console.log(idGrupo);
-    console.log(idAluno);
     this.connection.query("INSERT INTO Resgistros VALUES(0, "+idGrupo+", "+idAluno+")", callback);
   }
-  p_inSalas(nomeSala, idProfessor, callback){
-    this.connection.query("INSERT INTO Salas VALUES(0, '"+nomeSala+"', 0, 'now()', "+idProfessor+", "+idGrupo+")", callback);
+  p_inSalas(nomeSala, idProfessor, idGrupo, callback){
+    this.connection.query("INSERT INTO Salas VALUES(0, '"+nomeSala+"', 0, 'now()', "+idProfessor+")", callback);
+  }
+  p_inRegistrosSala(idSala, idGrupo, callback){
+    this.connection.query("INSERT INTO registros_sala VALUES(0, "+idSala+", "+idGrupo+")", callback);
   }
   // p --> funcoes
   p_funcSenmail(infoEmail, callback){
     let options = {
       viewEngine: {
         extname: '.hbs',
-        layoutsDir: 'public/emailTemplates/',
-        defaultLayout : 'template01'
+        layoutsDir: 'public/emailTemplates/'
       },
       viewPath: 'public/emailTemplates/',
       extName: '.hbs'

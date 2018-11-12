@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/pg_acesso.css" type="text/css" rel="stylesheet">
     <link href="css/forms.css" type="text/css" rel="stylesheet">
+    <link href="css/select.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kanit|Source+Sans+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -61,20 +62,12 @@
           <legend>Tipo de usuário</legend>
           <i id="btn-voltar" class="material-icons">navigate_before</i>
         </div>
-        <!-- References: https://codepen.io/THEORLAN2/pen/Kaewmw -->
-        <div class="select_mate" data-mate-select="active" >
-          <select id="selector" name="" onchange="OptionSelected()" onclick="return false;" id="">
+        <div class="input-container select-container">
+          <select id="cusSelectbox" >
             <option value="" selected disabled>Selecione um Usuário </option>
-            <option value="Professor">Professor</option>
+            <option value="Professor" >Professor</option>
             <option value="Treineiro" >Usuário Treineiro</option>
           </select>
-          <p class="selecionado_opcion"  onclick="open_select(this)" ></p><span onclick="open_select(this)" class="icon_select_mate" ><svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
-              <path d="M0-.75h24v24H0z" fill="none"/>
-          </svg></span>
-          <div class="cont_list_select_mate">
-            <ul class="cont_select_int">  </ul>
-          </div>
         </div>
       </div>
       <div id="cadastro" class="container-cadastrar forms containers">
@@ -130,6 +123,6 @@
       <%}%>
     </div>
     <script type="text/javascript" src="js/pg_acesso.js"></script>
-    <script type="text/javascript" src="js/selectOption.js"></script>
+    <script type="text/javascript" src="js/selectOption_pg_acesso.js"></script>
 </body>
 </html>

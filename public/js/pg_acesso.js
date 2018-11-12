@@ -44,11 +44,13 @@ $('#btn-voltar-type').click(function() {
 
 
 // Função para saber sobre a opção selecionada decidindo: PROFESSOR OU TREINEIRO
-function OptionSelected() {
-	let value = document.getElementById('selector').value;
+function OptionSelected(name) {
+	let value = name;
 	if (value == 'Professor') {
-
-		$('#type_user').hide('fast');
+		$('#type_user').delay(2000).animate({
+			height: 'hide',
+			opacity: '1'
+		}, 1000);
 		$('#cadastro').animate({
 			height: 'show',
 			opacity: '1'
@@ -56,7 +58,10 @@ function OptionSelected() {
 		$('#treineiro').hide('height');
 		$('#professor').show('slow');
 	}else{
-		$('#type_user').hide('fast');
+		$('#type_user').delay(2000).animate({
+			height: 'hide',
+			opacity: '1'
+		}, 1000);
 		$('#cadastro').animate({
 			height: 'show',
 			opacity: '1'
