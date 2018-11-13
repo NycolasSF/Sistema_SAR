@@ -62,6 +62,7 @@ function abrirCadastro() {
     // fechar
     $('#form_Csala').hide();
     // abrir
+  
     $('#forms_Cgrupos').animate({
       height: 'show'
     });

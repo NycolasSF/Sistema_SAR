@@ -93,8 +93,10 @@ body{
 .alert h1{
   color: #fff;
   margin-bottom: 1%;
+  font-family: 'Kanit', sans-serif;
 }
 .alert p{
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 1.2rem;
   color: #fee8e7;
 }
