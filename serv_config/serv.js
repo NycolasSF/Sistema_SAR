@@ -3,10 +3,12 @@ var consign = require('consign');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var session = require('express-session');
-var cookieParser = require('cookie-parser')
-var vhost = require('vhost')
+var cookieParser = require('cookie-parser');
+
 
 var app = express();
+
+// cookies
 app.use(cookieParser());
 
 // PUBLIC
@@ -32,7 +34,6 @@ app.use(expressValidator());
 
 
 app.use(express.static('public'));
-
 
 consign()
 .include('app/routes')

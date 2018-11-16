@@ -62,7 +62,7 @@ function abrirCadastro() {
     // fechar
     $('#form_Csala').hide();
     // abrir
-  
+
     $('#forms_Cgrupos').animate({
       height: 'show'
     });
@@ -112,7 +112,29 @@ $('#btn-salas_terminal').click(function () {
     height: 'show'
   }, 300);
 });
-
+$('#btn-salas_terminal-treineiro').click(function () {
+  criarCode()
+});
+// btn-testar
+$('#btn-testar').click(function () {
+  criarCode()
+});
+// btn-voltar_salas
+$('#btn-voltar_salas').click(function () {
+// fechar
+  $('#manual').hide();
+  $('#CadastrarEstudante').hide();
+  $('#config').hide();
+  $('#terminal-CodeEditor').hide();
+// abrir
+$('#salasTerminal').animate({
+  height: 'show',
+  opacity: 1
+});
+$('.content C-salas').animate({
+  height: 'show'
+}, 300);
+});
 // CONFIG
 $('.btn-config').click(function () {
 // fechar

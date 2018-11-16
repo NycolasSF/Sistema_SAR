@@ -1,4 +1,9 @@
-var expiryDateCookie = new Date( Date.now() + 60 * 60 * 1500 );
+const fs = require('fs-extra');
+
+const { base64encode, base64decode } = require('nodejs-base64');
+
+const expiryDateCookie = new Date( Date.now() + 60 * 60 * 1500 );
+
 module.exports.pagina_acesso = function (app, req, res) {
   res.render("pagina_acesso/pagina_acesso", {
      validacao: {
@@ -33,7 +38,11 @@ module.exports.logar = function (app, req, res) {
   sess.email = req.body.email_logar;
   sess.senha = req.body.senha_logar;
 
-  res.cookie('user', [sess.email, sess.senha], {expires: expiryDateCookie});
+
+  let email_encoded = base64encode(sess.email);
+  let senha_encoded = base64encode(sess.senha);
+
+  res.cookie('user', [email_encoded, senha_encoded], {expires: expiryDateCookie});
 
   res.redirect("/dashboard");
 }
@@ -46,8 +55,10 @@ module.exports.dashboard = function (app, req, res) {
     sess.email = undefined;
     sess.senha = undefined;
   }else{
-    sess.email = req.cookies.user[0];
-    sess.senha = req.cookies.user[1];
+    let email_decoded = base64decode(req.cookies.user[0]);
+    let senha_decoded = base64decode(req.cookies.user[1]);
+    sess.email = email_decoded;
+    sess.senha = senha_decoded;
   }
 
   let connection = app.serv_config.conexao_banco();
@@ -65,7 +76,11 @@ module.exports.dashboard = function (app, req, res) {
           });
           return;
         }else{ // É TREINEIRO
-          res.render('dashboard/dashboard', {user: logado2});
+          res.render('dashboard/dashboard', {
+            validacao: {},
+            user: logado2,
+            othersInfos: {}
+        });
         }
       })
     }else{ // É PROFESSOR
@@ -79,8 +94,8 @@ module.exports.dashboard = function (app, req, res) {
     }//fim-else
   });
 }
-// CADASTRAR Grupo
 
+// CADASTRAR Grupo
 module.exports.cadastrar_grupo_aluno = function (app, req, res) {
     sess = req.session;
     let user = req.body;
@@ -90,8 +105,10 @@ module.exports.cadastrar_grupo_aluno = function (app, req, res) {
       sess.email = undefined;
       sess.senha = undefined;
     }else{
-      sess.email = req.cookies.user[0];
-      sess.senha = req.cookies.user[1];
+      let email_decoded = base64decode(req.cookies.user[0]);
+      let senha_decoded = base64decode(req.cookies.user[1]);
+      sess.email = email_decoded;
+      sess.senha = senha_decoded;
     }
 
     req.assert('select_sala', 'Precisamos saber o nome do aluno!').notEmpty();
@@ -123,7 +140,6 @@ module.exports.cadastrar_grupo_aluno = function (app, req, res) {
     }else{
       pesquisa.p_login(sess.email, sess.senha, function (error, idProfessor) {
         pesquisa.p_getAlunos(idProfessor[0].id_professor, function(error2, p_getAlunos){
-          console.log(p_getAlunos);
           pesquisa.p_inAluno(user.nome_aluno, user.email_aluno, function (err1, inAlunosLider) {
             pesquisa.p_inGrupos(user.nome_grupo, function (err2, inGrupos) {
               pesquisa.p_getUltimoGrupo(function (err3, idGrupo) {
@@ -164,7 +180,7 @@ module.exports.cadastrar_grupo_aluno = function (app, req, res) {
                               time: new Date().toDateString()
                             }
                           }
-                          pesquisa.p_funcSenmail(infoEmail, function (errEmail) {
+                          pesquisa.funcSenmail(infoEmail, function (errEmail) {
                             if (errEmail) {
                               console.log(errEmail);
                             }
@@ -181,6 +197,54 @@ module.exports.cadastrar_grupo_aluno = function (app, req, res) {
       });
     }
 }
+module.exports.editFoto = function (app, req, res) {
+  sess = req.session;
+  let img = req.file.filename;
+
+   // VERIFICA SE TEM O cookie user
+   if (req.cookies.user == undefined) {
+     sess.email = undefined;
+     sess.senha = undefined;
+   }else{
+     let email_decoded = base64decode(req.cookies.user[0]);
+     let senha_decoded = base64decode(req.cookies.user[1]);
+     sess.email = email_decoded;
+     sess.senha = senha_decoded;
+   }
+
+   let connection = app.serv_config.conexao_banco();
+   let pesquisa = new app.app.model.model_consultasSQL(connection);
+
+   pesquisa.p_login(sess.email, sess.senha, function (error, idProfessor) {
+     pesquisa.p_getAlunos(idProfessor[0].id_professor, function(error2, p_getAlunos){
+       pesquisa.p_uploadFoto(img, idProfessor[0].id_professor, function (err, updloaded) {
+         if (err) {
+           console.log(err);
+           res.render('dashboard/dashboard',{
+             validacao: [{
+               titulo: 'OPS!',
+               msg: 'Não foi possivel atualizar sua foto',
+               color_background: 'var(--vermelho)'
+             }],
+             user: idProfessor,
+             othersInfos: p_getAlunos
+           });
+         }else{
+           res.render('dashboard/dashboard',{
+             validacao: [{
+               titulo: 'Foto Atualizada!',
+               msg: 'Sua foto foi atualizada com sucesso',
+               color_background: 'var(--verde)'
+             }],
+             user: idProfessor,
+             othersInfos: p_getAlunos
+           });
+         }
+       });
+     });
+   });
+}
+
 module.exports.sair = function (app, req, res) {
   res.clearCookie('user'); //apaga o cokkie user
 

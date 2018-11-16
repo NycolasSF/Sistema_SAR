@@ -252,14 +252,11 @@ main {
 .container-forms button{
   cursor: pointer;
 }
-.inputs-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+.input-container input{
+  width: 100%!important;
 }
 .container-forms{
-  width: 60%!important;
+  width: 100%!important;
   -webkit-box-shadow: 0px 9px 20px -5px rgba(0,0,0,0.33)!important;
   -moz-box-shadow: 0px 9px 20px -5px rgba(0,0,0,0.33)!important;
   box-shadow: 0px 9px 20px -5px rgba(0,0,0,0.33)!important;
@@ -279,6 +276,9 @@ main {
 .select-style{
   width: 50%!important;
 }
+.select-alunos{
+  width: 450px!important;
+}
 #nome_sala{
   border: none;
 }
@@ -293,8 +293,7 @@ main {
 }
 .cusSelBlock{
   margin: auto;
-  width: 80%!important;
-
+  width: 100%!important;
 }
 @keyframes inputVazio {
     0%{
@@ -313,6 +312,7 @@ main {
       transform: translateX(0);
     }
 }
+
 #confirm_cadastro{
   background: var(--vermelho); padding: 1.5rem; color: #fff
 }
@@ -490,6 +490,14 @@ main {
 -webkit-border-radius: 0px 0px 20px 20px;
 }
 /* CADASTRAR SALAS */
+.others-infos_salas{
+  width: 100%;
+  padding-top: 1rem;
+}
+.others-infos_salas p{
+  text-align: center;
+  font-size: 1.3rem;
+}
 .flex-row{
   width: 100%;
   display: flex;
@@ -524,23 +532,58 @@ main {
 }
 .ft-perfil img{
   margin: 10% auto;
-  width: 50%;
+  min-width: 200px;
+  max-width: 200px;
+  max-height: 200px;
+  min-height: 200px;
   border-radius: 50%;
+  transition: all ease 1s;
+}
+.ft-perfil img:hover{
+  -webkit-box-shadow: 8px 6px 18px -5px rgba(0,0,0,0.4);
+-moz-box-shadow: 8px 6px 18px -5px rgba(0,0,0,0.4);
+box-shadow: 8px 6px 25px -5px rgba(0,0,0,.9);
 }
 form input{
   width: 20vw;
 }
-.file-input{
-  background: #e1e1e1!important;
-}
 .submit-enviar{
+  cursor: pointer;
   width: 50%!important;
   border-radius: 0!important;
   margin: 1rem 0;
   padding: 1rem!important;
 }
 .btn-editar{
+  cursor: pointer;
   background: var(--verde)!important
+}
+/* dropzone */
+#dropzone {
+  cursor: pointer;
+  position: relative;
+  border: 3px dotted var(--preto);
+  color: var(--preto);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  text-align: center;
+  width: 25vw;
+  height: 10Vh;
+}
+#dropzone h1{
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#dropzone [type="file"] {
+  cursor: pointer;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 footer{
   text-align: center;
@@ -608,30 +651,6 @@ footer{
   top: 10%;
   color: #fff;
 }
-/* CONFIG */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css');
-.sortable {
-  padding: 0;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.sortable li {
-			float: left;
-			width: 120px;
-			height: 120px;
-    overflow:hidden;
-    border:1px solid red;
-			text-align: center;
-      margin:5px;
-		}
-	li.sortable-placeholder {
-			border: 1px dashed #CCC;
-			background: none;
-		}
 @media screen and (min-width: 960px){
   .mobile{
     display: none
@@ -697,6 +716,10 @@ footer{
   }
   .elements-nav img{
     width: 50%;
+  }
+  /* FORM */
+  .container-forms{
+    width: 60%!important;
   }
   /* CONTATOS */
   .qtd_alunos{

@@ -40,7 +40,7 @@
         </div>
         <div class="config">
           <img src="img/icons/config.svg" class="btn-config" alt="configurações"></img>
-          <%  if(user.nome_aluno){  %>
+          <%  if(user[0].nome_aluno){  %>
             <a href="/sair_grupo">
               <img src="img/icons/exit.svg" class="btn-sair" alt="sair"></img>
             </a>
@@ -65,6 +65,10 @@
             <img src="img/icons/add-estudante.svg" alt="Cadastrar Estudante">
             <span class="legend l-add-estudantes">Cadastrar Estudante</span>
           </a>
+          <a id="btn-salas_terminal" class="elements-nav salas-terminal">
+            <img src="img/icons/code.svg" alt="Terminal e Salas">
+            <span class="legend l-salas-terminal">Grupos e Terminal</span>
+          </a>
         <% } else if(user[0].nome_professor) { %>
           <a id="btn-add_ver_estudantes"  class="elements-nav ver-estudantes">
             <img src="img/icons/ver_estudantes.svg" alt="Ver Estudantes">
@@ -74,41 +78,39 @@
             <img  src="img/icons/add-classrom.svg" alt="adicionar Sala">
             <span class="legend l-add-salas">Cadastrar Salas e Grupos</span>
           </a>
-        <% }else { %>
-          <a id="btn-salas_terminal" class="elements-nav treineiro-terminal">
+          <a id="btn-salas_terminal" class="elements-nav salas-terminal">
             <img src="img/icons/code.svg" alt="Terminal e Salas">
-            <span class="legend l-terminal">Terminal</span>
+            <span class="legend l-salas-terminal">Grupos e Terminal</span>
+          </a>
+        <% } else { %>
+          <a id="btn-salas_terminal-treineiro" class="elements-nav salas-terminal">
+            <img src="img/icons/code.svg" alt="Terminal e Salas">
+            <span class="legend l-salas-terminal">Terminal</span>
           </a>
         <% } %>
-
-        <a id="btn-salas_terminal" class="elements-nav salas-terminal">
-          <img src="img/icons/code.svg" alt="Terminal e Salas">
-          <span class="legend l-salas-terminal">Grupos e Terminal</span>
-        </a>
       </ul>
       <!-- DE salasTerminal -->
+      <% if(!user[0].nome_treineiro) { %>
       <div class="icon-contatos mobile">
         <img src="img/icons/contatos.svg" alt="">
       </div>
       <div class="container-contatos">
         <h1>CONECTADOS</h1>
-        <!-- <div class="input-container search">
-          <input type="search" placeholder="Pesquisar">
-        </div> -->
         <% if(othersInfos) { %>
-          <% for(let i = 0; i < othersInfos.length; i++) { %>
-              <div class="contatos">
-                <% console.log(othersInfos[i]) %>
-                <span class="status <%= othersInfos[i].status_aluno %>"></span>
-                <img src="<%= othersInfos[i].ft_perfil %>" alt="ft-perfil">
-                <p><%= othersInfos[i].nome_aluno %></p>
-              </div>
-            <% } %>
-              <div class="contatos contatos_hide">
-                <span class="status on"></span>
-                <img src="img/ft_sar.png" alt="ft-perfil">
-                <p>ee</p>
-              </div>
+            <% for(let i = 0; i < othersInfos.length; i++) { %>
+              <% if(othersInfos[i].status_aluno == 'on') { %>
+                <div class="contatos">
+                  <span class="status <%= othersInfos[i].status_aluno %>"></span>
+                  <img src="<%= othersInfos[i].ft_perfil %>" alt="ft-perfil">
+                  <p><%= othersInfos[i].nome_aluno %></p>
+                </div>
+              <% }else{ %>
+                <div class="contatos contatos_hide">
+                  <span class="status <%= othersInfos[i].status_aluno %>"></span>
+                  <img src="<%= othersInfos[i].ft_perfil %>" alt="ft-perfil">
+                  <p><%= othersInfos[i].nome_aluno %></p>
+                </div>
+            <% } } %>
         <% }else{ %>
           <div class="others-infos">
             <p>Não tem alunos online</p>
@@ -116,15 +118,18 @@
           <% } %>
 
         <div class="btn-verAll">
-          <button type="button" onclick="verAll()">VER +</button>
+          <button type="button" onclick="verAll()">VER OF</button>
         </div>
         <script type="text/javascript">
             $('.contatos_hide').hide();
             function verAll(){
-              $('.contatos_hide').show();
+              $('.contatos_hide').animate({
+                height: 'show'
+              });
             }
         </script>
       </div>
+      <% } %>
     </nav>
 <!-- </nav> <main>  -->
     <main>
@@ -163,13 +168,14 @@
       </section>
       <!-- section-2 - SALA E TERMINAL -->
       <section id="salasTerminal" class="container-2 invisivel">
-        <% if(!user.nome_treineiro) {  %>
+        <% if(!user[0].nome_treineiro) {  %>
           <div class="content C-salas">
             <div id="salas-title" class="info-inicial-salas">
               <h1>Salas</h1>
+              <p id="btn-testar" style="cursor: pointer">TESTAR APENAS</p>
             </div>
             <div id="salas" class="container-salas">
-            <% if(othersInfos) { %>
+            <% if(othersInfos[0] != undefined) { %>
               <% for(let i = 0; i < othersInfos.length; i++ ) { %>
                 <div class="salas" onclick="criarCode()">
                   <div class="content-salas-1">
@@ -179,21 +185,32 @@
                   <p class="content-salas-2">QTD: <%= othersInfos[i].qtd_alunos %></p>
                 </div>
               <% } %>
-            <% }else {  %>
-              <div class="others-infos">
-                <p><strong>Caro(a) <%= othersInfos[i].nome_professor %></strong>, cadastre suas salas.</p>
+            <% } else {  %>
+              <div class="others-infos_salas">
+                <p><strong>Caro(a) <%= user[0].nome_professor %><%= user[0].nome_aluno %></strong>, não tem registros de seus grupos.</p>
               </div>
             <% } %>
             </div>
-        <% } %>
-          <div id="terminal-CodeEditor" class="content C-terminal invisivel">
-              <!--CODE EDITOR - REFERENCES CODEMIRROR-->
-              <div id="container-code" class="Code-editor">
-                <h1>Execute seus Códigos:</h1>
-                <div id="codeeditor"></div>
+          </div>
+            <div id="terminal-CodeEditor" class="content C-terminal invisivel">
+                <!--CODE EDITOR - REFERENCES CODEMIRROR-->
+                <div id="container-code" class="Code-editor">
+                  <div class="titles-section">
+                    <h1>Execute seus Códigos:</h1>
+                    <i id="btn-voltar_salas" class="material-icons">navigate_before</i>
+                  </div>
+                  <div id="codeeditor"></div>
+                </div>
               </div>
+        <% }else{  %>
+          <div id="terminal-CodeEditor" class="content C-terminal">
+            <!--CODE EDITOR - REFERENCES CODEMIRROR-->
+            <div id="container-code" class="Code-editor">
+              <h1>Execute seus Códigos:</h1>
+              <div id="codeeditor"></div>
             </div>
           </div>
+        <% } %>
       </section>
       <% if(user[0].id_professor) {%>
       <!-- section - VER ESTUDANTES -->
@@ -240,13 +257,12 @@
       <% } %>
       <% if(user[0].tipo_aluno == 'Líder') { %>
       <!-- section - ADD ESTUDANTE -->
-        <section id="CadastrarEstudante" class="container-modal">
+        <section id="CadastrarEstudante" class="container-modal invisivel">
             <div class="container-forms">
               <form class="container-cadastrar" action="/lider/cadastro/aluno" method="post">
                 <div class="titles-section">
                   <h1>Cadastrar Estudante</h1>
                 </div>
-                <div class="inputs-container">
                   <div class="input-container">
                     <label for="nome_aluno">Nome da Estudante</label>
                     <input type="text" name="nome_aluno" placeholder="Digite o nome do Estudante"  >
@@ -256,26 +272,23 @@
                     <input type="email" name="email_aluno" placeholder="Digite o email do aluno"  >
                   </div>
                   <div class="input-container">
-                    <label for="email_aluno">Email</label>
-                    <input type="password" name="senha_aluno" placeholder="Digite uma senha para o aluno"  >
-                  </div>
-                  <div class="input-container">
                     <div id="type_user" class="select-tipo-usuario">
                       <div class="titles-section">
                         <h2>Categoria de Estudante</h2>
                       </div>
-                      <div class="input-container" >
-                        <select id="cusSelectbox">
-                          <option value="" selected disabled>Selecione uma para o Categoria</option>
+                      <div class="input-container select_categoria" >
+                        <select id="cusSelectbox" class="select-alunos" name="categoria_alunos" required>
+                          <option selected disabled>Selecione uma para o Categoria</option>
                           <option value="Montador">Montador</option>
                           <option value="Programador">Programador</option>
-                          <option value="Procurador">Mecânico</option>
+                          <option value="Mecânico">Mecânico</option>
                         </select>
                       </div>
                     </div>
                   </div>
-                  <button class="submit-enviar" type="submit" name="cadastrar_aluno">Cadastrar</button>
-                </div>
+                  <div class="container-buttons">
+                    <button class="submit-enviar" type="submit" name="cadastrar_aluno">Cadastrar</button>
+                  </div>
               </form>
              </div>
           </section>
@@ -343,67 +356,20 @@
         <div class="flex-config">
           <div class="editar-usuario">
             <div class="ft-perfil preview">
-              <img src="img/nycolas.jpg"></img>
+              <img  src="<%= user[0].ft_professor %>"></img>
             </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.js"></script>
-
-             <form action="/upload" class="dropzone" drop-zone="" id="file-dropzone"></form>
-                <ul class="visualizacao sortable dropzone-previews" style="border:1px solid #000">
-
-                </ul>
-            <div class="preview" style="display:none;">
-              <li>
-                <div>
-                <div class="dz-preview dz-file-preview">
-                  <img data-dz-thumbnail />
-                <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
-                <div class="dz-success-mark"><span>✔</span></div>
-                <div class="dz-error-mark"><span>✘</span></div>
-                <div class="dz-error-message"><span data-dz-errormessage></span></div>
-              </div>
-                </div>
-              </li>
-            </div>
-            <script type="text/javascript">
-            $(document).ready(function(){
-$('.sortable').sortable();
-
-});
-
-//DropzoneJS snippet - js
-$.getScript('https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.js',function(){
-// instantiate the uploader
-$('#file-dropzone').dropzone({
-  url: "/upload",
-  maxFilesize: 100,
-  paramName: "uploadfile",
-  maxThumbnailFilesize: 99999,
-  previewsContainer: '.visualizacao',
-  previewTemplate : $('.preview').html(),
-  init: function() {
-    this.on('completemultiple', function(file, json) {
-     $('.sortable').sortable('enable');
-    });
-    this.on('success', function(file, json) {
-      alert('aa');
-    });
-
-    this.on('addedfile', function(file) {
-
-    });
-
-    this.on('drop', function(file) {
-      console.log('File',file)
-    });
-  }
-});
-});
-$(document).ready(function() {});
-            </script>
+             <form action="/upload/fotoPerfil" method="post" enctype="multipart/form-data">
+               <div class="input-container">
+                 <div id="dropzone">
+                   <h1>Arraste sua imagem aqui ou Clique</h1>
+                   <input type="file" accept="image/* " name="fotoPerfil"/>
+                 </div>
+               </div>
+               <button type="submit" name="eviar" class="submit-enviar">Enviar Foto</button>
+             </form>
           </div>
           <div class="editar-infors">
-            <form action="/editar" method="post">
+            <form action="/editar/informacoes" method="post">
               <div class="titles-section" >
                 <legend>Editar</legend>
               </div>
@@ -453,6 +419,7 @@ $(document).ready(function() {});
     </footer>
     <!-- SCRIPTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script type="text/javascript" src="js/dropzone.js"></script>
     <script type="text/javascript" src="js/functions.js"></script>
     <script type="text/javascript" src="js/mask.js"></script>
     <script type="text/javascript" src="js/dashboard_acoes-menu.js"></script>

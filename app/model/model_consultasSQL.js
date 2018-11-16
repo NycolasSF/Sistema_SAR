@@ -26,7 +26,7 @@ class consultar{
     this.connection.query("SELECT * FROM Treineiros WHERE email_treineiro = '"+email+"' and senha_treineiro = '"+senha+"' ",callback);
   }
   a_login(emailAluno, senhaAluno, callback){
-    this.connection.query("SELECT * FROM Grupos INNER JOIN Alunos WHERE Alunos_id_aluno = id_aluno and  email_aluno = '"+emailAluno+"' and senha_aluno = '"+senhaAluno+"' ", callback)
+    this.connection.query("SELECT * FROM  Alunos WHERE email_aluno = '"+emailAluno+"' and senha_aluno = '"+senhaAluno+"' ", callback);
   }
   login_acessado(id_usuario, callback){
     this.connection.query("UPDATE Professores, Alunos SET status_professor = 'on' where id_professor = '"+id_usuario+"' OR  id_aluno = '"+id_usuario+"' ", callback);
@@ -34,7 +34,7 @@ class consultar{
 
   // p --> SELECTs
   p_getAlunos(id, callback){
-    this.connection.query("SELECT nome_sala, nome_grupo, id_aluno, nome_aluno, email_aluno, ft_perfil, status_aluno, nome_professor, COUNT(id_aluno) AS qtd_alunos FROM professores INNER JOIN salas INNER JOIN registros_sala INNER JOIN grupos INNER JOIN resgistros INNER JOIN alunos where Professor_id_professor = id_professor and registros_sala.Salas_id_sala = id_sala and registros_sala.Grupos_id_grupo = id_grupo and resgistros.Grupos_id_grupo = id_grupo and Alunos_id_aluno = id_aluno and id_professor ="+id+"", callback);
+    this.connection.query("SELECT id_sala, nome_professor, nome_sala, nome_grupo, id_aluno, nome_aluno, email_aluno, ft_perfil, status_aluno, nome_professor, COUNT(id_grupo) AS qtd_alunos FROM Professores INNER JOIN Salas INNER JOIN Registros_sala INNER JOIN Grupos INNER JOIN Resgistros INNER JOIN Alunos on Professor_id_professor = id_professor and registros_sala.Grupos_id_grupo = id_grupo and Salas_id_sala = id_sala and resgistros.Grupos_id_grupo = id_grupo and Alunos_id_aluno = id_aluno WHERE id_professor = "+id+" GROUP BY nome_grupo", callback);
   }
   p_getUltimoGrupo(callback){
     this.connection.query("SELECT id_grupo FROM grupos ORDER BY id_grupo DESC LIMIT 1", callback)
@@ -58,8 +58,37 @@ class consultar{
   p_inRegistrosSala(idSala, idGrupo, callback){
     this.connection.query("INSERT INTO registros_sala VALUES(0, "+idSala+", "+idGrupo+")", callback);
   }
-  // p --> funcoes
-  p_funcSenmail(infoEmail, callback){
+  p_inProfessor(nomeProfessor, emailProfessor, senhaProfessor, callback){
+    this.connection.query("INSERT INTO Professores VALUES(0, '"+nomeProfessor+"', '"+senhaProfessor+"', '"+emailProfessor+"', 'img/ft_sar.png', 'of');",callback);
+  }
+  // p --> upload
+  p_uploadFoto(img, id, callback){
+    this.connection.query("UPDATE professores SET ft_professor = 'uploads/"+img+"' WHERE id_professor = "+id+"", callback);
+  }
+  // Treineiro
+  // t --> INSERT
+  t_inTreineiros(nomeTreineiro, emailTreineiro, senhaTreineiro, callback){
+    this.connection.query("INSERT INTO Treineiros VALUES(0, '"+nomeTreineiro+"', '"+senhaTreineiro+"', '"+emailTreineiro+"', 'img/ft_sar.png')", callback);
+  }
+  // ALUNO --> SELECTs
+  a_getInfos(id, callback){
+    this.connection.query("SELECT id_sala, nome_professor, nome_sala, nome_grupo, id_aluno, nome_aluno, email_aluno, ft_perfil, status_aluno, nome_professor, status_professor, COUNT(id_grupo) AS qtd_alunos FROM Professores INNER JOIN Salas INNER JOIN Registros_sala INNER JOIN Grupos INNER JOIN Resgistros INNER JOIN Alunos on Professor_id_professor = id_professor and registros_sala.Grupos_id_grupo = id_grupo and Salas_id_sala = id_sala and resgistros.Grupos_id_grupo = id_grupo and Alunos_id_aluno = id_aluno WHERE id_aluno = "+id+"", callback);
+  }
+  a_getRegistros(id, callback){
+    this.connection.query("SELECT * FROM alunos  INNER JOIN resgistros INNER JOIN grupos on Alunos_id_aluno = id_aluno and Grupos_id_grupo = id_grupo WHERE id_aluno = "+id, callback);
+  }
+  a_getUltimoAluno(callback){
+    this.connection.query("SELECT id_aluno FROM Alunos ORDER BY id_aluno DESC LIMIT 1", callback)
+  }
+  // Aluno --> INSERT
+  a_inAluno(nomeAluno, emailAluno, categoriaAluno, callback){
+    this.connection.query("INSERT INTO Alunos VALUES(0, '"+nomeAluno+"', 'senhaaluno' ,'"+emailAluno+"', 'img/ft_sar.png', '"+categoriaAluno+"', 'of') ",callback);
+  }
+  a_inRegistros(idAluno, idGrupo, callback){
+    this.connection.query("INSERT INTO Resgistros VALUES(0, "+idGrupo+", "+idAluno+");", callback)
+  }
+  //  funcoes --> sendMail
+  funcSenmail(infoEmail, callback){
     let options = {
       viewEngine: {
         extname: '.hbs',
@@ -88,7 +117,8 @@ class consultar{
     });
   }
 }
-
+// SELECT * FROM Professores INNER JOIN Salas INNER JOIN Registros_sala INNER JOIN Grupos on Professor_id_professor = id_professor and Grupos_id_grupo = id_grupo and Salas_id_sala = id_sala WHERE id_professor = 2
+  // SELECT * FROM Professores INNER JOIN Salas INNER JOIN Registros_sala INNER JOIN Grupos INNER JOIN Resgistros INNER JOIN Alunos on Professor_id_professor = id_professor and registros_sala.Grupos_id_grupo = id_grupo and Salas_id_sala = id_sala and resgistros.Grupos_id_grupo = id_grupo and Alunos_id_aluno = id_aluno WHERE id_professor = 2
 module.exports = function() {
   return consultar;
 }
