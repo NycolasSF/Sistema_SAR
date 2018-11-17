@@ -42,6 +42,9 @@ class consultar{
   p_getIdSala(nomeSala, callback){
     this.connection.query("SELECT id_sala FROM salas WHERE nome_sala = '"+nomeSala+"' ", callback)
   }
+  p_getAtulizacao(id, callback){
+    this.connection.query("SELECT * from Professores WHERE id_professor ="+id, callback);
+  }
   // p --> INSERTs
   p_inAluno(nomeAluno, emailAluno, callback){
     this.connection.query("INSERT INTO Alunos VALUES(0, '"+nomeAluno+"', '"+nomeAluno+"senha' ,'"+emailAluno+"', 'img/ft_sar.png', 'Líder', 'of')", callback);
@@ -70,7 +73,7 @@ class consultar{
   t_inTreineiros(nomeTreineiro, emailTreineiro, senhaTreineiro, callback){
     this.connection.query("INSERT INTO Treineiros VALUES(0, '"+nomeTreineiro+"', '"+senhaTreineiro+"', '"+emailTreineiro+"', 'img/ft_sar.png')", callback);
   }
-  // ALUNO --> SELECTs
+  // a --> SELECTs
   a_getInfos(id, callback){
     this.connection.query("SELECT id_sala, nome_professor, nome_sala, nome_grupo, id_aluno, nome_aluno, email_aluno, ft_perfil, status_aluno, nome_professor, status_professor, COUNT(id_grupo) AS qtd_alunos FROM Professores INNER JOIN Salas INNER JOIN Registros_sala INNER JOIN Grupos INNER JOIN Resgistros INNER JOIN Alunos on Professor_id_professor = id_professor and registros_sala.Grupos_id_grupo = id_grupo and Salas_id_sala = id_sala and resgistros.Grupos_id_grupo = id_grupo and Alunos_id_aluno = id_aluno WHERE id_aluno = "+id+"", callback);
   }
@@ -80,12 +83,19 @@ class consultar{
   a_getUltimoAluno(callback){
     this.connection.query("SELECT id_aluno FROM Alunos ORDER BY id_aluno DESC LIMIT 1", callback)
   }
-  // Aluno --> INSERT
+  a_getAtulizacao(id, callback){
+    this.connection.query("SELECT * from Alunos WHERE id_aluno ="+id, callback);
+  }
+  // a --> INSERT
   a_inAluno(nomeAluno, emailAluno, categoriaAluno, callback){
     this.connection.query("INSERT INTO Alunos VALUES(0, '"+nomeAluno+"', 'senhaaluno' ,'"+emailAluno+"', 'img/ft_sar.png', '"+categoriaAluno+"', 'of') ",callback);
   }
   a_inRegistros(idAluno, idGrupo, callback){
     this.connection.query("INSERT INTO Resgistros VALUES(0, "+idGrupo+", "+idAluno+");", callback)
+  }
+  // a --> upload
+  a_uploadFoto(img, id, callback){
+    this.connection.query("UPDATE Alunos SET ft_perfil = 'uploads/"+img+"' WHERE id_aluno = "+id+"", callback);
   }
   //  funcoes --> sendMail
   funcSenmail(infoEmail, callback){
@@ -104,7 +114,6 @@ class consultar{
           pass: 'meutccsar'
         }
     };
-
     let mailer = nodemailer.createTransport(configs);
     mailer.use('compile', hbs(options));
     mailer.sendMail(infoEmail, function (error, response) {

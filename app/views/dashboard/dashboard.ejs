@@ -355,10 +355,22 @@
         <h1 class="title-config">Configurações Pessoais</h1>
         <div class="flex-config">
           <div class="editar-usuario">
-            <div class="ft-perfil preview">
-              <img  src="<%= user[0].ft_professor %>"></img>
-            </div>
-             <form action="/upload/fotoPerfil" method="post" enctype="multipart/form-data">
+            <% if(user[0].nome_professor) { %>
+              <div class="ft-perfil preview">
+                <img  src="<%= user[0].ft_professor %>"></img>
+              </div>
+              <form action="/upload/fotoPerfil/professor" method="post" enctype="multipart/form-data">
+            <% } else if(user[0].nome_aluno) { %>
+              <div class="ft-perfil preview">
+                <img  src="<%= user[0].ft_perfil %>"></img>
+              </div>
+              <form action="/upload/fotoPerfil/aluno" method="post" enctype="multipart/form-data">
+            <% } else { %>
+              <div class="ft-perfil preview">
+                <img  src="<%= user[0].ft_treineiro %>"></img>
+              </div>
+              <form action="/upload/fotoPerfil/treineiro" method="post" enctype="multipart/form-data">
+            <% } %>
                <div class="input-container">
                  <div id="dropzone">
                    <h1>Arraste sua imagem aqui ou Clique</h1>

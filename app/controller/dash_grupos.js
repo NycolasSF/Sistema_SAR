@@ -1,5 +1,3 @@
-const fs = require('fs-extra');
-
 const { base64encode, base64decode } = require('nodejs-base64');
 
 const expiryDateCookie = new Date( Date.now() + 60 * 60 * 1500 );
@@ -94,7 +92,57 @@ module.exports.dashboard_grupo = function (app, req, res) {
     }
   });
 };
+module.exports.editFoto = function (app, req, res) {
+  sess = req.session;
+  let img = req.file.filename;
 
+   // VERIFICA SE TEM O cookie user
+   if (req.cookies.user == undefined) {
+     sess.email = undefined;
+     sess.senha = undefined;
+   }else{
+     let email_decoded = base64decode(req.cookies.user[0]);
+     let senha_decoded = base64decode(req.cookies.user[1]);
+     sess.email = email_decoded;
+     sess.senha = senha_decoded;
+   }
+
+   let connection = app.serv_config.conexao_banco();
+   let pesquisa = new app.app.model.model_consultasSQL(connection);
+
+   pesquisa.a_login(sess.email, sess.senha, function (error, idAluno) {
+     pesquisa.a_getInfos(idAluno[0].id_aluno, function(error2, a_getAlunos){
+       pesquisa.a_uploadFoto(img, idAluno[0].id_aluno, function (err, updloaded) {
+         if (err) {
+           console.log(err);
+           res.render('dashboard/dashboard',{
+             validacao: [{
+               titulo: 'OPS!',
+               msg: 'Não foi possivel atualizar sua foto',
+               color_background: 'var(--vermelho)'
+             }],
+             user: idAluno,
+             othersInfos: a_getAlunos
+           });
+         }else{
+           pesquisa.a_getAtulizacao(idAluno[0].id_aluno, function (loginErr, atualidadoAluno) {
+             pesquisa.a_getInfos(idAluno[0].id_aluno, function(error2, atualidadoInfos){
+               res.render('dashboard/dashboard',{
+                 validacao: [{
+                   titulo: 'Foto Atualizada!',
+                   msg: 'Sua foto foi atualizada com sucesso',
+                   color_background: 'var(--verde)'
+                 }],
+                 user: atualidadoAluno,
+                 othersInfos: atualidadoInfos
+               });
+             });
+           })
+         }
+       });
+     });
+   });
+}
 module.exports.cadastrar_aluno = function (app, req, res) {
   sess = req.session;
   let userAluno = req.body;

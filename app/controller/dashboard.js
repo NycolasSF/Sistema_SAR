@@ -1,5 +1,3 @@
-const fs = require('fs-extra');
-
 const { base64encode, base64decode } = require('nodejs-base64');
 
 const expiryDateCookie = new Date( Date.now() + 60 * 60 * 1500 );
@@ -230,14 +228,18 @@ module.exports.editFoto = function (app, req, res) {
              othersInfos: p_getAlunos
            });
          }else{
-           res.render('dashboard/dashboard',{
-             validacao: [{
-               titulo: 'Foto Atualizada!',
-               msg: 'Sua foto foi atualizada com sucesso',
-               color_background: 'var(--verde)'
-             }],
-             user: idProfessor,
-             othersInfos: p_getAlunos
+           pesquisa.p_getAtulizacao(idProfessor[0].id_professor, function (err, atualidadoProfessor) {
+             pesquisa.p_getAlunos(idProfessor[0].id_professor, function (err2, atualidadoAluno) {
+               res.render('dashboard/dashboard',{
+                 validacao: [{
+                   titulo: 'Foto Atualizada!',
+                   msg: 'Sua foto foi atualizada com sucesso',
+                   color_background: 'var(--verde)'
+                 }],
+                 user: atualidadoProfessor,
+                 othersInfos: atualidadoAluno
+               });
+             });
            });
          }
        });

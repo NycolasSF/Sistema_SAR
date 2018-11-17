@@ -17,7 +17,16 @@ let upload = multer({storage: storage});
 
 
 module.exports = function (app) {
-  app.post('/upload/fotoPerfil', upload.single('fotoPerfil'), function (req, res) {
+  // professor
+  app.post('/upload/fotoPerfil/professor', upload.single('fotoPerfil'), function (req, res) {
     app.app.controller.dashboard.editFoto(app, req, res);
+  });
+  // aluno
+  app.post('/upload/fotoPerfil/aluno', upload.single('fotoPerfil'), function (req, res) {
+    app.app.controller.dash_grupos.editFoto(app, req, res);
+  });
+  // treineiro
+  app.post('/upload/fotoPerfil/treineiro', upload.single('fotoPerfil'), function (req, res) {
+    app.app.controller.dash_grupos.editFoto(app, req, res);
   });
 }
