@@ -3,8 +3,8 @@
   <head>
     <base href="/">
     <meta charset="utf-8">
-    <meta name="description" content="Sistema SAR">
-    <meta name="keywords" content="HTML,CSS,JQUERY,JavaScript,EXPRESS">
+    <meta name="description" content="SAR - Seu Amigo Robô">
+    <meta name="keywords" content="HTML,CSS,JQUERY,JavaScript,EXPRESS,Robô,Raspberrypi">
     <meta name="author" content="Nycolas Silva Fróes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,11 +15,15 @@
     <link href="css/select.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kanit|Source+z+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+    <!-- codemirror -->
     <link rel="stylesheet" href="packs/Highlight/styles/monokai.css">
     <link rel="stylesheet" href="packs/CodeEditor/lib/codemirror.css">
     <link rel="stylesheet" href="packs/CodeEditor/theme/monokai.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="packs/CodeEditor/theme/neat.css">
+    <link rel="stylesheet" href="packs/CodeEditor/addon/scroll/simplescrollbars.css">
+    <link rel="stylesheet" href="packs/CodeEditor/addon/display/fullscreen.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="packs/Highlight/highlight.pack.js"></script>
@@ -27,6 +31,9 @@
     <script src="packs/CodeEditor/lib/codemirror.js"></script>
     <script src="packs/CodeEditor/addon/selection/active-line.js"></script>
     <script src="packs/CodeEditor/addon/edit/matchbrackets.js"></script>
+    <script src="packs/CodeEditor/addon/scroll/simplescrollbars.js"></script>
+    <script src="packs/CodeEditor/addon/display/fullscreen.js"></script>
+    <script src="packs/CodeEditor/addon/display/rulers.js"></script>
     <script src="packs/CodeEditor/mode/javascript/javascript.js"></script>
 
   </head>
@@ -199,7 +206,7 @@
                     <h1>Execute seus Códigos:</h1>
                     <i id="btn-voltar_salas" class="material-icons">navigate_before</i>
                   </div>
-                  <div id="codeeditor"></div>
+                  <textarea id="codeeditor"class="runnable js"></textarea>
                 </div>
               </div>
         <% }else{  %>
@@ -207,7 +214,7 @@
             <!--CODE EDITOR - REFERENCES CODEMIRROR-->
             <div id="container-code" class="Code-editor">
               <h1>Execute seus Códigos:</h1>
-              <div id="codeeditor"></div>
+              <textarea id="codeeditor"class="runnable js"></textarea>
             </div>
           </div>
         <% } %>
