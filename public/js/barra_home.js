@@ -1,19 +1,11 @@
 // MENU
-function abrirMenu(){
-  document.querySelector('nav').className = 'opened';
-  document.querySelector('#menu').className = 'opened';
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
 }
-function fecharMenu(){
-  document.querySelector('nav').className = '';
-  document.querySelector('#menu').className = '';
+
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
 }
-document.querySelector('#menu').onclick = function(){
-  if(document.querySelector('nav').className != 'opened'){
-    abrirMenu();
-  }else{
-    fecharMenu();
-  }
-};
 
 function abrir_fechar(x) {
     x.classList.toggle("change");
@@ -36,25 +28,12 @@ media.addListener(verificarMedia)
 // MODIFICAÇÕES NAV
 function scrollFunction() {
 
-  var nav = document.getElementById("navbar");
+  var header = document.getElementById("Home");
   var home_link = document.getElementById('home_link');
 
   if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
 
-      nav.style.position = "fixed";
-
-      nav.style.background = "rgba(255, 255, 255, .8)";
-
-      nav.style.left = '70%';
-      nav.style.width = '30%';
-
-      home_link.style.fontSize = '1rem';
   } else {
-    nav.style.background = "#fff";
 
-    nav.style.width = "50%";
-    nav.style.left = '50%';
-
-    home_link.style.fontSize = '';
   }
 }

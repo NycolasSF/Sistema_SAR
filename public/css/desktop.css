@@ -1,0 +1,55 @@
+
+/*¨¨¨¨¨¨¨¨¨¨¨DESKTOP¨¨¨¨¨¨¨¨¨¨¨*/
+@media screen and (min-width: 840px){
+  .mobile{
+    display: none;
+  }
+  header{
+    height: 90vh;
+  }
+  .content-login .img-login{
+    width: 50%;
+    transition: .8s;
+  }
+  .content-login{
+    transform: translateX(-10%);
+  }
+  .content-login:hover .img-login{
+    transform: scale(1.1);
+  }
+  #navbar{
+    display: block;
+    transform: translateY(-25%);
+  }
+  #navbar ul{
+    transform: translateX(-20%);
+  }
+  #navbar li{
+    margin: 0 50px;
+    padding:  .8rem 0;
+    position: relative;
+  }
+  #navbar li::before{
+    padding-bottom: 2rem;
+    content: "";
+    position: absolute;
+    height: 0;
+    bottom: 0;
+    width: 100%;
+    background: var(--branco);
+    z-index: -10;
+    transition: .5s;
+  }
+  #navbar li a p{
+  }
+  #navbar li:hover::before{
+    height: 100%;
+  }
+  /* CodeEditor */
+  #terminal-CodeEditor{
+    margin: 50px auto;
+    transform: translateX(-25%);
+    width: 40%;
+    max-width: 40%;
+  }
+}

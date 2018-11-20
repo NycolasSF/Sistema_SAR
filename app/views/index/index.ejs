@@ -1,140 +1,130 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <base href="/">
     <meta charset="utf-8">
     <title>Seu Amigo Robô</title>
+    <link rel="shortcut icon" href="img/favicon.png" />
     <meta name="description" content="Sistema SAR">
     <meta name="keywords" content="HTML,CSS,JQUERY,JavaScript,EXPRESS">
     <meta name="author" content="Nycolas Silva Fróes">
     <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/desktop.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/nav_w3.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/">
     <link href="https://fonts.googleapis.com/css?family=Kanit|Source+Sans+Pro" rel="stylesheet">
-    <link rel="stylesheet" href="packs/Highlight/styles/monokai.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-    <script src="packs/Highlight/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <link rel="stylesheet" href="packs/CodeEditor/theme/monokai.css">
+    <link rel="stylesheet" href="packs/CodeEditor/lib/codemirror.css">
+    <link rel="stylesheet" href="packs/CodeEditor/addon/scroll/simplescrollbars.css">
+    <script src="packs/CodeEditor/lib/codemirror.js"></script>
+    <script src="packs/CodeEditor/addon/scroll/simplescrollbars.js"></script>
+    <script src="packs/CodeEditor/mode/javascript/javascript.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
-  <body>
+  <body >
     <header id="Home">
-<!--MENU-->
-      <span id="menu">
-          <div class="container" onclick="abrir_fechar(this)">
-            <div class="bar1"></div>
-            <div class="bar2"></div>
-            <div class="bar3"></div>
+<!-- LOGO -->
+        <div class="container-logo">
+          <img class="img-logo" src="img/logo_svg.svg" alt="logo SAR">
+          <div class="content-login">
+            <a href="/pagina_acesso">
+              <img class="img-login" src="img/icons/login.svg" alt="btn-login">
+              <p class="subTitles-icons">Login</p>
+            </a>
           </div>
-      </span>
+        </div>
+<!--NAV MOBILE-->
+        <span id="btn-menu" class="mobile" onclick="openNav()">
+          <i class="material-icons">menu</i>
+        </span>
+        <div id="myNav" class="overlay mobile">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <div class="overlay-content">
+            <a  href="#manual">
+              <img class="img img-manual" src="img/icons/manual.svg" alt="manual">
+              <p class="subTitles-icons">Manual</p>
+            </a>
+            <a  href="#sobre">
+              <img class="img img-sobre" src="img/icons/sobre.svg" alt="sobre">
+              <p class="subTitles-icons">Sobre</p>
+            </a>
+            <a  href="#comprar">
+              <img class="img img-coin" src="img/icons/coin.svg" alt="comprar">
+              <p class="subTitles-icons">Comprar</p>
+            </a>
+          </div>
+        </div>
 <!--NAV-->
-      <nav id="navbar">
-        <ul >
-          <li><a  href="#Home" id="home_link">HOME</a></li>
-          <li><a  href="#manual">Manual</a></li>
-          <li><a  href="#sobre">Sobre</a></li>
-          <li><a  href="/pagina_acesso">LOGIN<!--img src="img/icon-login.svg" id="login"--></a></li>
-        </ul>
-      </nav>
-<!--TEXTO ENTRADA-->
-      <div class="title_home">
-        <h1>Olá, vamos aprender POO?</h1>
-        <a href="#manual">
-            <div class="arrow effect-arrow">
-              <i></i>
+        <nav id="navbar">
+          <ul>
+            <li>
+              <a  href="#manual">
+                <img class="img img-manual" src="img/icons/manual.svg" alt="manual">
+                <p class="subTitles-icons">Manual</p>
+              </a>
+            </li>
+            <li>
+              <a  href="#sobre">
+                <img class="img img-sobre" src="img/icons/sobre.svg" alt="sobre">
+                <p class="subTitles-icons">Sobre</p>
+              </a>
+            </li>
+            <li>
+              <a  href="#comprar">
+                <img class="img img-coin" src="img/icons/coin.svg" alt="comprar">
+                <p class="subTitles-icons">Comprar</p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+<!-- CodeEditor -->
+        <div id="terminal-CodeEditor" >
+          <!--CODE EDITOR - REFERENCES CODEMIRROR-->
+          <div id="container-code" class="Code-editor">
+            <div class="title-code">
+              <h2>Pronto para programar?</h2>
             </div>
-        </a>
-      </div>
+            <textarea id="codeeditor"class="runnable js"></textarea>
+          </div>
+        </div>
     </header>
       <main>
-<!--MANUAL-->
-      <section id="manual">
-        <div id="titulo-manual" class="title-main">
-           <div class="forma">
-              <h1>Manual</h1>
-           </div>
-        </div>
-         <video id="video" src=""  controls poster="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoNSZFjcM2TYllOcGKr6T_ujMorL9q60xM0v5j6bSy87N0AyUT">
-              <source src="" type="video">
-        </video>
-<!--exemplo-->
-        <div class="exemplo">
-          <div class="title-exemplo">
-            <h1>Como Executar?</h1>
-         </div>
-<!--exemplo-VINCULAR-->
-         <div id="ligar" class="vincular">
-            <h2>1 - Vincule seu aparelho com robô</h2>
-            <pre>
-              <code class="">
-                    EX: 140.140.12.22
-              </code>
-            </pre>
-          </div>
-<!--exemplo-EXECUTAR CÓDIGOS-->
-           <div class="executar">
-             <h2>2 - Execute seus códigos</h2>
-              <pre>
-                <code class="jsvascript">
-                    var robo = new Robo();
-                    robo.move(x);
-                </code>
-              </pre>
-            </div>
-          </div>
-      </section>
 <!--SOBRE-->
       <section id="sobre">
-          <div id="title-sobre" class="title-main">
-            <div class="forma">
-              <h1>SobRe Projeto</h1>
-            </div>
-          </div>
-          <div class="desc-sobre">
-            <div class="introducao">
-              <p> Está página se trata de um trabalho de conclusão de curso (TCC), na qual a partir dela você poderá executar códigos para o meu robô,  dando vida a ele.
-              <br>Podendo ser executado nessa plataforma códigos em javascript de acordo com o material didático para o professor, para entender melhor o funcionamento e como ensinar seus alunos a partir desse protótipo.</p>
-              <a href="mateiral/apostila.pdf" download></a>
-            </div>
-        <!--RESUMO TCC-->
-            <div class="resumo">
-              <h2>Resumo TCC</h2>
-              <p>Em meio das dificuldades vivenciadas pelos estudantes na área de programação, no curso de Informática para Internet no IFMS câmpus Dourados, com  a linguagem de programação Javascript, foi pensado a construção de um robô, reutilizando materiais recicláveis. O robô será uma ferramenta nas mãos dos professores que ensinaram a programação orientada a objetos, e com ele deixará o conteúdo mais atrativo.
-                <br>Tanto professores quanto estudantes se divertiram com robô, pois com ajuda da plataforma web será executado ações a ele, tais como andar, mover um braço, estando todas as ações ligada ao conteúdo disciplinar.
-                <br>Por fim o resultado esperado é que esse robô consiga facilitar a aprendizagem e proporcionar um novo modo de ensino e aprendizagem.
-              </p>
-            </div>
-          </div>
+        <div class="titles-sections">
+          <img src="img/icons/sobre.svg" alt="sobre">
+          <h2>Sobre</h2>
+        </div>
+        <div class="frase">
+          <p>"UM PEQUENO APRENDIZ NASCE COM APRENDIZES"</p>
+          <p>- Nycolas Silva Fróes</p>
+        </div>
+        <div class="content-sections">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </section>
+<!--MANUAL-->
+      <section id="manual">
+        <div class="titles-sections">
+          <img src="img/icons/manual.svg" alt="manual">
+          <h2>Manual</h2>
+        </div>
+        <div class="content-sections">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
       </section>
       </main>
 <!--FOOTER-->
       <footer>
-        <div class="content-footer">
-          <h1 class="title-footer">PRODUTORES <span class="desktop"><i></i></span> <span class="mobile"><i></i></span> </h1>
-  <!--PESSOA 1 -NYCOLAS -->
-          <div class="pessoa UM">
-            <div id="img_Um" class="circle"></div>
-            <div class="info-footer">
-              <h1>ESTUDANTE: Nycolas Silva Fróes</h1>
-              <h2>Breve Descrição</h2>
-              <p>Estudante do IFMS Campus Dourados.</p>
-              <p>Gosta de Jogar Paladins com seu Professor/Orientador. Estuda Muito!</p>
-            </div>
-          </div>
-  <!--PESSOA 2 - JÓNISON-->
-          <div class="pessoa DOIS">
-            <div id="img_Dois" class="circle"></div>
-            <div class="info-footer">
-              <h1>PROFESSOR: Jónison Almeida dos Santos</h1>
-              <h2>Breve Descrição</h2>
-              <p>Professor do ifms campus dourados.</p>
-              <p>Gosta de Jogar Paladins com seu Aluno/orientando. Joga Muito!</p>
-            </div>
-          </div>
-        </div>
-          <p class="copyright">&copy Copyright - NSF</p>
+
       </footer>
   </body>
 <!--SCRIPTS-->
-  <script type="text/javascript" src="js/codeeditor.js"></script>
+  <script type="text/javascript" src="js/codeeditor_index.js"></script>
   <script type="text/javascript" src="js/effect-roll.js"></script>
   <script type="text/javascript" src="js/barra_home.js"></script>
 </html>
