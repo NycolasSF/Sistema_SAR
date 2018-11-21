@@ -42,7 +42,7 @@
     <header>
       <div class="container-header">
         <div class="title-header">
-          <p class="logo-header">logo</p>
+          <img class="logo-header" src="img/logo_svg.svg" alt="Logo SAR"></img>
           <h1>SAR - PAINEL CONTROLES </h1>
         </div>
         <div class="config">
@@ -425,13 +425,13 @@
      <p id="msg_alert"></p>
    </div>
     <%if(validacao) {%>
-        <% for(var i = 0; i <  validacao.length; i++) {%>
-          <div id="modal<%=[i]%>" class="alert" style="background:<%= validacao[i].color_background %>;">
-            <span id="alert-close<%=[i]%>" onclick="fechar(this.id, 'modal<%=[i]%>')">X</span>
-           <h1><%= validacao[i].titulo %></h1>
-           <p ><%= validacao[i].msg %></p>
-         </div>
-         <%}%>
+      <% for(var i = 0; i <  validacao.length; i++) {%>
+        <div id="modal<%=[i]%>" class="alert" style="background:<%= validacao[i].color_background %>;">
+          <span id="alert-close<%=[i]%>" onclick="fechar(this.id, 'modal<%=[i]%>')">X</span>
+         <h1><%= validacao[i].titulo %></h1>
+         <p ><%= validacao[i].msg %></p>
+       </div>
+       <%}%>
     <%}%>
     <footer>
       &copyNycolas Silva Fróes

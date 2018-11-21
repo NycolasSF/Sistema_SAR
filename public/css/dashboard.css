@@ -55,7 +55,7 @@ header{
   align-items: center;
 }
 .logo-header{
-  margin: .5rem;
+  width: 20%;
 }
 .title-header h1{
   font-size: 1.8rem;
@@ -585,12 +585,69 @@ form input{
   bottom: 0;
   left: 0;
 }
+/* preview */
+.content-produtos{
+  cursor: pointer;
+  max-width: calc(20% + 1vw);
+  text-align: center;
+  font-size: 1rem;
+  font-family: 'Gothamthin';
+  font-weight: 600;
+  position: relative;
+	overflow: hidden;
+}
+.content-produtos a {
+	color: var(--vermelho);
+}
+.overlay {
+  position: absolute;
+	bottom: 0;
+  left: 0;
+  right: 0;
+	height: 0;
+  background-color: var(--palha-hover);
+  transition: ease-in-out  .5s;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 95%, 0 95%);
+	clip-path: polygon(0 0, 100% 0, 100% 95%, 0 95%);
+}
+.overlay p{
+  font-size: .8rem;
+  text-transform: uppercase;
+  text-align: center;
+  padding: .6rem 0;
+}
+.img-produtos{
+	position: relative;
+	width: 100%;
+  margin-bottom: 2%;
+	transition: all ease-in-out .5s;
+}
+.img-produtos img{
+	padding: 2rem 2rem 0 2rem;
+	max-width: 80%;
+}
+.texts{
+	margin: 1.3rem;
+}
+.texts p{
+	margin-top: .5rem;
+}
+.content-produtos:hover .img-produtos{
+  transform: scale(1.08);
+	background: var(--vermelho);
+}
+.content-produtos:hover .overlay {
+	height: 15%;
+  bottom: -2%;
+}
+.content-produtos .bold{
+  font-family: 'Gothambold';
+}
 footer{
   text-align: center;
   background: var(--preto);
   color: rgba(255,255,255,0.9);
 }
-
 /* ALERT FINAL */
 .alert{
   z-index: 999999;
