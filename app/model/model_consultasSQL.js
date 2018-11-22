@@ -34,7 +34,7 @@ class consultar{
 
   // p --> SELECTs
   p_getAlunos(id, callback){
-    this.connection.query("SELECT id_sala, nome_professor, nome_sala, nome_grupo, id_aluno, nome_aluno, email_aluno, ft_perfil, status_aluno, nome_professor, COUNT(id_grupo) AS qtd_alunos FROM Professores INNER JOIN Salas INNER JOIN Registros_sala INNER JOIN Grupos INNER JOIN Resgistros INNER JOIN Alunos on Professor_id_professor = id_professor and registros_sala.Grupos_id_grupo = id_grupo and Salas_id_sala = id_sala and resgistros.Grupos_id_grupo = id_grupo and Alunos_id_aluno = id_aluno WHERE id_professor = "+id+" GROUP BY nome_grupo", callback);
+    this.connection.query("SELECT id_sala, nome_professor, nome_sala, id_grupo, nome_grupo, id_aluno, nome_aluno, email_aluno, ft_perfil, status_aluno, nome_professor, COUNT(id_grupo) AS qtd_alunos FROM Professores INNER JOIN Salas INNER JOIN Registros_sala INNER JOIN Grupos INNER JOIN Resgistros INNER JOIN Alunos on Professor_id_professor = id_professor and registros_sala.Grupos_id_grupo = id_grupo and Salas_id_sala = id_sala and resgistros.Grupos_id_grupo = id_grupo and Alunos_id_aluno = id_aluno WHERE id_professor = "+id+" GROUP BY nome_grupo", callback);
   }
   p_getUltimoGrupo(callback){
     this.connection.query("SELECT id_grupo FROM grupos ORDER BY id_grupo DESC LIMIT 1", callback)

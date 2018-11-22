@@ -208,6 +208,12 @@ main {
   width: 3%;
   height: 3%
 }
+.info-inicial-salas a{
+  padding: .5rem 1.2rem;
+  background: var(--btn-azul2);
+  border-radius: 5px;
+  color: var(--branco)
+}
 .container-salas{
   padding: 1rem;
   display: flex;

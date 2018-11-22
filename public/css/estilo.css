@@ -20,6 +20,9 @@ body{
   --meu-cinza: #d3cfcf;
   --branco: #f5f9fa;
   --branco-rgba: rgba(245, 249, 250, 0.9);
+
+  --azul: rgb(68, 75, 228);
+  --roxo: rgb(168, 77, 186);
 }
 header{
   width: 100%;
@@ -55,6 +58,7 @@ header{
 }
 /*------------MENU------------*/
 #btn-menu {
+  z-index: 9999;
   cursor: pointer;
   position: fixed;
   right: 0;
@@ -108,7 +112,7 @@ header{
 #terminal-CodeEditor{
   border-radius: 10px;
   margin-left: 2%;
-  transform: translateY(20%);
+  transform: translateY(1%);
   width: 80%;
 }
 .title-code{
@@ -128,6 +132,9 @@ header{
   right:5%;
 }
 /* SECTIONS */
+section{
+  margin-top: 5%;
+}
 .titles-sections{
   display: flex;
   align-items: center;
@@ -140,9 +147,75 @@ header{
   text-transform: uppercase;
   padding-left: 20px;
 }
+.frase{
+   text-align: center;
+   font-size: 1rem;
+   color: var(--preto);
+   font-family: 'Kanit', sans-serif;
+   margin-bottom: 5%;
+}
+.frase p:first-child{
+  font-size: 1.2rem;
+  font-weight: 900;
+}
 .titles-sections img{
-  transform: translateY(-10%)
+  transform: translateY(-10%);
+  width: 100px;
 }
 .content-sections{
-  margin: 0 160px;
+  margin: 0 50px;
+}
+.contents-section .titles-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.contents-section .titles-container img{
+  width: 50px;
+}
+.contents-section .titles-content{
+  text-align: center;
+  color: var(--preto);
+  font-family: 'Kanit', sans-serif;
+}
+.contents-section .titles-content h2{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.contents-section .titles-content p{
+  font-size: 1rem;
+  font-weight: 500;
+}
+.contents-section .titles-content{
+  margin: 0 2rem;
+}
+.contents-section  .text{
+  font-family: 'Source Sans Pro',sans-serif;
+  text-align: justify;
+}
+.end-icon{
+  margin: 5% 0;
+  border-top: solid var(--azul);
+  border-bottom: solid var(--azul);
+  padding: .5rem 2rem;
+}
+.end-icon img{
+  display: block;
+  margin: 0 auto;
+  width: 35px;
+}
+/* manual */
+#manual{
+  margin-top: 5%;
+}
+.codeexemple code{
+  padding: 2rem;
+  border-radius: 10px;
+}
+.model3d iframe{
+  width: 300px;
+  height: 500px;
+
 }

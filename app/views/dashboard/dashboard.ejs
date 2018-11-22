@@ -17,24 +17,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
-    <!-- codemirror -->
     <link rel="stylesheet" href="packs/Highlight/styles/monokai.css">
-    <link rel="stylesheet" href="packs/CodeEditor/lib/codemirror.css">
-    <link rel="stylesheet" href="packs/CodeEditor/theme/monokai.css">
-    <link rel="stylesheet" href="packs/CodeEditor/theme/neat.css">
-    <link rel="stylesheet" href="packs/CodeEditor/addon/scroll/simplescrollbars.css">
-    <link rel="stylesheet" href="packs/CodeEditor/addon/display/fullscreen.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="packs/Highlight/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="packs/CodeEditor/lib/codemirror.js"></script>
-    <script src="packs/CodeEditor/addon/selection/active-line.js"></script>
-    <script src="packs/CodeEditor/addon/edit/matchbrackets.js"></script>
-    <script src="packs/CodeEditor/addon/scroll/simplescrollbars.js"></script>
-    <script src="packs/CodeEditor/addon/display/fullscreen.js"></script>
-    <script src="packs/CodeEditor/addon/display/rulers.js"></script>
-    <script src="packs/CodeEditor/mode/javascript/javascript.js"></script>
+  
 
   </head>
   <body>
@@ -173,18 +161,20 @@
             </div>
           </div>
       </section>
-      <!-- section-2 - SALA E TERMINAL -->
+      <!-- section-2 - SALA -->
       <section id="salasTerminal" class="container-2 invisivel">
         <% if(!user[0].nome_treineiro) {  %>
           <div class="content C-salas">
             <div id="salas-title" class="info-inicial-salas">
               <h1>Salas</h1>
-              <p id="btn-testar" style="cursor: pointer">TESTAR APENAS</p>
+              <a id="btn-testar" href="/terminal">
+                <p>TESTAR APENAS</p>
+              </a>
             </div>
             <div id="salas" class="container-salas">
             <% if(othersInfos[0] != undefined) { %>
               <% for(let i = 0; i < othersInfos.length; i++ ) { %>
-                <div class="salas" onclick="criarCode()">
+                <div class="salas" onclick="terminal(<%= othersInfos[i].id_aluno %>, <%= othersInfos[i].id_sala %>, <%= othersInfos[i].id_grupo %>)">
                   <div class="content-salas-1">
                     <h2><%= othersInfos[i].nome_grupo %></h2>
                     <p><%= othersInfos[i].nome_sala %></p>
@@ -199,27 +189,13 @@
             <% } %>
             </div>
           </div>
-            <div id="terminal-CodeEditor" class="content C-terminal invisivel">
-                <!--CODE EDITOR - REFERENCES CODEMIRROR-->
-                <div id="container-code" class="Code-editor">
-                  <div class="titles-section">
-                    <h1>Execute seus Códigos:</h1>
-                    <i id="btn-voltar_salas" class="material-icons">navigate_before</i>
-                  </div>
-                  <textarea id="codeeditor"class="runnable js"></textarea>
-                </div>
-              </div>
-        <% }else{  %>
-          <div id="terminal-CodeEditor" class="content C-terminal">
-            <!--CODE EDITOR - REFERENCES CODEMIRROR-->
-            <div id="container-code" class="Code-editor">
-              <h1>Execute seus Códigos:</h1>
-              <textarea id="codeeditor"class="runnable js"></textarea>
-            </div>
-          </div>
+        <% }else { %>
+          <script type="text/javascript">
+            location.href = '/terminal'
+          </script>
         <% } %>
       </section>
-      <% if(user[0].id_professor) {%>
+      <% if(user[0].id_professor) { %>
       <!-- section - VER ESTUDANTES -->
       <section id="ver_estudantes" class="invisivel">
         <div class="container-ver_estudantes ">

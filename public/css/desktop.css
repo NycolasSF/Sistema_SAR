@@ -1,6 +1,16 @@
+@media screen and (min-width: 740px){
+  .content-sections{
+    margin: 0 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
 
 /*¨¨¨¨¨¨¨¨¨¨¨DESKTOP¨¨¨¨¨¨¨¨¨¨¨*/
-@media screen and (min-width: 840px){
+@media screen and (min-width: 960px){
   .mobile{
     display: none;
   }
@@ -48,8 +58,59 @@
   /* CodeEditor */
   #terminal-CodeEditor{
     margin: 50px auto;
-    transform: translateX(-25%);
+    transform: translate(-25%, -28%);
     width: 40%;
     max-width: 40%;
+  }
+  /* SECTIONS */
+  section{
+    margin-top: 2%;
+  }
+  .content-sections{
+    margin: 0 150px;
+    flex-wrap: nowrap;
+    position: relative;
+  }
+  .react{
+    position: absolute;
+    height: 80%;
+    width: 5px;
+    bottom: 5%;
+    left: 50%;
+    background: var(--azul)
+  }
+  .contents-section{
+    margin: 0 60px;
+  }
+  .titles-sections img{
+    transform: translateY(-15%);
+    width: 120px;
+  }
+  .contents-section .titles-container img{
+    width: 60px;
+  }
+  .contents-section .text{
+    font-size: 1.1rem;
+    line-height: 1.20;
+  }
+  .end-icon{
+    border: none;
+    padding: .5rem 0;
+  }
+  .end-icon img{
+    width: 60px;
+  }
+  .end-icon .img-left{
+    margin-right: 0px;
+  }
+  .end-icon .img-right{
+    margin-left: 0px;
+  }
+  /* manual */
+  #manual{
+    margin-top: 10%;
+  }
+  .model3d iframe{
+    width: 500px;
   }
 }
