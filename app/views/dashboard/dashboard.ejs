@@ -13,7 +13,7 @@
     <link href="css/dashboard.css" type="text/css" rel="stylesheet">
     <link href="css/forms.css" type="text/css" rel="stylesheet">
     <link href="css/select.css" type="text/css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Kanit|Source+z+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kanit|Source+Sans+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
@@ -22,7 +22,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="packs/Highlight/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-  
+
 
   </head>
   <body>
@@ -71,60 +71,19 @@
           </a>
           <a id="btn-add_classrom"  class="elements-nav add_classrom">
             <img  src="img/icons/add-classrom.svg" alt="adicionar Sala">
-            <span class="legend l-add-salas">Cadastrar Salas e Grupos</span>
+            <span class="legend l-add-salas">Cadastrar Salas ou Grupos</span>
           </a>
           <a id="btn-salas_terminal" class="elements-nav salas-terminal">
             <img src="img/icons/code.svg" alt="Terminal e Salas">
             <span class="legend l-salas-terminal">Grupos e Terminal</span>
           </a>
         <% } else { %>
-          <a id="btn-salas_terminal-treineiro" class="elements-nav salas-terminal">
+          <a id="btn-salas_terminal-treineiro" class="elements-nav salas-terminal" href="/terminal?q=&a=<%= user[0].id_aluno %>&t=<%= user[0].id_treineiros %>&p=<%= user[0].id_professor %>">
             <img src="img/icons/code.svg" alt="Terminal e Salas">
             <span class="legend l-salas-terminal">Terminal</span>
           </a>
         <% } %>
       </ul>
-      <!-- DE salasTerminal -->
-      <% if(!user[0].nome_treineiro) { %>
-      <div class="icon-contatos mobile">
-        <img src="img/icons/contatos.svg" alt="">
-      </div>
-      <div class="container-contatos">
-        <h1>CONECTADOS</h1>
-        <% if(othersInfos) { %>
-            <% for(let i = 0; i < othersInfos.length; i++) { %>
-              <% if(othersInfos[i].status_aluno == 'on') { %>
-                <div class="contatos">
-                  <span class="status <%= othersInfos[i].status_aluno %>"></span>
-                  <img src="<%= othersInfos[i].ft_perfil %>" alt="ft-perfil">
-                  <p><%= othersInfos[i].nome_aluno %></p>
-                </div>
-              <% }else{ %>
-                <div class="contatos contatos_hide">
-                  <span class="status <%= othersInfos[i].status_aluno %>"></span>
-                  <img src="<%= othersInfos[i].ft_perfil %>" alt="ft-perfil">
-                  <p><%= othersInfos[i].nome_aluno %></p>
-                </div>
-            <% } } %>
-        <% }else{ %>
-          <div class="others-infos">
-            <p>Não tem alunos online</p>
-          </div>
-          <% } %>
-
-        <div class="btn-verAll">
-          <button type="button" onclick="verAll()">VER OF</button>
-        </div>
-        <script type="text/javascript">
-            $('.contatos_hide').hide();
-            function verAll(){
-              $('.contatos_hide').animate({
-                height: 'show'
-              });
-            }
-        </script>
-      </div>
-      <% } %>
     </nav>
 <!-- </nav> <main>  -->
     <main>
@@ -143,8 +102,8 @@
             <div class="vincular">
               <h2>1 - Vincule seu aparelho com robô</h2>
               <pre>
-                <code class="">
-                  const connection = 192.168.25.204;
+                <code class="jsvascript">
+              var connection = 192.168.25.204;
                 </code>
               </pre>
             </div>
@@ -152,10 +111,10 @@
               <h2>2 - Execute seus códigos</h2>
               <pre>
                 <code class="jsvascript">
-                  const connection = 192.168.0.0;
+              var connection = 192.168.0.0;
 
-                  var robo = new Robo(connection);
-                  robo.move(x);
+              var robo = new Robo(connection);
+              robo.move(x);
                 </code>
               </pre>
             </div>
@@ -167,14 +126,19 @@
           <div class="content C-salas">
             <div id="salas-title" class="info-inicial-salas">
               <h1>Salas</h1>
-              <a id="btn-testar" href="/terminal">
+              <a  href="/terminal?q=MA==&a=<%= user[0].id_aluno %>&t=<%= user[0].id_treineiro %>&p=<%= user[0].id_professor %>">
                 <p>TESTAR APENAS</p>
               </a>
             </div>
             <div id="salas" class="container-salas">
             <% if(othersInfos[0] != undefined) { %>
+              <script type="text/javascript">
+              let getAluno = '<%= user[0].id_aluno %>',
+              getTreneiro = '<%= user[0].id_treineiros %>',
+              getProfessor = '<%= user[0].id_professor %>'
+              </script>
               <% for(let i = 0; i < othersInfos.length; i++ ) { %>
-                <div class="salas" onclick="terminal(<%= othersInfos[i].id_aluno %>, <%= othersInfos[i].id_sala %>, <%= othersInfos[i].id_grupo %>)">
+                <div class="salas" onclick="terminal(getAluno, getTreneiro, getProfessor, <%= othersInfos[1].id_grupo %>)">
                   <div class="content-salas-1">
                     <h2><%= othersInfos[i].nome_grupo %></h2>
                     <p><%= othersInfos[i].nome_sala %></p>
@@ -189,9 +153,11 @@
             <% } %>
             </div>
           </div>
-        <% }else { %>
+        <% } else { %>
           <script type="text/javascript">
-            location.href = '/terminal'
+          function openTerminal(){
+            location.href = '/terminal?a='+idAluno+'&t='+idTreneiro+'&p='+idProfessor;
+          }
           </script>
         <% } %>
       </section>
@@ -419,7 +385,7 @@
     <script type="text/javascript" src="js/mask.js"></script>
     <script type="text/javascript" src="js/dashboard_acoes-menu.js"></script>
     <script type="text/javascript" src="js/dashboard_icons_menu.js"></script>
-    <script type="text/javascript" src="js/codeeditor.js"></script>
+    <script type="text/javascript" src="js/terminal.js"></script>
     <script type="text/javascript" src="js/form_abrirCadastrogrupo.js"></script>
     <script type="text/javascript" src="js/selectOption.js"></script>
   </body>

@@ -1,28 +1,6 @@
-*{
-  margin: 0;
-  padding: 0;
-}
-*, *::before, *::after{
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  border: 0;
-}
 body{
   height: 100%;
   width: 100%;
-}
-:root{
-  --vermelho: #f13838;
-  --preto: #0e0d0d;
-  --preto-tranparencia: rgba(0,0,0,.9);
-  --meu-cinza: #d3cfcf;
-  --branco: #f5f9fa;
-  --branco-rgba: rgba(245, 249, 250, 0.9);
-
-  --azul: rgb(68, 75, 228);
-  --roxo: rgb(168, 77, 186);
 }
 header{
   width: 100%;

@@ -1,9 +1,71 @@
-//*atob - btoa*//
-function terminal(idAluno, idSala, idGrupo ) {
-  let enctype_aluno = btoa(idAluno);
-  let enctype_sala = btoa(idSala);
-  let enctype_grupo = btoa(idGrupo);
+$(document).ready(function(){
+  $('textarea').each(function(elem) {
+    var textArea = this;
 
-  location.href =  '/terminal?q='+enctype_aluno+'&s='+enctype_sala+'&g='+enctype_grupo
 
-}
+    var string =
+    "//Criando conexão com o robo \n"+
+    "var connetion = '192.168.25.194' \n" +
+    "//Instanciando a Classe \n"+
+    "var sar = new Robo(connetion) \n"+
+    "//Passando movimentos para ele \n"+
+    "sar.move()";
+
+    textArea.value = string
+
+    var codeMirrorOpts = {
+        lineNumbers: true,
+        mode: "javascript",
+        tabSize: 5,
+        lineNumbers: true,
+        theme: 'monokai',
+        scrollbarStyle: "overlay",
+        extraKeys: {
+        "F11": function(cm) {
+          cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+        },
+        "Esc": function(cm) {
+          if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+        }
+      }
+    }
+
+    if ($(textArea).hasClass('html') || $(textArea).hasClass('script')) {
+        codeMirrorOpts.mode = {name: 'xml', htmlMode: false}
+      } else if ($(textArea).hasClass('js')) {
+        codeMirrorOpts.matchBrackets = true;
+    }
+
+    var editor = CodeMirror.fromTextArea(textArea, codeMirrorOpts);
+
+
+    $('#lightTheme').click(function(){
+      editor.setOption("theme", 'neat');
+    });
+    $('#darkTheme').click(function(){
+      editor.setOption("theme", 'monokai');
+    });
+
+    $(editor.getWrapperElement()).keydown(function(e) {
+      if (e.ctrlKey && e.keyCode == 13) {
+        executCode();
+      }
+    });
+
+    if ($(textArea).hasClass('runnable')) {
+      function executCode() {
+        var code = editor.getValue();
+        if ($(textArea).hasClass('html')) {
+        } else if ($(textArea).hasClass('script')) {
+          $('body').append(code);
+        } else if ($(textArea).hasClass('js')) {
+          window.onerror = function(message)  {
+              Alert.error(message, 'Ops! erro no código' );
+            return message;
+          };
+          window.eval(code);
+        }
+      }
+    }
+  });
+});
