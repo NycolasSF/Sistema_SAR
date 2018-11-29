@@ -130,8 +130,14 @@ main {
 .introducao .download_apostila{
   position: inherit;
   float: none;
-  margin: 3%;
-  list-style: circle;
+  margin: 3% 0;
+}
+.introducao .download_apostila a{
+  color: var(--preto);
+  text-transform: uppercase;
+}
+.introducao .download_apostila i{
+  margin: 0 1rem;
 }
 .exemplo h1{
   margin-top: 2%;
@@ -703,7 +709,7 @@ footer{
     right: 0;
     height: 100%;
     width: 0;
-    background: var(--roxo);
+    background: var(--btn-azul);
     transition: all .5s ease-in-out;
     z-index:  1;
   }

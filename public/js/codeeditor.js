@@ -39,11 +39,13 @@ $(document).ready(function(){
     var editor = CodeMirror.fromTextArea(textArea, codeMirrorOpts);
 
 
-    $('#lightTheme').click(function(){
+    $('#btn-theme-light').click(function(){
       editor.setOption("theme", 'neat');
+      lightTheme()
     });
-    $('#darkTheme').click(function(){
+    $('#btn-theme-dark').click(function(){
       editor.setOption("theme", 'monokai');
+      darkTheme()
     });
 
     $(editor.getWrapperElement()).keydown(function(e) {

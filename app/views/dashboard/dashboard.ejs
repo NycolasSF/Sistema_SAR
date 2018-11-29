@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>SAR - PAINEL CONTROLES</title>
+    <link rel="shortcut icon" href="img/favicon.png" />
 
     <link href="css/normalize.css" type="text/css" rel="stylesheet">
     <link href="css/forms.css" type="text/css" rel="stylesheet">
@@ -16,6 +17,7 @@
     <link href="css/select.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kanit|Source+Sans+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
     <link rel="stylesheet" href="packs/Highlight/styles/monokai.css">
@@ -92,9 +94,10 @@
       <section id="manual" class="container-1">
           <div class="introducao">
             <h1>Manual</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+            <p>Está página se trata de um trabalho de conclusão de curso (TCC), na qual a partir dela você poderá executar códigos para o meu robô, dando vida a ele. Podendo ser executado nessa plataforma códigos em javascript de acordo com o material didático para o professor, para entender melhor o funcionamento e como ensinar seus alunos a partir desse protótipo.</p>
+
             <ul>
-              <li class="download_apostila"><a href="#" download="manual-SAR">Apostila</a></li>
+              <li class="download_apostila"><a href="#" download="manual-SAR"><i class="fas fa-file"></i>Apostila</a></li>
             </ul>
           </div>
           <div class="exemplo">
@@ -103,7 +106,7 @@
               <h2>1 - Vincule seu aparelho com robô</h2>
               <pre>
                 <code class="jsvascript">
-              var connection = 192.168.25.204;
+      var connection = 192.168.25.204;
                 </code>
               </pre>
             </div>
@@ -111,10 +114,10 @@
               <h2>2 - Execute seus códigos</h2>
               <pre>
                 <code class="jsvascript">
-              var connection = 192.168.0.0;
+      var connection = 192.168.0.0;
 
-              var robo = new Robo(connection);
-              robo.move(x);
+      var robo = new Robo(connection);
+      robo.move(x);
                 </code>
               </pre>
             </div>
@@ -126,6 +129,9 @@
           <div class="content C-salas">
             <div id="salas-title" class="info-inicial-salas">
               <h1>Salas</h1>
+              <% if(user[0].id_professor) { %>
+                <p>ATENÇÃO: Professor só aparece as salas que tem alunos cadastrados</p>
+              <% } %>
               <a  href="/terminal?q=MA==&a=<%= user[0].id_aluno %>&t=<%= user[0].id_treineiro %>&p=<%= user[0].id_professor %>">
                 <p>TESTAR APENAS</p>
               </a>
@@ -137,13 +143,12 @@
               getTreneiro = '<%= user[0].id_treineiros %>',
               getProfessor = '<%= user[0].id_professor %>'
               </script>
-              <% for(let i = 0; i < othersInfos.length; i++ ) { %>
+              <% for(let i = 0; i < salasEgrupos.length; i++ ) { %>
                 <div class="salas" onclick="terminal(getAluno, getTreneiro, getProfessor, <%= othersInfos[1].id_grupo %>)">
                   <div class="content-salas-1">
-                    <h2><%= othersInfos[i].nome_grupo %></h2>
-                    <p><%= othersInfos[i].nome_sala %></p>
+                    <h2><%= salasEgrupos[i].nome_grupo %></h2>
+                    <p><%= salasEgrupos[i].nome_sala %></p>
                   </div>
-                  <p class="content-salas-2">QTD: <%= othersInfos[i].qtd_alunos %></p>
                 </div>
               <% } %>
             <% } else {  %>
@@ -181,7 +186,7 @@
                   <div class="img-contact" style="background-image: url('<%= othersInfos[i].ft_perfil %>')"></div>
                   <div class="contact-discription">
                     <div id="nome_contato" class="name"><a><%= othersInfos[i].nome_aluno %></a></div>
-                    <div class="others-infos"><%= othersInfos[i].nome_professor %></div>
+                    <div class="others-infos"><%= othersInfos[i].nome_grupo %></div>
                   </div>
                 </div>
                   <div id="extras-infos<%= othersInfos[i].id_aluno %>" class="extras-infos invisivel">
@@ -244,17 +249,16 @@
           <% }else if(user[0].id_professor) { %>
             <!-- CADASTRAR SALAS E GRUPOS LÍDES -->
             <section id="cadastrar_sala_grupos" class="invisivel">
-              <form id="form_Csala" class="container-forms salas-form">
+              <form id="form_Csala" class="container-forms salas-form" action="/professor/cadastro/salas" method="POST">
                 <div class="titles-section" >
                   <legend>Cadastrar Sala</legend>
                 </div>
                 <div class="input-container">
                   <label for="nome_sala">Nome da Sala</label>
-                  <input id="nome_sala" type="text" maxlength="8" placeholder="Digite o Nome da sala, com até 8 caracteres" >
+                  <input id="nome_sala" type="text" name="nome_sala" maxlength="8" placeholder="Digite o Nome da sala, com até 8 caracteres" >
                 </div>
-                <p id="confirm_cadastro" class="invisivel">CLICK MAIS UMA VEZ NO BOTÃO ABAIXO PARA CONFIRMAR!</p>
                 <div class="container-buttons">
-                  <button id="btn-cadastrar_sala" type="button" class="submit-enviar">Cadastrar Sala</button>
+                  <button type="submit" class="submit-enviar">Cadastrar Sala</button>
                   <div id="btn-cadastrar_grupo" class="button-cadastrar_grupo">
                     <p>Cadastrar apenas grupo? <strong>Clique Aqui!</strong></p>
                   </div>
@@ -285,12 +289,12 @@
                 <div class="input-container select_sala">
                   <select id="cusSelectbox" class="select-style" name="select_sala" required>
                     <option selected disabled>Selecione a sala</option>
-                    <% if(othersInfos) { %>
-                      <% for(let i = 0; i < othersInfos.length; i++) { %>
-                        <option value="<%= othersInfos[i].nome_sala%>"><%= othersInfos[i].nome_sala%></option>
+                    <% if(salas) { %>
+                      <% for(let i = 0; i < salas.length; i++) { %>
+                        <option value="<%= salas[i].nome_sala %>"><%= salas[i].nome_sala%></option>
                         <% } %>
                   <% } else { %>
-                    <option value="sem registros" disabled>sem registros</option>
+                    <option value="" disabled>sem registros</option>
                   <% } %>
                   </select>
                 </div>

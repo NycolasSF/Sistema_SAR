@@ -5,6 +5,9 @@ module.exports = function (app) {
   app.post('/professor/cadastro/grupo', function (req, res) {
     app.app.controller.dashboard.cadastrar_grupo_aluno(app, req, res);
   });
+  app.post('/professor/cadastro/salas', function (req, res) {
+    app.app.controller.dashboard.cadastrar_sala(app, req, res);
+  });
   app.post('/cadastrar/treineiro', function (req, res) {
     app.app.controller.cadastrar_users.cadastrar_treineiro(app, req, res);
   });

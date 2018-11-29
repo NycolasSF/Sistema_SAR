@@ -2,12 +2,13 @@
 <html>
 <head>
   <title>SAR - Terminal</title>
+  <link rel="shortcut icon" href="img/favicon.png" />
   <link rel="stylesheet" href="css/terminal.css">
   <link rel="stylesheet" href="css/alert.css">
   <link rel="stylesheet" href="css/normalize.css">
   <link href="https://fonts.googleapis.com/css?family=Kanit|Source+Sans+Pro" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
   <link rel="stylesheet" href="packs/CodeEditor/lib/codemirror.css">
   <link rel="stylesheet" href="packs/CodeEditor/theme/monokai.css">
@@ -39,14 +40,14 @@
           <a href="/dashboard_grupo">
             <i id="btn-voltar_salas" class="material-icons">navigate_before</i>
           </a>
-          <a href="/sair_grupo">
+          <a href="/pagina_acesso_grupo">
             <img src="img/icons/exit.svg" class="btn-sair" alt="sair"></img>
           </a>
         <% } else { %>
           <a href="/dashboard">
             <i id="btn-voltar_salas" class="material-icons">navigate_before</i>
           </a>
-          <a href="#modalSair" rel="modal:open">
+          <a href="/pagina_acesso" >
             <img src="img/icons/exit.svg" class="btn-sair" alt="sair"></img>
           </a>
         <% } %>
@@ -62,16 +63,27 @@
         </div>
         <div id="container-code" class="Code-editor">
           <textarea id="codeeditor"class="runnable js"></textarea>
-          <!-- <div id="notifications">
-            <div class="title-notific">
-              <h1 id="errorNotifica"> > Notificações</h1>
-            </div>
-            <div id="notes"></div>
-          </div> -->
         </div>
         <% if(!user[0].nome_treineiro) { %>
-        <div class="container-contatos">
+          <div class="menu-asidebar">
+            <ul>
+              <li id="btn-contact">
+                <i class="material-icons">contacts</i>
+                <p>Conectados</p>
+              </li>
+              <li id="btn-theme-dark">
+                <i class="fas fa-moon"></i>
+                <p>Tema Escuro</p>
+              </li>
+              <li id="btn-theme-light">
+                <i class="far fa-moon"></i>
+                <p>Tema Claro</p>
+              </li>
+            </ul>
+          </div>
+        <div class="container-contatos invisivel">
           <h1>CONECTADOS</h1>
+          <span id="btn-closeContatos"><i class="fas fa-window-close"></i></span>
           <% if(conectados) { %>
               <% for(let i = 0; i < conectados.length; i++) { %>
                 <% if(conectados[i].status_aluno == 'on') { %>
@@ -108,7 +120,8 @@
       </div>
     </section>
   </main>
-  <script type="text/javascript" src="js/alert.js"></script>
+  <script type="text/javascript" src="js/Terminal_menu_asidebar.js"></script>
+  <!-- <script type="text/javascript" src="js/alert.js"></script> -->
   <script type="text/javascript" src="js/sar.js"></script>
 </body>
 </html>

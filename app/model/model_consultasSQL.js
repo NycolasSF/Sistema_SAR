@@ -31,10 +31,9 @@ class consultar{
   login_acessado(id_usuario, callback){
     this.connection.query("UPDATE Professores, Alunos SET status_professor = 'on' where id_professor = '"+id_usuario+"' OR  id_aluno = '"+id_usuario+"' ", callback);
   }
-
   // p --> SELECTs
   p_getAlunos(id, callback){
-    this.connection.query("SELECT id_sala, nome_professor, nome_sala, id_grupo, nome_grupo, id_aluno, nome_aluno, email_aluno, ft_perfil, status_aluno, nome_professor, COUNT(id_grupo) AS qtd_alunos FROM Professores INNER JOIN Salas INNER JOIN Registros_sala INNER JOIN Grupos INNER JOIN Resgistros INNER JOIN Alunos on Professor_id_professor = id_professor and registros_sala.Grupos_id_grupo = id_grupo and Salas_id_sala = id_sala and resgistros.Grupos_id_grupo = id_grupo and Alunos_id_aluno = id_aluno WHERE id_professor = "+id+" GROUP BY nome_grupo", callback);
+    this.connection.query("SELECT id_sala, nome_professor, nome_sala, id_grupo, nome_grupo, id_aluno, nome_aluno, email_aluno, ft_perfil, status_aluno, nome_professor FROM Professores INNER JOIN Salas INNER JOIN Registros_sala INNER JOIN Grupos INNER JOIN Resgistros INNER JOIN Alunos on Professor_id_professor = id_professor and registros_sala.Grupos_id_grupo = id_grupo and Salas_id_sala = id_sala and resgistros.Grupos_id_grupo = id_grupo and Alunos_id_aluno = id_aluno WHERE id_professor = "+id+" ", callback);
   }
   p_getConectados(id, idGrupo, callback){
       this.connection.query("SELECT id_sala, nome_professor, nome_sala, id_grupo, nome_grupo, id_aluno, nome_aluno, email_aluno, ft_perfil, status_aluno, nome_professor, COUNT(id_grupo) AS qtd_alunos FROM Professores INNER JOIN Salas INNER JOIN Registros_sala INNER JOIN Grupos INNER JOIN Resgistros INNER JOIN Alunos on Professor_id_professor = id_professor and registros_sala.Grupos_id_grupo = id_grupo and Salas_id_sala = id_sala and resgistros.Grupos_id_grupo = id_grupo and Alunos_id_aluno = id_aluno WHERE id_professor = "+id+" and id_grupo = "+idGrupo+" ORDER BY id_aluno ASC", callback);
@@ -48,6 +47,12 @@ class consultar{
   p_getAtulizacao(id, callback){
     this.connection.query("SELECT * from Professores WHERE id_professor ="+id, callback);
   }
+  p_getAllSalas(id, callback){
+    this.connection.query("SELECT * FROM salas where Professor_id_professor ="+id, callback);
+  }
+  p_getSalasGrupo(id, callback){
+    this.connection.query("SELECT * FROM Professores INNER JOIN SALAS INNER JOIN registros_sala INNER JOIN grupos on Professor_id_professor =id_professor and registros_sala.Salas_id_sala = id_sala and registros_sala.Grupos_id_grupo = id_grupo WHERE id_professor ="+id, callback);
+  }
   // p --> INSERTs
   p_inAluno(nomeAluno, emailAluno, callback){
     this.connection.query("INSERT INTO Alunos VALUES(0, '"+nomeAluno+"', '"+nomeAluno+"senha' ,'"+emailAluno+"', 'img/ft_sar.png', 'Líder', 'of')", callback);
@@ -55,13 +60,13 @@ class consultar{
   p_inGrupos(nomeSala, callback){
     this.connection.query("INSERT INTO Grupos VALUES(0, '"+nomeSala+"', 'img/ft_sar.png')", callback);
   }
-  p_inRegistros(idGrupo, idAluno, callback){
+  p_inRegistros(idGrupo, idAluno, callback){//ALUNO e  GRUPO
     this.connection.query("INSERT INTO Resgistros VALUES(0, "+idGrupo+", "+idAluno+")", callback);
   }
-  p_inSalas(nomeSala, idProfessor, idGrupo, callback){
+  p_inSalas(nomeSala, idProfessor, callback){
     this.connection.query("INSERT INTO Salas VALUES(0, '"+nomeSala+"', 0, 'now()', "+idProfessor+")", callback);
   }
-  p_inRegistrosSala(idSala, idGrupo, callback){
+  p_inRegistrosSala(idSala, idGrupo, callback){//GRUPO e SALA
     this.connection.query("INSERT INTO registros_sala VALUES(0, "+idSala+", "+idGrupo+")", callback);
   }
   p_inProfessor(nomeProfessor, emailProfessor, senhaProfessor, callback){
