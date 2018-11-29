@@ -11,6 +11,9 @@
 
 /*¨¨¨¨¨¨¨¨¨¨¨DESKTOP¨¨¨¨¨¨¨¨¨¨¨*/
 @media screen and (min-width: 960px){
+  .desktop{
+    display: block;
+  }
   .mobile{
     display: none;
   }
@@ -146,5 +149,21 @@
   }
   .contatos p{
     margin: 10%;
+  }
+  /* FOOTER */
+  .titles_footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .titles_footer img{
+    margin-right: 5%;
+  }
+  .titles_footer .rect-title h2{
+    font-size: 1.5rem;
+  }
+  .infos-autor img{
+    position: relative;
   }
 }

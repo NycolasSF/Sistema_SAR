@@ -33,12 +33,6 @@
 <!-- LOGO -->
         <div class="container-logo">
           <img class="img-logo" src="img/logo_svg.svg" alt="logo SAR">
-          <div class="content-login">
-            <a href="/pagina_acesso">
-              <img class="img-login" src="img/icons/login.svg" alt="btn-login">
-              <p class="subTitles-icons">Login</p>
-            </a>
-          </div>
         </div>
 <!--NAV MOBILE-->
         <span id="btn-menu" class="mobile" onclick="openNav()">
@@ -47,8 +41,12 @@
         <div id="myNav" class="overlay mobile">
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
           <div class="overlay-content">
+            <a href="pagina_acesso">
+              <img class="img-login" src="img/icons/login.svg" alt="btn-login">
+              <p class="subTitles-icons">Login</p>
+            </a>
             <a  href="#manual">
-              <img class="img img-manual" src="img/icons/manual.svg" alt="manual">
+              <img class="img img-manual" src="img/icons/manual_preto.svg" alt="manual">
               <p class="subTitles-icons">Manual</p>
             </a>
             <a  href="#sobre">
@@ -66,7 +64,7 @@
           <ul>
             <li>
               <a  href="#manual">
-                <img class="img img-manual" src="img/icons/manual.svg" alt="manual">
+                <img class="img img-manual" src="img/icons/manual_preto.svg" alt="manual">
                 <p class="subTitles-icons">Manual</p>
               </a>
             </li>
@@ -80,6 +78,12 @@
               <a  href="#comprar">
                 <img class="img img-coin" src="img/icons/coin.svg" alt="comprar">
                 <p class="subTitles-icons">Comprar</p>
+              </a>
+            </li>
+            <li>
+              <a href="/pagina_acesso">
+                <img class="img img-login" src="img/icons/login.svg" alt="btn-login">
+                <p class="subTitles-icons">Login</p>
               </a>
             </li>
           </ul>
@@ -103,7 +107,7 @@
           <h2>Sobre</h2>
         </div>
         <div class="frase">
-          <p>"FRASE DE EFEITO"</p>
+          <p>"Ao infinito e além"</p>
           <p>- Nycolas Silva Fróes</p>
         </div>
         <div class="content-sections">
@@ -116,13 +120,15 @@
               </div>
             </div>
             <div class="text">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>	Está página se trata de um trabalho de conclusão de curso (TCC), na qual a partir dela você poderá executar códigos para o meu robô, dando vida a ele.
+              	Podendo ser executado nessa plataforma códigos em javascript de acordo com o material didático para o professor, para entender melhor o funcionamento e como ensinar seus alunos a partir desse protótipo.</p>
             </div>
-            <div class="end-icon">
+            <div class="end-icon" title="Github">
               <a href="https://github.com/NycolasSF/Sistema_SAR">
                 <img class="img-left" src="img/icons/github-logo.svg" alt="Icons github-logo">
+                  <p class="texts-icons  mobile">Github</p>
+                </img>
               </a>
-              <!-- <p class="subTitles-icons">código do projeto</p> -->
             </div>
           </div>
           <div class="react"></div>
@@ -135,13 +141,14 @@
               </div>
             </div>
             <div class="text">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>		“Em meio das dificuldades vivenciadas pelos estudantes na área de programação, no curso de Informática para Internet no IFMS <i>Campus</i> Dourados, com a linguagem de programação Javascript, foi pensado a construção de um robô, reutilizando materiais recicláveis. O robô será uma ferramenta nas mãos dos professores que ensinaram a programação orientada a objetos, e com ele deixará o conteúdo mais atrativo.” (FRÓES, 2018, p.4)</p>
             </div>
-            <div class="end-icon">
+            <div class="end-icon" title="TCC">
               <a href="" download="">
                 <img class="img-right" src="img/icons/download.svg" alt="Icons download">
+                  <p class="texts-icons mobile">TCC</p>
+                </img>
               </a>
-              <!-- <p class="subTitles-icons">Download do TCC</p> -->
             </div>
           </div>
         </div>
@@ -149,7 +156,7 @@
 <!--MANUAL-->
       <section id="manual">
         <div class="titles-sections">
-          <img src="img/icons/manual.svg" alt="manual">
+          <img src="img/icons/manual_preto.svg" alt="manual">
           <h2>Manual</h2>
         </div>
         <div class="content-sections">
@@ -160,13 +167,20 @@
               </div>
             </div>
             <div class="text">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>Por se tratar de um robô com um site próprio podemos ultilizar esse mecanismo para mandar informações como segue o exemplo a seguir: </p>
             </div>
             <div class="codeexemple">
+              <pre>
+                <code class="jsvascript">
+      var connection = '0.0.0.0';
+      var robo = new Robo_sar(connection);
 
+      robo.moverFrente();
+                </code>
+              </pre>
             </div>
           </div>
-          <div class="react react-manual"></div>
+          <!-- <div class="react react-manual"></div> -->
           <div class="contents-section model3d">
             <iframe scrolling="no" frameborder="0" hspace="0" src="https://autode.sk/2A8ATTM"  allowtransparency="true" ></iframe>
           </div>
@@ -175,7 +189,25 @@
       </main>
 <!--FOOTER-->
       <footer>
-
+        <div class="titles_footer">
+          <img src="img/logo-SAR_branca.png" alt="">
+          <div class="rect-title">
+            <h2>Produtores</h2>
+          </div>
+        </div>
+        <div class="description_footer">
+          <div class="infos-autor">
+            <div class="autor autor_1">
+              <img src="img/nycolas.jpg" alt="">
+              <p>Nycolas Silva Fróes</p>
+            </div>
+            <div class="autor autor_2">
+              <img src="img/jonison.png" alt="">
+              <p>Jónison Almeida dos Santos</p>
+            </div>
+            <!-- <img src="img/nycolas.jpg" alt=""> -->
+          </div>
+        </div>
       </footer>
   </body>
 <!--SCRIPTS-->

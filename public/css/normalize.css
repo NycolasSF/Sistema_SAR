@@ -21,7 +21,7 @@
  --branco-rgba: rgba(245, 249, 250, 0.9);
 
  --azul: rgb(68, 75, 228);
- --roxo: rgb(168, 77, 186);
+ --roxo: #993399;
 }
 a{
  text-decoration: none;

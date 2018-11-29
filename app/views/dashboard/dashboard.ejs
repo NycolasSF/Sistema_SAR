@@ -10,8 +10,9 @@
 
     <title>SAR - PAINEL CONTROLES</title>
 
-    <link href="css/dashboard.css" type="text/css" rel="stylesheet">
+    <link href="css/normalize.css" type="text/css" rel="stylesheet">
     <link href="css/forms.css" type="text/css" rel="stylesheet">
+    <link href="css/dashboard.css" type="text/css" rel="stylesheet">
     <link href="css/select.css" type="text/css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kanit|Source+Sans+Pro" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -22,7 +23,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="packs/Highlight/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-
 
   </head>
   <body>
@@ -50,35 +50,35 @@
 <!-- </header> <nav>  -->
     <nav>
       <ul class="list-nav">
-        <a id="btn-manual" class="elements-nav manual">
+        <a id="btn-manual" class="elements-nav manual hover-btn">
           <img src="img/icons/manual.svg" alt="Manual SAR">
           <span class="legend l-manual">Manual</span>
         </a>
 
         <%  if(user[0].tipo_aluno == 'Líder') {  %>
-          <a id="btn-add_estudante"  class="elements-nav add-estudantes">
+          <a id="btn-add_estudante"  class="elements-nav add-estudantes hover-btn">
             <img src="img/icons/add-estudante.svg" alt="Cadastrar Estudante">
             <span class="legend l-add-estudantes">Cadastrar Estudante</span>
           </a>
-          <a id="btn-salas_terminal" class="elements-nav salas-terminal">
+          <a id="btn-salas_terminal" class="elements-nav salas-terminal hover-btn">
             <img src="img/icons/code.svg" alt="Terminal e Salas">
             <span class="legend l-salas-terminal">Grupos e Terminal</span>
           </a>
         <% } else if(user[0].nome_professor) { %>
-          <a id="btn-add_ver_estudantes"  class="elements-nav ver-estudantes">
+          <a id="btn-add_ver_estudantes"  class="elements-nav ver-estudantes hover-btn">
             <img src="img/icons/ver_estudantes.svg" alt="Ver Estudantes">
             <span class="legend l-ver-estudantes">Ver Estudantes</span>
           </a>
-          <a id="btn-add_classrom"  class="elements-nav add_classrom">
+          <a id="btn-add_classrom"  class="elements-nav add_classrom hover-btn">
             <img  src="img/icons/add-classrom.svg" alt="adicionar Sala">
             <span class="legend l-add-salas">Cadastrar Salas ou Grupos</span>
           </a>
-          <a id="btn-salas_terminal" class="elements-nav salas-terminal">
+          <a id="btn-salas_terminal" class="elements-nav salas-terminal hover-btn">
             <img src="img/icons/code.svg" alt="Terminal e Salas">
             <span class="legend l-salas-terminal">Grupos e Terminal</span>
           </a>
         <% } else { %>
-          <a id="btn-salas_terminal-treineiro" class="elements-nav salas-terminal" href="/terminal?q=&a=<%= user[0].id_aluno %>&t=<%= user[0].id_treineiros %>&p=<%= user[0].id_professor %>">
+          <a id="btn-salas_terminal-treineiro" class="elements-nav salas-terminal hover-btn" href="/terminal?q=&a=<%= user[0].id_aluno %>&t=<%= user[0].id_treineiros %>&p=<%= user[0].id_professor %>">
             <img src="img/icons/code.svg" alt="Terminal e Salas">
             <span class="legend l-salas-terminal">Terminal</span>
           </a>

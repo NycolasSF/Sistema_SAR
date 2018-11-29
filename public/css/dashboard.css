@@ -7,7 +7,7 @@
 :root{
 
   --branco: #fff;
-  --preto: #242628;
+  --preto: #272822;
 
   --cor-header: #1D1A31;
   --cor-nav: #4D2D52;
@@ -18,6 +18,13 @@
   --verde: #27ae60;
 
   --preto-tranparencia: rgba(0, 0, 0, 0.9);
+  --nav-bar: #272822;
+
+
+
+/* MEDIDAS */
+  --padding-top: 50%;
+
 }
 .invisivel{
   display: none;
@@ -58,7 +65,7 @@ header{
   width: 20%;
 }
 .title-header h1{
-  font-size: 1.8rem;
+  font-size: 1rem;
 }
 .config{
   display: flex;
@@ -68,36 +75,43 @@ header{
 }
 .config img {
   cursor: pointer;
-  width: 10%;
+  width: 40px;
   margin: .5rem;
 }
 .btn-sair {
-  width: 30%!important;
+  width: 40px!important;
 }
 /* NAV */
 nav{
-  margin-top: 2rem;
+  background: var(--nav-bar);
   padding: .5rem;
+  height: 15vh;
 }
 .list-nav{
   width: 100%;
   display: flex;
   flex-direction: row;
+  overflow: scroll;
 }
 .elements-nav{
-  color: #000;
+  color: var(--branco);
   text-align: center;
-  width: 80%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin:  0 2rem;
 }
 .elements-nav img{
   cursor: pointer;
-  width: 15%;
+  width: 25px;
+  z-index: 99;
 }
-.legend{
-  visibility: visible;
+.elements-nav span{
+  z-index: 99;
+}
+.elements-nav.active-btn{
+  border-right: solid 5px var(--branco);
 }
 /* MAIN*/
 .risco{
@@ -129,7 +143,8 @@ main {
   font-size: 1.3rem;
 }
 .exemplo code{
-  border-radius: 15px
+  border-radius: 15px;
+  width: 100%
 }
 /* SALAS E TERMINAL */
 .titles-section h1{
@@ -151,6 +166,7 @@ main {
 }
 .info-inicial-salas a{
   padding: .5rem 1.2rem;
+  height: 100%;
   background: var(--btn-azul2);
   border-radius: 5px;
   color: var(--branco)
@@ -165,8 +181,8 @@ main {
   margin: 1rem;
   padding: .5rem;
   border-radius: .5rem;
-  width: 15%;
-  height: 5%;
+  width: 120px;
+  height: 10vh;
   background: rgba(236, 240, 241,1.0);
   display: flex;
   justify-content: space-around;
@@ -504,7 +520,6 @@ form input{
   font-size: 1rem;
   cursor: pointer;
 }
-
 #dropzone [type="file"] {
   cursor: pointer;
   position: absolute;
@@ -653,63 +668,54 @@ footer{
   nav{
     grid-row: 2/3;
     grid-column: 1/2;
-    background: var(--branco);
-    margin-top: 70%;
+    padding-top: var(--padding-top);
     display: flex;
     flex-direction: column;
-    background: rgb(68, 66, 66)
+    height: 100%;
+  }
+  .config{
+    padding: 0 2rem;
   }
   .menu-icon{
     display: none;
-  }
-  .legend{
-    /* animation: icon_legend-hide ease-in-out .2s; */
-    /* animation: icon_legend-show ease-in .5s; */
-    visibility: hidden;
-  }
-  #btn-add_classrom {
-    width: 75%;
-    cursor: pointer;
-  }
-  @keyframes icon_legend-show {
-    0%{
-      opacity: 0;
-      transform: translateY(-100%)
-    }
-    50%{
-      opacity: 1;
-      transform: translateY(5%)
-    }
-    100%{
-      transform: translateY(0)
-    }
-  }
-  @keyframes icon_legend-hide {
-    to{
-      opacity: 0;
-      transform: translateY(-100%)
-    }
   }
   .list-nav{
     width: 100%;
     flex-direction: column;
     align-items: center;
   }
-  .elements-nav{
-    padding-bottom:  .5rem;
+  .list-nav a{
+    margin: 3vh 0;
   }
-  #btn-add_classrom{
-    padding-bottom:1rem;
+  .elements-nav{
+    padding-bottom: 5% .5rem;
   }
   .elements-nav img{
     width: 50%;
+  }
+  .elements-nav.hover-btn{
+    position: relative;
+  }
+  .elements-nav.hover-btn::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0;
+    background: var(--roxo);
+    transition: all .5s ease-in-out;
+    z-index:  1;
+  }
+  .elements-nav.hover-btn:hover::before {
+    width: 100%;
   }
   /* FORM */
   .container-forms{
     width: 60%!important;
   }
   main{
-    margin-top: 10%;
+    margin-top: 7%;
     padding: 2%;
     grid-row: 2/3;
   }

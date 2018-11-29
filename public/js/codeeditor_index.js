@@ -9,7 +9,7 @@ $('textarea').each(function(elem) {
       lineNumbers: true,
       mode: "javascript",
       theme: 'monokai',
-      tabSize: 5,
+      tabSize: 1,
       lineNumbers: true,
       scrollbarStyle: "overlay"
   }
