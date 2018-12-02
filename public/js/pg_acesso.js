@@ -41,7 +41,10 @@ $('#btn-voltar-type').click(function() {
 		opacity: '0'
 	},250);
 });
-
+// é estudante
+$('#btn-estudante').click(function () {
+	location.href = '/pagina_acesso_grupo'
+})
 
 // Função para saber sobre a opção selecionada decidindo: PROFESSOR OU TREINEIRO
 function OptionSelected(name) {

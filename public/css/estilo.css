@@ -70,7 +70,7 @@ header{
 .CodeMirror{
   background: var(--preto)!important;
   padding: 1rem;
-  height: 80px!important;
+  height: 100px!important;
 }
 .CodeMirror-gutters{
   background: var(--branco)!important;

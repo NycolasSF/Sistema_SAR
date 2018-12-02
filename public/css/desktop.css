@@ -166,4 +166,8 @@
   .infos-autor img{
     position: relative;
   }
+  .autor p{
+    text-align: center;
+    width: 200px
+  }
 }

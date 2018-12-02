@@ -9,7 +9,11 @@ $(document).ready(function(){
     "//Instanciando a Classe \n"+
     "var sar = new Robo(connetion) \n"+
     "//Passando movimentos para ele \n"+
-    "sar.move()";
+    "//sar.StopRobo() \n"+
+    "//sar.moveTras() \n"+
+    "//sar.viraDireita() \n"+
+    "//sar.viraEsquerda() \n"+
+    "sar.moveFrente()";
 
     textArea.value = string
 

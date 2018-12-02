@@ -333,7 +333,9 @@ module.exports.editFoto = function (app, req, res) {
                        color_background: 'var(--verde)'
                      }],
                      user: atualidadoProfessor,
-                     othersInfos: atualidadoAluno
+                     othersInfos: atualidadoAluno,
+                     salas: salas,
+                     salasEgrupos: salasEgrupos
                    });
                  });
                });
